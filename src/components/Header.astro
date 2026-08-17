@@ -1,0 +1,52 @@
+---
+import { useTranslations, localePath, otherLang } from '../i18n/utils';
+import { languages, type Lang } from '../i18n/ui';
+import { ORG_URL } from '../data/site';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const alt = otherLang(lang);
+---
+
+<header class="sticky top-0 z-40 border-b border-line/70 bg-ink/80 backdrop-blur">
+  <div class="wrap flex h-16 items-center justify-between gap-6">
+    <a href={localePath(lang, '/')} class="group flex items-center gap-2.5">
+      <span
+        class="grid size-7 place-items-center rounded-[6px] bg-accent font-mono text-sm font-bold text-ink"
+        aria-hidden="true">d</span
+      >
+      <span class="font-mono text-base font-semibold tracking-tight">dopejs</span>
+    </a>
+
+    <nav class="flex items-center gap-1 text-sm" aria-label="Primary">
+      <!-- The in-page links are hidden on narrow screens: the sections they point at
+           are the whole page, and keeping them overflows the 390px viewport. -->
+      <a
+        href={`${localePath(lang, '/')}#projects`}
+        class="hidden rounded px-3 py-2 text-muted transition-colors hover:text-fg sm:inline-block"
+        >{t('nav.projects')}</a
+      >
+      <a
+        href={`${localePath(lang, '/')}#about`}
+        class="hidden rounded px-3 py-2 text-muted transition-colors hover:text-fg sm:inline-block"
+        >{t('nav.about')}</a
+      >
+      <a
+        href={ORG_URL}
+        rel="noopener noreferrer"
+        target="_blank"
+        class="rounded px-2 py-2 text-muted transition-colors hover:text-fg sm:px-3">{t('nav.github')}</a
+      >
+      <a
+        href={localePath(alt, '/')}
+        hreflang={alt === 'zh' ? 'zh-CN' : 'en'}
+        class="ml-1 shrink-0 rounded border border-line px-2.5 py-1.5 font-mono text-xs whitespace-nowrap text-muted transition-colors hover:border-accent/60 hover:text-accent sm:ml-2 sm:px-3"
+        >{languages[alt]}</a
+      >
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,122 @@
+---
+import { useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/ui';
+import type { Project } from '../data/projects';
+
+interface Props {
+  lang: Lang;
+  project: Project;
+  index: number;
+}
+
+const { lang, project, index } = Astro.props;
+const t = useTranslations(lang);
+
+const statusKey = `status.${project.status}` as const;
+const statusTone: Record<Project['status'], string> = {
+  stable: 'border-accent/40 text-accent',
+  active: 'border-sky-400/40 text-sky-300',
+  early: 'border-amber-400/40 text-amber-300',
+  design: 'border-line text-muted',
+};
+---
+
+<article
+  id={project.slug}
+  class="group relative scroll-mt-24 rounded-xl border border-line bg-surface/60 p-6 transition-colors hover:border-line/100 hover:bg-surface-2/60 sm:p-8"
+>
+  <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+    <span class="font-mono text-xs text-muted/70">{String(index + 1).padStart(2, '0')}</span>
+    <h3 class="font-mono text-xl font-semibold tracking-tight">
+      <a href={project.repo} rel="noopener noreferrer" target="_blank" class="hover:text-accent">
+        {project.name}
+        <span class="sr-only">— {t('projects.repo')}</span>
+      </a>
+    </h3>
+    <span class={`rounded-full border px-2.5 py-0.5 font-mono text-[11px] ${statusTone[project.status]}`}>
+      {t(statusKey)}
+    </span>
+  </div>
+
+  <p class="mt-4 text-lg text-fg/90">{project.tagline[lang]}</p>
+  <p class="mt-3 max-w-3xl leading-relaxed text-muted">{project.summary[lang]}</p>
+
+  {
+    project.install && (
+      <div class="mt-5 flex items-stretch gap-2">
+        <code class="min-w-0 flex-1 overflow-x-auto rounded-lg border border-line bg-ink/70 px-3 py-2 font-mono text-xs leading-6 whitespace-nowrap text-fg/80">
+          {project.install}
+        </code>
+        <button
+          type="button"
+          class="shrink-0 rounded-lg border border-line px-3 font-mono text-xs text-muted transition-colors hover:border-accent/60 hover:text-accent"
+          data-copy={project.install}
+          data-copy-label={t('projects.copy')}
+          data-copied-label={t('projects.copied')}
+        >
+          {t('projects.copy')}
+        </button>
+      </div>
+    )
+  }
+
+  <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
+    <div class="flex flex-wrap gap-2">
+      {
+        project.languages.map((l) => (
+          <span class="rounded border border-line px-2 py-0.5 font-mono text-[11px] text-muted">{l}</span>
+        ))
+      }
+      {
+        project.license && (
+          <span class="rounded border border-line px-2 py-0.5 font-mono text-[11px] text-muted">
+            {project.license}
+          </span>
+        )
+      }
+    </div>
+
+    <div class="ml-auto flex items-center gap-4">
+      {
+        project.homepage && (
+          <a
+            href={project.homepage}
+            rel="noopener noreferrer"
+            target="_blank"
+            class="text-muted transition-colors hover:text-accent"
+          >
+            {t('projects.homepage')} ↗
+          </a>
+        )
+      }
+      <a
+        href={project.repo}
+        rel="noopener noreferrer"
+        target="_blank"
+        class="text-muted transition-colors hover:text-accent"
+      >
+        {t('projects.repo')} ↗
+      </a>
+    </div>
+  </div>
+</article>
+
+<script>
+  // Progressive enhancement: without JS the command is still selectable text.
+  document.querySelectorAll<HTMLButtonElement>('button[data-copy]').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const text = button.dataset.copy ?? '';
+      const copied = button.dataset.copiedLabel ?? 'Copied';
+      const label = button.dataset.copyLabel ?? 'Copy';
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        return; // Clipboard blocked (insecure context or denied permission) — leave the label alone.
+      }
+      button.textContent = copied;
+      window.setTimeout(() => {
+        button.textContent = label;
+      }, 1600);
+    });
+  });
+</script>
