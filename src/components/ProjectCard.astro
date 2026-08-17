@@ -60,7 +60,19 @@ const primaryInstall = project.installs?.[0];
       }
     </div>
 
-    <div class="relative z-10 ml-auto flex items-center gap-4">
+    <div class="relative z-10 ml-auto flex flex-wrap items-center gap-x-4 gap-y-2">
+      {
+        project.homepage && (
+          <a
+            href={project.homepage}
+            rel="noopener noreferrer"
+            target="_blank"
+            class="text-muted transition-colors hover:text-accent"
+          >
+            {t('projects.homepage')} ↗
+          </a>
+        )
+      }
       <a
         href={project.repo}
         rel="noopener noreferrer"

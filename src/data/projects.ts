@@ -282,6 +282,7 @@ export const projects: Project[] = [
       zh: '仓库尚未添加 license 文件。',
     },
     repo: 'https://github.com/dopejs/doper',
+    homepage: 'https://doper.dopejs.com/',
     requirements: {
       en: 'Node.js 22.12+, pnpm 10.33.2, Rust 1.96.0 with the wasm32-unknown-unknown target.',
       zh: 'Node.js 22.12+、pnpm 10.33.2、Rust 1.96.0，并安装 wasm32-unknown-unknown target。',
@@ -348,6 +349,7 @@ export const projects: Project[] = [
       zh: '尚未选择 license —— 在维护者补充之前，仓库内容不以开源协议提供。',
     },
     repo: 'https://github.com/dopejs/dope-canvas',
+    homepage: 'https://canvas.dopejs.com/',
     requirements: {
       en: 'Node.js 22.12+ and pnpm 10.33.2.',
       zh: 'Node.js 22.12+ 与 pnpm 10.33.2。',
