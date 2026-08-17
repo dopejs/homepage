@@ -20,7 +20,7 @@ export const en = {
 
   'projects.title': 'Projects',
   'projects.lead':
-    'Five repositories, at honestly different stages of maturity. Status labels below are not marketing — they say what you can actually rely on today. Licensing differs too; each project page states its own.',
+    'These repositories are at honestly different stages of maturity. Status labels below are not marketing — they say what you can actually rely on today. Licensing differs too; each project page states its own.',
   'projects.repo': 'Repository',
   'projects.homepage': 'Homepage',
   'projects.install': 'Install',

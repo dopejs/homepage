@@ -20,24 +20,6 @@ export const de: ProjectCopyMap = {
     licenseNote: 'Das Repository enthält noch keine Lizenzdatei.',
   },
 
-  dcode: {
-    tagline: 'Schlanker Coding-Agent für dein Terminal.',
-    summary:
-      'Ein auf DeepSeek ausgerichteter Fork der Codex CLI mit dem Befehl `dcode`. Nutzt standardmäßig DeepSeek V4 Flash, unterstützt Login per API-Key, die Guthaben- und Modell-APIs von DeepSeek sowie ein optionales externes Vision-Modell für Bildeingaben. Signierte Releases mit Prüfsummen für macOS, Linux und Windows.',
-    body: [
-      'DCode behält den Entwicklungsablauf des Upstream-Codex bei und legt ein DeepSeek-förmiges Produkt darüber: `/login` in der TUI nimmt einen DeepSeek-API-Key entgegen, danach erscheint das Guthaben in der Statuszeile. Bilder verarbeitet ein optionales externes Vision-Modell, nicht das eigentliche Coding-Modell.',
-      'Der Release-Weg ist der bewusst ausgearbeitete Teil des Projekts. Das Installationsskript prüft das Archiv gegen `dcode_SHA256SUMS`, entpackt ein vollständiges Runtime-Paket nach `${DCODE_HOME:-~/.dcode}/packages/standalone` und stellt den Befehl über `~/.local/bin` bereit. `dcode update` installiert die neueste Version über denselben geprüften Weg neu. macOS-Artefakte sind ad-hoc signiert, aber nicht von Apple notarisiert.',
-    ],
-    highlights: [
-      'Liefert den Befehl `dcode`; standardmäßig DeepSeek V4 Flash mit API-Key-Login direkt aus der TUI.',
-      'Guthaben- und Modell-APIs von DeepSeek angebunden — das Restguthaben erscheint nach dem Login in der Statuszeile.',
-      'Optionales externes Vision-Modell für Bildeingaben.',
-      'Release-Ziele: macOS (Apple Silicon und Intel), Linux glibc (arm64 und x86_64), Windows x86_64.',
-      'Das Installationsskript prüft SHA-256-Summen; `DCODE_INSTALL_DIR` und `DCODE_RELEASE` überschreiben Installationspfad und Version.',
-    ],
-    commandLabels: ['macOS und Linux', 'Windows PowerShell (x86_64)'],
-  },
-
   gozen: {
     tagline: 'Umgebungsumschalter für mehrere CLIs mit automatischem API-Proxy-Failover.',
     summary:

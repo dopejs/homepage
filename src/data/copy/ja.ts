@@ -20,24 +20,6 @@ export const ja: ProjectCopyMap = {
     licenseNote: 'リポジトリにはまだライセンスファイルがありません。',
   },
 
-  dcode: {
-    tagline: 'ターミナルで動く軽量なコーディングエージェント。',
-    summary:
-      'Codex CLI の DeepSeek 特化フォークで、`dcode` コマンドを提供します。既定は DeepSeek V4 Flash。API キーによるログイン、DeepSeek の残高・モデル API、画像入力向けの外部ビジョンモデル（任意）に対応。macOS・Linux・Windows 向けに、チェックサム付きのリリースビルドを配布しています。',
-    body: [
-      'DCode は上流 Codex の開発フローを保ちつつ、その上に DeepSeek 向けのプロダクトを重ねています。TUI で `/login` を実行して DeepSeek の API キーを入力すると、残高がステータスラインに表示されます。画像入力はメインのコーディングモデルではなく、任意の外部ビジョンモデルが処理します。',
-      'このプロジェクトが特に丁寧に作り込んでいるのはリリース経路です。インストーラーは `dcode_SHA256SUMS` でアーカイブを検証し、完全なランタイム一式を `${DCODE_HOME:-~/.dcode}/packages/standalone` に展開し、`~/.local/bin` からコマンドを公開します。`dcode update` は同じ検証経路で最新リリースを再インストールします。macOS の成果物は ad-hoc 署名で、Apple の公証は受けていません。',
-    ],
-    highlights: [
-      '`dcode` コマンドを提供。既定は DeepSeek V4 Flash で、TUI 内から API キーでログイン。',
-      'DeepSeek の残高・モデル API に対応 — ログイン後は残高がステータスラインに表示されます。',
-      '画像入力向けに外部ビジョンモデルを任意で利用可能。',
-      '対応プラットフォーム：macOS（Apple Silicon と Intel）、Linux glibc（arm64 と x86_64）、Windows x86_64。',
-      'インストーラーは SHA-256 を検証。`DCODE_INSTALL_DIR` と `DCODE_RELEASE` でインストール先とバージョンを上書きできます。',
-    ],
-    commandLabels: ['macOS と Linux', 'Windows PowerShell（x86_64）'],
-  },
-
   gozen: {
     tagline: '複数 CLI の環境切り替えツール。API プロキシの自動フェイルオーバー付き。',
     summary:

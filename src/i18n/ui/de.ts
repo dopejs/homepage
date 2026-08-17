@@ -21,7 +21,7 @@ export const de: UIStrings = {
 
   'projects.title': 'Projekte',
   'projects.lead':
-    'Fünf Repositories in ehrlich unterschiedlichen Reifegraden. Die Status-Labels sind kein Marketing — sie sagen, worauf du dich heute tatsächlich verlassen kannst. Auch die Lizenzen unterscheiden sich; jede Projektseite nennt ihre eigene.',
+    'Diese Repositories stehen in ehrlich unterschiedlichen Reifegraden. Die Status-Labels sind kein Marketing — sie sagen, worauf du dich heute tatsächlich verlassen kannst. Auch die Lizenzen unterscheiden sich; jede Projektseite nennt ihre eigene.',
   'projects.repo': 'Repository',
   'projects.homepage': 'Website',
   'projects.install': 'Installieren',

@@ -20,24 +20,6 @@ export const es: ProjectCopyMap = {
     licenseNote: 'El repositorio todavía no incluye un archivo de licencia.',
   },
 
-  dcode: {
-    tagline: 'Agente de programación ligero que se ejecuta en tu terminal.',
-    summary:
-      'Un fork de Codex CLI centrado en DeepSeek que aporta el comando `dcode`. Usa DeepSeek V4 Flash por defecto y admite inicio de sesión con clave de API, las APIs de saldo y modelos de DeepSeek y un modelo de visión externo opcional para imágenes. Publica binarios firmados y con suma de verificación para macOS, Linux y Windows.',
-    body: [
-      'DCode conserva el flujo de desarrollo de Codex y añade encima un producto con forma de DeepSeek: `/login` en la TUI acepta una clave de API de DeepSeek y, tras iniciar sesión, el saldo aparece en la barra de estado. Las imágenes las procesa un modelo de visión externo opcional, no el modelo principal de programación.',
-      'Las publicaciones son la parte más cuidada del proyecto. El instalador verifica el archivo con `dcode_SHA256SUMS`, descomprime un paquete de runtime completo en `${DCODE_HOME:-~/.dcode}/packages/standalone` y expone el comando a través de `~/.local/bin`. `dcode update` reinstala la versión más reciente por esa misma ruta verificada. Los artefactos de macOS llevan firma ad-hoc, pero no están notarizados por Apple.',
-    ],
-    highlights: [
-      'Aporta el comando `dcode`; usa DeepSeek V4 Flash por defecto con inicio de sesión mediante clave de API desde la propia TUI.',
-      'Integra las APIs de saldo y modelos de DeepSeek: el saldo restante aparece en la barra de estado tras iniciar sesión.',
-      'Modelo de visión externo opcional para entradas de imagen.',
-      'Plataformas publicadas: macOS (Apple Silicon e Intel), Linux glibc (arm64 y x86_64) y Windows x86_64.',
-      'El instalador verifica sumas SHA-256; `DCODE_INSTALL_DIR` y `DCODE_RELEASE` permiten cambiar la ruta de instalación y la versión.',
-    ],
-    commandLabels: ['macOS y Linux', 'Windows PowerShell (x86_64)'],
-  },
-
   gozen: {
     tagline: 'Conmutador de entornos para varias CLI con conmutación por error automática del proxy de API.',
     summary:

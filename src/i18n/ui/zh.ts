@@ -21,7 +21,7 @@ export const zh: UIStrings = {
 
   'projects.title': '项目',
   'projects.lead':
-    '五个仓库，成熟度确实各不相同。下面的状态标签不是宣传语，它说明的是今天你真正可以依赖到什么程度。许可证同样不统一，各项目页面均有明确标注。',
+    '这些仓库的成熟度确实各不相同。下面的状态标签不是宣传语，它说明的是今天你真正可以依赖到什么程度。许可证同样不统一，各项目页面均有明确标注。',
   'projects.repo': '仓库',
   'projects.homepage': '官网',
   'projects.install': '安装',

@@ -20,24 +20,6 @@ export const ko: ProjectCopyMap = {
     licenseNote: '저장소에 아직 라이선스 파일이 없습니다.',
   },
 
-  dcode: {
-    tagline: '터미널에서 실행되는 가벼운 코딩 에이전트.',
-    summary:
-      'Codex CLI의 DeepSeek 중심 포크로 `dcode` 명령을 제공합니다. 기본값은 DeepSeek V4 Flash이며 API 키 로그인, DeepSeek 잔액 및 모델 API, 이미지 입력을 위한 선택적 외부 비전 모델을 지원합니다. macOS, Linux, Windows용 체크섬 포함 릴리스 빌드를 제공합니다.',
-    body: [
-      'DCode는 상위 Codex의 개발 흐름을 유지하면서 그 위에 DeepSeek 형태의 제품을 얹었습니다. TUI에서 `/login`으로 DeepSeek API 키를 입력하면 상태 표시줄에 계정 잔액이 나타납니다. 이미지 입력은 메인 코딩 모델이 아니라 선택적 외부 비전 모델이 처리합니다.',
-      '이 프로젝트가 특히 공들인 부분은 릴리스 경로입니다. 설치 스크립트는 `dcode_SHA256SUMS`로 아카이브를 검증하고, 완전한 런타임 패키지를 `${DCODE_HOME:-~/.dcode}/packages/standalone`에 풀며, `~/.local/bin`을 통해 명령을 노출합니다. `dcode update`는 같은 검증 경로로 최신 릴리스를 다시 설치합니다. macOS 산출물은 ad-hoc 서명이며 Apple 공증은 받지 않았습니다.',
-    ],
-    highlights: [
-      '`dcode` 명령 제공. 기본값은 DeepSeek V4 Flash이며 TUI 안에서 API 키로 로그인.',
-      'DeepSeek 잔액 및 모델 API 연동 — 로그인 후 남은 잔액이 상태 표시줄에 표시됩니다.',
-      '이미지 입력을 위한 선택적 외부 비전 모델.',
-      '릴리스 대상: macOS(Apple Silicon 및 Intel), Linux glibc(arm64 및 x86_64), Windows x86_64.',
-      '설치 스크립트가 SHA-256을 검증하며 `DCODE_INSTALL_DIR`과 `DCODE_RELEASE`로 설치 경로와 버전을 바꿀 수 있습니다.',
-    ],
-    commandLabels: ['macOS 및 Linux', 'Windows PowerShell(x86_64)'],
-  },
-
   gozen: {
     tagline: 'API 프록시 자동 페일오버를 갖춘 멀티 CLI 환경 전환기.',
     summary:

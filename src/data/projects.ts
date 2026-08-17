@@ -28,18 +28,6 @@ export const projects: Project[] = [
     repo: 'https://github.com/dopejs/dope-agent',
   },
   {
-    slug: 'dcode',
-    name: 'DCode',
-    status: 'stable',
-    languages: ['Rust'],
-    license: 'Apache-2.0',
-    repo: 'https://github.com/dopejs/dcode',
-    commands: [
-      'curl -fsSL https://github.com/dopejs/dcode/releases/latest/download/install-dcode.sh | sh',
-      'powershell -ExecutionPolicy Bypass -c "irm https://github.com/dopejs/dcode/releases/latest/download/install-dcode.ps1 | iex"',
-    ],
-  },
-  {
     slug: 'gozen',
     name: 'GoZen',
     status: 'stable',

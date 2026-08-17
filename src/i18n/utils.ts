@@ -5,7 +5,7 @@ import type { ProjectCopy } from '../data/copy/types';
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-/** Reads the locale out of a URL like `/zh-tw/projects/dcode/`. */
+/** Reads the locale out of a URL like `/zh-tw/projects/gozen/`. */
 export function getLangFromUrl(url: URL): Lang {
   const path = url.pathname.startsWith(BASE) ? url.pathname.slice(BASE.length) : url.pathname;
   const [, segment = ''] = path.split('/');
@@ -20,8 +20,8 @@ export function useTranslations(lang: Lang) {
 
 /**
  * Builds a base-aware, locale-prefixed path. The default locale has no prefix:
- * `localePath('en', '/projects/dcode/')` -> `/projects/dcode/`
- * `localePath('ja', '/projects/dcode/')` -> `/ja/projects/dcode/`
+ * `localePath('en', '/projects/gozen/')` -> `/projects/gozen/`
+ * `localePath('ja', '/projects/gozen/')` -> `/ja/projects/gozen/`
  */
 export function localePath(lang: Lang, path = '/'): string {
   const normalized = path.startsWith('/') ? path : `/${path}`;

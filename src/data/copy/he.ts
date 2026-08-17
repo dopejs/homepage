@@ -20,24 +20,6 @@ export const he: ProjectCopyMap = {
     licenseNote: 'עדיין אין קובץ רישיון במאגר.',
   },
 
-  dcode: {
-    tagline: 'סוכן קוד קליל שרץ בטרמינל.',
-    summary:
-      'פיצול של Codex CLI המכוון ל-DeepSeek ומספק את הפקודה `dcode`. ברירת המחדל היא DeepSeek V4 Flash, עם תמיכה בהתחברות במפתח API, ב-API של היתרה והמודלים של DeepSeek ובמודל ראייה חיצוני אופציונלי לקלט תמונות. גרסאות חתומות עם סכומי ביקורת ל-macOS, ל-Linux ול-Windows.',
-    body: [
-      'DCode שומר על תהליך הפיתוח של Codex ומוסיף מעליו מוצר בצורת DeepSeek: הפקודה `/login` בממשק הטרמינל מקבלת מפתח API של DeepSeek, ואז היתרה מוצגת בשורת הסטטוס. תמונות מטופלות על ידי מודל ראייה חיצוני אופציונלי ולא על ידי מודל הקוד הראשי.',
-      'שרשרת השחרור היא החלק שהושקעה בו מחשבה. תוכנית ההתקנה מאמתת את הארכיון מול `dcode_SHA256SUMS`, פורסת חבילת ריצה מלאה תחת `${DCODE_HOME:-~/.dcode}/packages/standalone` וחושפת את הפקודה דרך `~/.local/bin`. הפקודה `dcode update` מתקינה מחדש את הגרסה החדשה באותו מסלול מאומת. קובצי macOS חתומים ad-hoc אך אינם מאושרים על ידי Apple.',
-    ],
-    highlights: [
-      'מספק את הפקודה `dcode`; ברירת המחדל היא DeepSeek V4 Flash עם התחברות במפתח API מתוך הממשק.',
-      'חיבור ל-API של היתרה והמודלים של DeepSeek — היתרה מוצגת בשורת הסטטוס אחרי ההתחברות.',
-      'מודל ראייה חיצוני אופציונלי לקלט תמונות.',
-      'יעדי שחרור: macOS‏ (Apple Silicon ו-Intel), Linux glibc‏ (arm64 ו-x86_64) ו-Windows x86_64.',
-      'ההתקנה מאמתת סכומי SHA-256; אפשר לשנות נתיב וגרסה עם `DCODE_INSTALL_DIR` ו-`DCODE_RELEASE`.',
-    ],
-    commandLabels: ['macOS ו-Linux', 'Windows PowerShell‏ (x86_64)'],
-  },
-
   gozen: {
     tagline: 'מחליף סביבות לכמה כלי CLI עם מעבר אוטומטי בגיבוי של פרוקסי ה-API.',
     summary:

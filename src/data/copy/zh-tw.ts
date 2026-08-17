@@ -20,24 +20,6 @@ export const zhTW: ProjectCopyMap = {
     licenseNote: '儲存庫尚未加入 license 檔案。',
   },
 
-  dcode: {
-    tagline: '執行在終端機裡的輕量編碼 Agent。',
-    summary:
-      'Codex CLI 的 DeepSeek 客製分支，提供 `dcode` 指令。預設使用 DeepSeek V4 Flash，支援 API Key 登入、DeepSeek 餘額與模型介面，並可選接入外部視覺模型處理圖片輸入。macOS、Linux、Windows 皆有附校驗碼的發布產物。',
-    body: [
-      'DCode 保留了上游 Codex 的開發流程，在其上疊加面向 DeepSeek 的產品形態：在 TUI 中執行 `/login` 輸入 DeepSeek API Key，登入後狀態列會顯示帳戶餘額。圖片輸入由可選的外部視覺模型處理，而非交給主編碼模型。',
-      '發布流程是這個專案刻意打磨的部分。安裝腳本會以 `dcode_SHA256SUMS` 驗證封存檔，把完整執行時解壓到 `${DCODE_HOME:-~/.dcode}/packages/standalone`，並透過 `~/.local/bin` 暴露指令。`dcode update` 走同一條經過驗證的路徑重新安裝最新版本。macOS 產物為 ad-hoc 簽章，未經 Apple 公證。',
-    ],
-    highlights: [
-      '提供 `dcode` 指令，預設使用 DeepSeek V4 Flash，可在 TUI 內以 API Key 登入。',
-      '接入 DeepSeek 餘額與模型介面 —— 登入後狀態列直接顯示剩餘額度。',
-      '可選接入外部視覺模型處理圖片輸入。',
-      '發布目標：macOS（Apple Silicon 與 Intel）、Linux glibc（arm64 與 x86_64）、Windows x86_64。',
-      '安裝腳本驗證 SHA-256；可用 `DCODE_INSTALL_DIR`、`DCODE_RELEASE` 覆寫安裝路徑與版本。',
-    ],
-    commandLabels: ['macOS 與 Linux', 'Windows PowerShell（x86_64）'],
-  },
-
   gozen: {
     tagline: '多 CLI 環境切換器，內建 API 代理自動故障移轉。',
     summary:

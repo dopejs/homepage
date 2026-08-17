@@ -21,7 +21,7 @@ export const zhTW: UIStrings = {
 
   'projects.title': '專案',
   'projects.lead':
-    '五個儲存庫，成熟度確實各不相同。下面的狀態標籤不是宣傳語，而是說明今天你真正能依賴到什麼程度。授權條款同樣不統一，各專案頁面均有明確標註。',
+    '這些儲存庫的成熟度確實各不相同。下面的狀態標籤不是宣傳語，而是說明今天你真正能依賴到什麼程度。授權條款同樣不統一，各專案頁面均有明確標註。',
   'projects.repo': '儲存庫',
   'projects.homepage': '官網',
   'projects.install': '安裝',

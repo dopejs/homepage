@@ -24,24 +24,6 @@ export const en: ProjectCopyMap = {
     licenseNote: 'No license file in the repository yet.',
   },
 
-  dcode: {
-    tagline: 'Lightweight coding agent that runs in your terminal.',
-    summary:
-      'A DeepSeek-focused fork of Codex CLI shipping the `dcode` command. Defaults to DeepSeek V4 Flash, supports API-key login, DeepSeek balance and model APIs, and an optional external vision model for image inputs. Signed, checksummed release builds for macOS, Linux and Windows.',
-    body: [
-      'DCode keeps the upstream Codex development workflow and layers a DeepSeek-shaped product on top: `/login` in the TUI takes a DeepSeek API key, and the account balance then shows up in the status line. Images are handled by an optional external vision model rather than by the main coding model.',
-      'Releases are the deliberate part of this project. The installer verifies the archive against `dcode_SHA256SUMS`, unpacks a complete runtime package under `${DCODE_HOME:-~/.dcode}/packages/standalone`, and exposes the command through `~/.local/bin`. `dcode update` reinstalls the newest release through that same verified path. macOS artifacts are ad-hoc signed but not Apple-notarized.',
-    ],
-    highlights: [
-      'Ships the `dcode` command; defaults to DeepSeek V4 Flash with API-key login from inside the TUI.',
-      'DeepSeek balance and model APIs wired in — remaining balance appears in the status line after login.',
-      'Optional external vision model for image inputs.',
-      'Release targets: macOS (Apple Silicon and Intel), Linux glibc (arm64 and x86_64), Windows x86_64.',
-      'Installer verifies SHA-256 checksums; `DCODE_INSTALL_DIR` and `DCODE_RELEASE` override the install path and version.',
-    ],
-    commandLabels: ['macOS and Linux', 'Windows PowerShell (x86_64)'],
-  },
-
   gozen: {
     tagline: 'Multi-CLI environment switcher with API proxy auto-failover.',
     summary:

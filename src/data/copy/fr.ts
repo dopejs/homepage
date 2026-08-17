@@ -20,24 +20,6 @@ export const fr: ProjectCopyMap = {
     licenseNote: 'Le dépôt ne contient pas encore de fichier de licence.',
   },
 
-  dcode: {
-    tagline: 'Un agent de code léger qui tourne dans votre terminal.',
-    summary:
-      'Un fork de Codex CLI orienté DeepSeek qui fournit la commande `dcode`. Utilise DeepSeek V4 Flash par défaut, prend en charge la connexion par clé d’API, les API de solde et de modèles de DeepSeek, ainsi qu’un modèle de vision externe optionnel pour les images. Livraisons signées et vérifiées par somme de contrôle pour macOS, Linux et Windows.',
-    body: [
-      'DCode conserve le flux de développement de Codex et y ajoute un produit taillé pour DeepSeek : `/login` dans la TUI accepte une clé d’API DeepSeek, puis le solde du compte apparaît dans la barre d’état. Les images sont traitées par un modèle de vision externe optionnel, et non par le modèle de code principal.',
-      'La chaîne de publication est la partie la plus soignée du projet. L’installeur vérifie l’archive avec `dcode_SHA256SUMS`, déploie un runtime complet sous `${DCODE_HOME:-~/.dcode}/packages/standalone` et expose la commande via `~/.local/bin`. `dcode update` réinstalle la dernière version par ce même chemin vérifié. Les artefacts macOS sont signés en ad-hoc mais non notariés par Apple.',
-    ],
-    highlights: [
-      'Fournit la commande `dcode` ; utilise DeepSeek V4 Flash par défaut, avec connexion par clé d’API depuis la TUI.',
-      'API de solde et de modèles DeepSeek intégrées — le solde restant s’affiche dans la barre d’état après connexion.',
-      'Modèle de vision externe optionnel pour les entrées image.',
-      'Cibles de publication : macOS (Apple Silicon et Intel), Linux glibc (arm64 et x86_64), Windows x86_64.',
-      'L’installeur vérifie les sommes SHA-256 ; `DCODE_INSTALL_DIR` et `DCODE_RELEASE` redéfinissent le chemin d’installation et la version.',
-    ],
-    commandLabels: ['macOS et Linux', 'Windows PowerShell (x86_64)'],
-  },
-
   gozen: {
     tagline: 'Commutateur d’environnements multi-CLI avec bascule automatique du proxy d’API.',
     summary:
