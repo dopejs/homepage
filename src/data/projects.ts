@@ -14,8 +14,22 @@ export interface Project {
   repo: string;
   /** Project homepage, when it has one that is not the repo. */
   homepage?: string;
+  /** Whether the repository publishes GitHub releases (drives the sidebar link). */
+  hasReleases?: boolean;
   /** Shell commands, shown verbatim in every locale. Labels are translated. */
-  commands?: string[];
+  commands?: Command[];
+}
+
+/**
+ * `install` and `run` are things a visitor can paste and use. `dev` commands
+ * only work from a checkout of the repository — the project card never shows
+ * those, because a card-level command reads as "this is how you get it".
+ */
+export type CommandKind = 'install' | 'run' | 'dev';
+
+export interface Command {
+  command: string;
+  kind: CommandKind;
 }
 
 export const projects: Project[] = [
@@ -34,9 +48,10 @@ export const projects: Project[] = [
     languages: ['TypeScript'],
     license: 'MIT',
     repo: 'https://github.com/dopejs/dsh-tui',
+    hasReleases: true,
     commands: [
-      'pnpm dlx --allow-build=node-pty @deepseek-ai/dsh@0.1.0-rc.6 --profile tui',
-      'dsh --profile tui --doctor',
+      { command: 'pnpm dlx --allow-build=node-pty @deepseek-ai/dsh@0.1.0-rc.6 --profile tui', kind: 'run' },
+      { command: 'dsh --profile tui --doctor', kind: 'run' },
     ],
   },
   {
@@ -47,9 +62,10 @@ export const projects: Project[] = [
     license: 'MIT',
     repo: 'https://github.com/dopejs/GoZen',
     homepage: 'https://gozen.dev/',
+    hasReleases: true,
     commands: [
-      'curl -fsSL https://raw.githubusercontent.com/dopejs/gozen/main/install.sh | sh',
-      'zen config add provider && zen',
+      { command: 'curl -fsSL https://raw.githubusercontent.com/dopejs/gozen/main/install.sh | sh', kind: 'install' },
+      { command: 'zen config add provider && zen', kind: 'run' },
     ],
   },
   {
@@ -60,7 +76,10 @@ export const projects: Project[] = [
     license: null,
     repo: 'https://github.com/dopejs/doper',
     homepage: 'https://doper.dopejs.com/',
-    commands: ['pnpm install --frozen-lockfile && pnpm m0:check && pnpm probe:dev'],
+    hasReleases: true,
+    // Contributor-only: this runs the probe from a checkout. doper publishes
+    // package tarballs on its releases, but no documented consumer install.
+    commands: [{ command: 'pnpm install --frozen-lockfile && pnpm m0:check && pnpm probe:dev', kind: 'dev' }],
   },
   {
     slug: 'dope-canvas',
@@ -70,6 +89,7 @@ export const projects: Project[] = [
     license: null,
     repo: 'https://github.com/dopejs/dope-canvas',
     homepage: 'https://canvas.dopejs.com/',
+    hasReleases: true,
   },
 ];
 

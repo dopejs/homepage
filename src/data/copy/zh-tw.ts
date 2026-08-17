@@ -78,7 +78,7 @@ export const zhTW: ProjectCopyMap = {
       'Canvas 原生文字編輯：EditContext 優先、集中式 textarea proxy 降級，並支援可確定性的 IME 錄製與重播。',
       '平台資格認證與里程碑完成明確脫鉤 —— 未認證的平台不做效能宣稱。',
     ],
-    commandLabels: ['執行平台探針'],
+    commandLabels: ['從儲存庫原始碼執行平台探針'],
     requirements: 'Node.js 22.12+、pnpm 10.33.2、Rust 1.96.0，並安裝 wasm32-unknown-unknown target。',
     licenseNote: '儲存庫尚未加入 license 檔案。',
   },

@@ -78,7 +78,7 @@ export const ko: ProjectCopyMap = {
       'Canvas 네이티브 텍스트 편집: EditContext 우선 입력, 중앙화된 textarea 프록시 폴백, 결정론적 IME 기록/재생.',
       '플랫폼 인증은 마일스톤 완료와 명확히 분리되어 있으며, 인증되지 않은 플랫폼에서는 성능을 주장하지 않습니다.',
     ],
-    commandLabels: ['플랫폼 프로브 실행'],
+    commandLabels: ['저장소 체크아웃에서 프로브 실행'],
     requirements: 'Node.js 22.12+, pnpm 10.33.2, Rust 1.96.0(wasm32-unknown-unknown 타깃 포함).',
     licenseNote: '저장소에 아직 라이선스 파일이 없습니다.',
   },

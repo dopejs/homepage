@@ -78,7 +78,7 @@ export const he: ProjectCopyMap = {
       'עריכת טקסט מקורית ב-Canvas: קלט דרך EditContext תחילה, נפילה לאחור ל-proxy מרוכז של textarea, והקלטה והשמעה דטרמיניסטיות של IME.',
       'הסמכת הפלטפורמה מופרדת במפורש מהשלמת אבני הדרך — בפלטפורמות שלא הוסמכו לא נטענות טענות ביצועים.',
     ],
-    commandLabels: ['הרצת בדיקת הפלטפורמה'],
+    commandLabels: ['הרצת הבדיקה מתוך עותק מקומי של המאגר'],
     requirements: 'Node.js 22.12+‎, pnpm 10.33.2 ו-Rust 1.96.0 עם היעד wasm32-unknown-unknown.',
     licenseNote: 'עדיין אין קובץ רישיון במאגר.',
   },

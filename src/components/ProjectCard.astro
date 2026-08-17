@@ -16,7 +16,10 @@ const t = useTranslations(lang);
 const c = projectCopy(lang, project.slug);
 
 const href = localePath(lang, `/projects/${project.slug}/`);
-const primaryCommand = project.commands?.[0];
+// A command on the card reads as "this is how you get it", so only show one a
+// visitor can actually paste. Checkout-only (`dev`) commands stay on the
+// detail page, where their label gives the necessary context.
+const primaryCommand = project.commands?.find((c) => c.kind !== 'dev');
 ---
 
 <article
@@ -40,7 +43,7 @@ const primaryCommand = project.commands?.[0];
   {
     primaryCommand && (
       <div class="relative z-10 mt-5">
-        <CommandBlock lang={lang} command={primaryCommand} />
+        <CommandBlock lang={lang} command={primaryCommand.command} />
       </div>
     )
   }

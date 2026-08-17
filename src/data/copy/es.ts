@@ -78,7 +78,7 @@ export const es: ProjectCopyMap = {
       'Edición de texto nativa en Canvas: entrada con EditContext primero, proxy de textarea centralizado como alternativa y grabación/reproducción determinista del IME.',
       'La cualificación de plataforma está explícitamente separada de la finalización de hitos: en plataformas no cualificadas no se hacen afirmaciones de rendimiento.',
     ],
-    commandLabels: ['Ejecutar la sonda de plataforma'],
+    commandLabels: ['Ejecutar la sonda desde una copia del repositorio'],
     requirements: 'Node.js 22.12+, pnpm 10.33.2 y Rust 1.96.0 con el target wasm32-unknown-unknown.',
     licenseNote: 'El repositorio todavía no incluye un archivo de licencia.',
   },

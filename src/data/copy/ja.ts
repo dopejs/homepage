@@ -78,7 +78,7 @@ export const ja: ProjectCopyMap = {
       'Canvas ネイティブのテキスト編集：EditContext 優先、集中管理された textarea プロキシへのフォールバック、決定論的な IME の記録と再生。',
       'プラットフォーム認定はマイルストーン完了と明確に切り離されており、未認定の環境では性能を主張しません。',
     ],
-    commandLabels: ['プラットフォームプローブを実行'],
+    commandLabels: ['リポジトリのチェックアウトからプローブを実行'],
     requirements: 'Node.js 22.12+、pnpm 10.33.2、Rust 1.96.0（wasm32-unknown-unknown ターゲット付き）。',
     licenseNote: 'リポジトリにはまだライセンスファイルがありません。',
   },

@@ -82,7 +82,7 @@ export const en: ProjectCopyMap = {
       'Canvas-native text editing: EditContext-first input with a centralized textarea proxy fallback, and deterministic IME record/replay.',
       'Platform qualification is explicitly separate from milestone completion — unqualified platforms make no performance claims.',
     ],
-    commandLabels: ['Run the platform probe'],
+    commandLabels: ['Run the probe from a checkout of the repository'],
     requirements: 'Node.js 22.12+, pnpm 10.33.2, Rust 1.96.0 with the wasm32-unknown-unknown target.',
     licenseNote: 'No license file in the repository yet.',
   },

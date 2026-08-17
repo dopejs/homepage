@@ -78,7 +78,7 @@ export const de: ProjectCopyMap = {
       'Canvas-native Textbearbeitung: Eingabe zuerst über EditContext, Rückfall auf einen zentralen Textarea-Proxy, deterministische IME-Aufzeichnung und -Wiedergabe.',
       'Die Plattformqualifizierung ist ausdrücklich vom Meilensteinabschluss getrennt — auf nicht qualifizierten Plattformen werden keine Performance-Aussagen gemacht.',
     ],
-    commandLabels: ['Plattform-Probe ausführen'],
+    commandLabels: ['Probe aus einem Checkout des Repositorys ausführen'],
     requirements: 'Node.js 22.12+, pnpm 10.33.2 und Rust 1.96.0 mit dem Target wasm32-unknown-unknown.',
     licenseNote: 'Das Repository enthält noch keine Lizenzdatei.',
   },

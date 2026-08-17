@@ -18,7 +18,7 @@ const c = projectCopy(lang, project.slug);
 const display = displayFont(lang);
 
 const projectHref = (p: Project) => localePath(lang, `/projects/${p.slug}/`);
-const commands = (project.commands ?? []).map((command, i) => ({ command, label: c.commandLabels?.[i] }));
+const commands = (project.commands ?? []).map((entry, i) => ({ ...entry, label: c.commandLabels?.[i] }));
 ---
 
 <article class="wrap pt-12 pb-8 sm:pt-16">
@@ -145,7 +145,7 @@ const commands = (project.commands ?? []).map((command, i) => ({ command, label:
             >
           </li>
           {
-            project.commands && (
+            project.hasReleases && (
               <li>
                 <a
                   href={`${project.repo}/releases`}
