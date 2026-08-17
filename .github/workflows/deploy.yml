@@ -19,10 +19,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      # Project site under github.com/dopejs/homepage.
-      # For a custom domain: set SITE to it and BASE_PATH to "/", and add public/CNAME.
-      SITE: https://dopejs.github.io
-      BASE_PATH: /homepage
+      # Custom domain configured under Settings → Pages; public/CNAME keeps it
+      # from being reset by an Actions deploy. Root domain => no path prefix.
+      SITE: https://dopejs.com
+      BASE_PATH: /
     steps:
       - uses: actions/checkout@v4
 

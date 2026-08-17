@@ -3,11 +3,11 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
-// GitHub Pages for `dopejs/homepage` serves at https://dopejs.github.io/homepage/.
-// Both values are env-overridable so a custom domain only needs:
-//   SITE=https://dopejs.dev BASE_PATH=/ pnpm build
-const SITE = process.env.SITE ?? 'https://dopejs.github.io';
-const BASE_PATH = process.env.BASE_PATH ?? '/homepage';
+// GitHub Pages serves this repo on the verified custom domain dopejs.com, so the
+// site lives at the root — no path prefix. Both values stay env-overridable:
+//   SITE=https://dopejs.github.io BASE_PATH=/homepage pnpm build
+const SITE = process.env.SITE ?? 'https://dopejs.com';
+const BASE_PATH = process.env.BASE_PATH ?? '/';
 
 export default defineConfig({
   site: SITE,

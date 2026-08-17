@@ -35,20 +35,19 @@ repository's README changes.
 ## Deploy
 
 Pushing to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds
-and publishes to GitHub Pages. Enable it once in **Settings → Pages → Build and deployment →
-Source: GitHub Actions**.
+and publishes to GitHub Pages (Settings → Pages → Source: GitHub Actions).
 
-The site is served from `https://dopejs.github.io/homepage/`, so the build sets `base: /homepage`.
-Both values come from environment variables:
+The site is served from the custom domain **https://dopejs.com**, so it lives at the root and needs
+no path prefix. Configuration comes from environment variables set in the workflow:
 
-| Variable    | Default                     | Purpose                            |
-| ----------- | --------------------------- | ---------------------------------- |
-| `SITE`      | `https://dopejs.github.io`  | Absolute URL used for canonical/OG |
-| `BASE_PATH` | `/homepage`                 | Path prefix for all internal links |
+| Variable    | Value in CI          | Purpose                            |
+| ----------- | -------------------- | ---------------------------------- |
+| `SITE`      | `https://dopejs.com` | Absolute URL used for canonical/OG |
+| `BASE_PATH` | `/`                  | Path prefix for all internal links |
 
-To move to a custom domain: set `SITE` to the domain and `BASE_PATH` to `/` in the workflow, add a
-`public/CNAME` file containing the domain, update the sitemap URL in `public/robots.txt`, and
-configure the domain under **Settings → Pages**.
+[`public/CNAME`](public/CNAME) pins the domain so an Actions deploy cannot reset it. If the site ever
+moves back to `dopejs.github.io/homepage/`, set `SITE=https://dopejs.github.io` and
+`BASE_PATH=/homepage`, delete `public/CNAME`, and update the sitemap URL in `public/robots.txt`.
 
 ## Structure
 
