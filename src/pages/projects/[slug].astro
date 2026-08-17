@@ -1,0 +1,22 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProjectDetail from '../../components/ProjectDetail.astro';
+import { projects } from '../../data/projects';
+import { buildProjectPaths } from '../../lib/project-paths';
+
+export function getStaticPaths() {
+  return buildProjectPaths(projects);
+}
+
+const lang = 'en' as const;
+const { project, prev, next } = Astro.props;
+---
+
+<Base
+  lang={lang}
+  path={`/projects/${project.slug}/`}
+  title={`${project.name} — dopejs`}
+  description={project.tagline[lang]}
+>
+  <ProjectDetail lang={lang} project={project} prev={prev} next={next} />
+</Base>

@@ -1,0 +1,186 @@
+---
+import CommandBlock from './CommandBlock.astro';
+import { useTranslations, localePath } from '../i18n/utils';
+import type { Lang } from '../i18n/ui';
+import type { Project } from '../data/projects';
+import { statusTone, statusKey } from '../lib/status';
+
+interface Props {
+  lang: Lang;
+  project: Project;
+  prev: Project;
+  next: Project;
+}
+
+const { lang, project, prev, next } = Astro.props;
+const t = useTranslations(lang);
+
+// Monospace suits Latin display type but spaces CJK glyphs badly.
+const display = lang === 'zh' ? 'font-sans' : 'font-mono';
+const projectHref = (p: Project) => localePath(lang, `/projects/${p.slug}/`);
+---
+
+<article class="wrap pt-12 pb-8 sm:pt-16">
+  <a href={`${localePath(lang, '/')}#projects`} class="mono-label transition-colors hover:text-accent"
+    >← {t('project.back')}</a
+  >
+
+  <header class="mt-6 border-b border-line/70 pb-10">
+    <div class="flex flex-wrap items-center gap-3">
+      <h1 class="font-mono text-4xl font-semibold tracking-tight sm:text-5xl">{project.name}</h1>
+      <span class={`rounded-full border px-2.5 py-0.5 font-mono text-xs ${statusTone[project.status]}`}>
+        {t(statusKey(project.status))}
+      </span>
+    </div>
+    <p class:list={['mt-5 max-w-3xl text-xl leading-snug text-fg/90', display]}>{project.tagline[lang]}</p>
+    <p class="mt-4 max-w-3xl leading-relaxed text-muted">{project.summary[lang]}</p>
+
+    <div class="mt-7 flex flex-wrap items-center gap-3">
+      <a
+        href={project.repo}
+        rel="noopener noreferrer"
+        target="_blank"
+        class="rounded-lg bg-accent px-5 py-2.5 font-mono text-sm font-semibold text-ink transition-opacity hover:opacity-90"
+        >{t('projects.repo')} ↗</a
+      >
+      {
+        project.homepage && (
+          <a
+            href={project.homepage}
+            rel="noopener noreferrer"
+            target="_blank"
+            class="rounded-lg border border-line px-5 py-2.5 font-mono text-sm text-fg transition-colors hover:border-accent/60 hover:text-accent"
+          >
+            {t('projects.homepage')} ↗
+          </a>
+        )
+      }
+    </div>
+  </header>
+
+  <div class="mt-12 grid gap-12 lg:grid-cols-[minmax(0,1fr)_16rem] lg:gap-14">
+    <div class="min-w-0">
+      <section>
+        <h2 class:list={['text-xl font-semibold tracking-tight', display]}>{t('project.overview')}</h2>
+        <div class="mt-4 space-y-4">
+          {project.body.map((paragraph) => <p class="leading-relaxed text-muted">{paragraph[lang]}</p>)}
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class:list={['text-xl font-semibold tracking-tight', display]}>{t('project.highlights')}</h2>
+        <ul class="mt-4 space-y-3">
+          {
+            project.highlights.map((item) => (
+              <li class="flex gap-3 leading-relaxed text-muted">
+                <span class="mt-2 size-1.5 shrink-0 rounded-full bg-accent/70" aria-hidden="true" />
+                <span>{item[lang]}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      {
+        (project.installs || project.requirements) && (
+          <section class="mt-12">
+            <h2 class:list={['text-xl font-semibold tracking-tight', display]}>{t('project.getStarted')}</h2>
+            {project.requirements && (
+              <p class="mt-4 leading-relaxed text-muted">
+                <span class="text-fg/80">{t('project.requirements')}: </span>
+                {project.requirements[lang]}
+              </p>
+            )}
+            {project.installs && (
+              <div class="mt-5 space-y-5">
+                {project.installs.map((install) => (
+                  <CommandBlock lang={lang} command={install.command} label={install.label[lang]} />
+                ))}
+              </div>
+            )}
+          </section>
+        )
+      }
+    </div>
+
+    <aside class="lg:sticky lg:top-24 lg:self-start">
+      <div class="rounded-xl border border-line bg-surface/60 p-6">
+        <h2 class="mono-label">{t('project.facts')}</h2>
+        <dl class="mt-4 space-y-4 text-sm">
+          <div>
+            <dt class="text-muted">{t('project.facts.status')}</dt>
+            <dd class="mt-1 text-fg/90">{t(statusKey(project.status))}</dd>
+          </div>
+          <div>
+            <dt class="text-muted">{t('project.facts.languages')}</dt>
+            <dd class="mt-1 font-mono text-fg/90">{project.languages.join(' · ')}</dd>
+          </div>
+          <div>
+            <dt class="text-muted">{t('project.facts.license')}</dt>
+            <dd class="mt-1 font-mono text-fg/90">{project.license ?? t('project.facts.noLicense')}</dd>
+            {project.licenseNote && <dd class="mt-1 text-xs leading-relaxed text-muted">{project.licenseNote[lang]}</dd>}
+          </div>
+        </dl>
+
+        <h2 class="mono-label mt-7">{t('project.links')}</h2>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li>
+            <a href={project.repo} rel="noopener noreferrer" target="_blank" class="text-muted hover:text-accent"
+              >{t('projects.repo')} ↗</a
+            >
+          </li>
+          <li>
+            <a
+              href={`${project.repo}/issues`}
+              rel="noopener noreferrer"
+              target="_blank"
+              class="text-muted hover:text-accent">{t('project.issues')} ↗</a
+            >
+          </li>
+          {
+            project.installs && (
+              <li>
+                <a
+                  href={`${project.repo}/releases`}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  class="text-muted hover:text-accent"
+                >
+                  {t('project.releases')} ↗
+                </a>
+              </li>
+            )
+          }
+          {
+            project.homepage && (
+              <li>
+                <a
+                  href={project.homepage}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  class="text-muted hover:text-accent"
+                >
+                  {t('projects.homepage')} ↗
+                </a>
+              </li>
+            )
+          }
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <nav class="mt-16 grid gap-4 border-t border-line/70 pt-8 sm:grid-cols-2" aria-label={t('projects.title')}>
+    <a href={projectHref(prev)} class="rounded-xl border border-line p-5 transition-colors hover:border-accent/40">
+      <span class="mono-label">← {t('project.prev')}</span>
+      <span class="mt-2 block font-mono text-lg">{prev.name}</span>
+    </a>
+    <a
+      href={projectHref(next)}
+      class="rounded-xl border border-line p-5 transition-colors hover:border-accent/40 sm:text-right"
+    >
+      <span class="mono-label">{t('project.next')} →</span>
+      <span class="mt-2 block font-mono text-lg">{next.name}</span>
+    </a>
+  </nav>
+</article>

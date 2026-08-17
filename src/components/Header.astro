@@ -5,9 +5,11 @@ import { ORG_URL } from '../data/site';
 
 interface Props {
   lang: Lang;
+  /** Current locale-independent route, so the toggle stays on the same page. */
+  path?: string;
 }
 
-const { lang } = Astro.props;
+const { lang, path = '/' } = Astro.props;
 const t = useTranslations(lang);
 const alt = otherLang(lang);
 ---
@@ -42,7 +44,7 @@ const alt = otherLang(lang);
         class="rounded px-2 py-2 text-muted transition-colors hover:text-fg sm:px-3">{t('nav.github')}</a
       >
       <a
-        href={localePath(alt, '/')}
+        href={localePath(alt, path)}
         hreflang={alt === 'zh' ? 'zh-CN' : 'en'}
         class="ml-1 shrink-0 rounded border border-line px-2.5 py-1.5 font-mono text-xs whitespace-nowrap text-muted transition-colors hover:border-accent/60 hover:text-accent sm:ml-2 sm:px-3"
         >{languages[alt]}</a
