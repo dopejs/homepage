@@ -3,12 +3,14 @@ import Base from '../../layouts/Base.astro';
 import ProjectDetail from '../../components/ProjectDetail.astro';
 import { projects } from '../../data/projects';
 import { buildProjectPaths } from '../../lib/project-paths';
+import { defaultLang } from '../../i18n/config';
+import { projectCopy } from '../../i18n/utils';
 
 export function getStaticPaths() {
   return buildProjectPaths(projects);
 }
 
-const lang = 'en' as const;
+const lang = defaultLang;
 const { project, prev, next } = Astro.props;
 ---
 
@@ -16,7 +18,7 @@ const { project, prev, next } = Astro.props;
   lang={lang}
   path={`/projects/${project.slug}/`}
   title={`${project.name} — dopejs`}
-  description={project.tagline[lang]}
+  description={projectCopy(lang, project.slug).tagline}
 >
   <ProjectDetail lang={lang} project={project} prev={prev} next={next} />
 </Base>

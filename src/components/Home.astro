@@ -1,7 +1,7 @@
 ---
 import ProjectCard from './ProjectCard.astro';
-import { useTranslations } from '../i18n/utils';
-import type { Lang } from '../i18n/ui';
+import { useTranslations, displayFont } from '../i18n/utils';
+import type { Lang } from '../i18n/config';
 import { projects } from '../data/projects';
 import { ORG_URL } from '../data/site';
 
@@ -11,15 +11,12 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-
-// Monospace flatters Latin display type but spaces CJK glyphs badly, so Chinese
-// headings and buttons fall back to the sans stack.
-const display = lang === 'zh' ? 'font-sans' : 'font-mono';
+const display = displayFont(lang);
 ---
 
 <section class="wrap pt-20 pb-16 sm:pt-28 sm:pb-24">
   <p class="mono-label">{t('hero.eyebrow')}</p>
-  <h1 class:list={['mt-5 max-w-3xl text-4xl leading-[1.1] font-semibold tracking-tight sm:text-6xl', display]}>
+  <h1 class:list={['mt-5 max-w-3xl text-4xl leading-[1.15] font-semibold tracking-tight sm:text-6xl', display]}>
     {t('hero.title')}
   </h1>
   <p class="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{t('hero.body')}</p>
@@ -30,8 +27,7 @@ const display = lang === 'zh' ? 'font-sans' : 'font-mono';
       class:list={[
         'rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-ink transition-opacity hover:opacity-90',
         display,
-      ]}
-      >{t('hero.cta.projects')}</a
+      ]}>{t('hero.cta.projects')}</a
     >
     <a
       href={ORG_URL}
@@ -40,10 +36,9 @@ const display = lang === 'zh' ? 'font-sans' : 'font-mono';
       class:list={[
         'rounded-lg border border-line px-5 py-2.5 text-sm text-fg transition-colors hover:border-accent/60 hover:text-accent',
         display,
-      ]}
-      >{t('hero.cta.github')} ↗</a
+      ]}>{t('hero.cta.github')} ↗</a
     >
-    <span class="ml-1 font-mono text-sm text-muted/80">{projects.length} {t('hero.count')}</span>
+    <span class="ms-1 font-mono text-sm text-muted/80">{projects.length} {t('hero.count')}</span>
   </div>
 </section>
 
@@ -68,8 +63,7 @@ const display = lang === 'zh' ? 'font-sans' : 'font-mono';
       href={ORG_URL}
       rel="noopener noreferrer"
       target="_blank"
-      class:list={['mt-6 inline-block text-sm text-accent hover:underline', display]}
-      >{t('about.cta')} ↗</a
+      class:list={['mt-6 inline-block text-sm text-accent hover:underline', display]}>{t('about.cta')} ↗</a
     >
   </div>
 </section>

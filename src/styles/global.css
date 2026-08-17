@@ -14,9 +14,14 @@
   --color-accent: #b6ff3b;
   --color-accent-dim: #7fb62a;
 
+  /* Covers Latin, Cyrillic, Simplified/Traditional Chinese, Japanese, Korean,
+     Arabic and Hebrew through system fonts — no webfont download. */
   --font-sans:
-    'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
-    'Microsoft YaHei', sans-serif;
+    'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'PingFang TC',
+    'Hiragino Sans GB', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Microsoft YaHei',
+    'Microsoft JhengHei', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans SC', 'Noto Sans TC',
+    'Noto Sans JP', 'Noto Sans KR', 'Geeza Pro', 'Noto Sans Arabic', 'Arial Hebrew',
+    'Noto Sans Hebrew', sans-serif;
   --font-mono:
     ui-monospace, 'SF Mono', 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace;
 }

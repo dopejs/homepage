@@ -1,0 +1,73 @@
+---
+import { useTranslations, localePath } from '../i18n/utils';
+import { locales, getLocale, type Lang } from '../i18n/config';
+
+interface Props {
+  lang: Lang;
+  /** Locale-independent route, so switching language stays on the same page. */
+  path: string;
+}
+
+const { lang, path } = Astro.props;
+const t = useTranslations(lang);
+const current = getLocale(lang);
+---
+
+<!-- <details> gives a keyboard-accessible menu with no JavaScript. -->
+<details class="group relative" data-language-menu>
+  <summary
+    class="flex cursor-pointer list-none items-center gap-1.5 rounded border border-line px-2.5 py-1.5 text-xs whitespace-nowrap text-muted transition-colors marker:content-none hover:border-accent/60 hover:text-accent [&::-webkit-details-marker]:hidden"
+    aria-label={t('nav.language')}
+  >
+    <svg viewBox="0 0 24 24" class="size-3.5" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+      <circle cx="12" cy="12" r="9"></circle>
+      <path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3z"></path>
+    </svg>
+    <span>{current.label}</span>
+  </summary>
+
+  <ul
+    class="absolute end-0 z-50 mt-2 max-h-[70vh] w-44 overflow-y-auto rounded-lg border border-line bg-surface p-1.5 shadow-xl shadow-black/40"
+  >
+    {/* No `dir` on the entries: it would right-align the Hebrew and Arabic
+        endonyms inside an otherwise left-aligned menu. Bidi still renders them
+        correctly without it. */}
+    {
+      locales.map((locale) => (
+        <li>
+          <a
+            href={localePath(locale.code, path)}
+            hreflang={locale.htmlLang}
+            lang={locale.htmlLang}
+            aria-current={locale.code === lang ? 'true' : undefined}
+            class:list={[
+              'block rounded px-3 py-1.5 text-sm transition-colors hover:bg-surface-2',
+              locale.code === lang ? 'text-accent' : 'text-muted hover:text-fg',
+            ]}
+          >
+            {locale.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</details>
+
+<script>
+  // Close the menu on outside click or Escape. Without JS it still opens and
+  // closes via the native <details> toggle, so this is enhancement only.
+  const menus = document.querySelectorAll<HTMLDetailsElement>('details[data-language-menu]');
+  const closeAll = (except?: EventTarget | null) => {
+    menus.forEach((menu) => {
+      if (menu !== except) menu.open = false;
+    });
+  };
+  document.addEventListener('click', (event) => {
+    const target = event.target as Node;
+    const inside = [...menus].find((menu) => menu.contains(target));
+    closeAll(inside);
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeAll();
+  });
+</script>

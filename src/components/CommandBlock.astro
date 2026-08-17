@@ -1,6 +1,6 @@
 ---
 import { useTranslations } from '../i18n/utils';
-import type { Lang } from '../i18n/ui';
+import type { Lang } from '../i18n/config';
 
 interface Props {
   lang: Lang;
@@ -15,8 +15,10 @@ const t = useTranslations(lang);
 <div class="min-w-0">
   {label && <p class="mono-label mb-2">{label}</p>}
   <div class="flex items-stretch gap-2">
+    <!-- Shell commands are LTR in every locale, including RTL pages. -->
     <code
-      class="min-w-0 flex-1 overflow-x-auto rounded-lg border border-line bg-ink/70 px-3 py-2 font-mono text-xs leading-6 whitespace-nowrap text-fg/80"
+      dir="ltr"
+      class="min-w-0 flex-1 overflow-x-auto rounded-lg border border-line bg-ink/70 px-3 py-2 text-start font-mono text-xs leading-6 whitespace-nowrap text-fg/80"
       >{command}</code
     >
     <button

@@ -1,30 +1,42 @@
-import { ui, defaultLang, type Lang, type UIKey } from './ui';
+import { ui, type UIKey } from './ui';
+import { defaultLang, getLocale, isLang, type Lang } from './config';
+import { copy } from '../data/copy';
+import type { ProjectCopy } from '../data/copy/types';
 
-/** Reads the locale out of a URL like `/homepage/zh/`. Falls back to the default locale. */
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+/** Reads the locale out of a URL like `/zh-tw/projects/dcode/`. */
 export function getLangFromUrl(url: URL): Lang {
-  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-  const path = url.pathname.startsWith(base) ? url.pathname.slice(base.length) : url.pathname;
-  const [, segment] = path.split('/');
-  return segment in ui ? (segment as Lang) : defaultLang;
+  const path = url.pathname.startsWith(BASE) ? url.pathname.slice(BASE.length) : url.pathname;
+  const [, segment = ''] = path.split('/');
+  return isLang(segment) && segment !== defaultLang ? segment : defaultLang;
 }
 
 export function useTranslations(lang: Lang) {
   return function t(key: UIKey): string {
-    return ui[lang][key] ?? ui[defaultLang][key];
+    return ui[lang]?.[key] ?? ui[defaultLang][key];
   };
 }
 
 /**
- * Builds a base-aware path. `localePath('en', '/')` -> `/homepage/`,
- * `localePath('zh', '/')` -> `/homepage/zh/`.
+ * Builds a base-aware, locale-prefixed path. The default locale has no prefix:
+ * `localePath('en', '/projects/dcode/')` -> `/projects/dcode/`
+ * `localePath('ja', '/projects/dcode/')` -> `/ja/projects/dcode/`
  */
 export function localePath(lang: Lang, path = '/'): string {
-  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-  const suffix = path === '/' ? '/' : path;
-  return lang === defaultLang ? `${base}${suffix}` : `${base}/${lang}${suffix === '/' ? '/' : suffix}`;
+  const normalized = path.startsWith('/') ? path : `/${path}`;
+  return lang === defaultLang ? `${BASE}${normalized}` : `${BASE}/${lang}${normalized}`;
 }
 
-/** The other locale — the language switch is a two-way toggle. */
-export function otherLang(lang: Lang): Lang {
-  return lang === 'en' ? 'zh' : 'en';
+/** Project prose for a locale, falling back to English per project. */
+export function projectCopy(lang: Lang, slug: string): ProjectCopy {
+  return copy[lang]?.[slug] ?? copy[defaultLang][slug]!;
 }
+
+/** Class for display type — monospace spaces CJK/Arabic/Hebrew glyphs badly. */
+export function displayFont(lang: Lang): string {
+  return getLocale(lang).monoDisplay ? 'font-mono' : 'font-sans';
+}
+
+export { defaultLang, getLocale, isLang };
+export type { Lang };

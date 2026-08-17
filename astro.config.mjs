@@ -15,12 +15,31 @@ export default defineConfig({
   trailingSlash: 'ignore',
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'zh'],
+    locales: ['en', 'zh', 'zh-tw', 'es', 'fr', 'de', 'ru', 'he', 'ar', 'ja', 'ko'],
     routing: {
       prefixDefaultLocale: false,
     },
   },
-  integrations: [sitemap({ i18n: { defaultLocale: 'en', locales: { en: 'en', zh: 'zh-CN' } } })],
+  integrations: [
+    sitemap({
+      i18n: {
+        defaultLocale: 'en',
+        locales: {
+          en: 'en',
+          zh: 'zh-CN',
+          'zh-tw': 'zh-TW',
+          es: 'es',
+          fr: 'fr',
+          de: 'de',
+          ru: 'ru',
+          he: 'he',
+          ar: 'ar',
+          ja: 'ja',
+          ko: 'ko',
+        },
+      },
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

@@ -1,0 +1,31 @@
+---
+import Base from '../../../layouts/Base.astro';
+import ProjectDetail from '../../../components/ProjectDetail.astro';
+import { projects } from '../../../data/projects';
+import { buildProjectPaths } from '../../../lib/project-paths';
+import { locales, defaultLang, type Lang } from '../../../i18n/config';
+import { projectCopy } from '../../../i18n/utils';
+
+/** Cross product of non-default locales and projects. */
+export function getStaticPaths() {
+  return locales
+    .filter((locale) => locale.code !== defaultLang)
+    .flatMap((locale) =>
+      buildProjectPaths(projects).map((entry) => ({
+        params: { lang: locale.code, slug: entry.params.slug },
+        props: { ...entry.props, lang: locale.code as Lang },
+      }))
+    );
+}
+
+const { lang, project, prev, next } = Astro.props;
+---
+
+<Base
+  lang={lang}
+  path={`/projects/${project.slug}/`}
+  title={`${project.name} — dopejs`}
+  description={projectCopy(lang, project.slug).tagline}
+>
+  <ProjectDetail lang={lang} project={project} prev={prev} next={next} />
+</Base>

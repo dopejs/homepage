@@ -1,7 +1,7 @@
 ---
 import CommandBlock from './CommandBlock.astro';
-import { useTranslations, localePath } from '../i18n/utils';
-import type { Lang } from '../i18n/ui';
+import { useTranslations, localePath, projectCopy } from '../i18n/utils';
+import type { Lang } from '../i18n/config';
 import type { Project } from '../data/projects';
 import { statusTone, statusKey } from '../lib/status';
 
@@ -13,9 +13,10 @@ interface Props {
 
 const { lang, project, index } = Astro.props;
 const t = useTranslations(lang);
+const c = projectCopy(lang, project.slug);
 
 const href = localePath(lang, `/projects/${project.slug}/`);
-const primaryInstall = project.installs?.[0];
+const primaryCommand = project.commands?.[0];
 ---
 
 <article
@@ -23,7 +24,7 @@ const primaryInstall = project.installs?.[0];
   class="group relative scroll-mt-24 rounded-xl border border-line bg-surface/60 p-6 transition-colors hover:border-accent/30 hover:bg-surface-2/60 sm:p-8"
 >
   <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
-    <span class="font-mono text-xs text-muted/70">{String(index + 1).padStart(2, '0')}</span>
+    <span class="font-mono text-xs text-muted/70" dir="ltr">{String(index + 1).padStart(2, '0')}</span>
     <h3 class="font-mono text-xl font-semibold tracking-tight">
       <!-- Stretched link: the whole card is the target, inner links stay clickable via z-10. -->
       <a href={href} class="after:absolute after:inset-0 hover:text-accent">{project.name}</a>
@@ -33,13 +34,13 @@ const primaryInstall = project.installs?.[0];
     </span>
   </div>
 
-  <p class="mt-4 text-lg text-fg/90">{project.tagline[lang]}</p>
-  <p class="mt-3 max-w-3xl leading-relaxed text-muted">{project.summary[lang]}</p>
+  <p class="mt-4 text-lg text-fg/90">{c.tagline}</p>
+  <p class="mt-3 max-w-3xl leading-relaxed text-muted">{c.summary}</p>
 
   {
-    primaryInstall && (
+    primaryCommand && (
       <div class="relative z-10 mt-5">
-        <CommandBlock lang={lang} command={primaryInstall.command} />
+        <CommandBlock lang={lang} command={primaryCommand} />
       </div>
     )
   }
@@ -60,7 +61,7 @@ const primaryInstall = project.installs?.[0];
       }
     </div>
 
-    <div class="relative z-10 ml-auto flex flex-wrap items-center gap-x-4 gap-y-2">
+    <div class="relative z-10 ms-auto flex flex-wrap items-center gap-x-4 gap-y-2">
       {
         project.homepage && (
           <a
@@ -79,7 +80,9 @@ const primaryInstall = project.installs?.[0];
         target="_blank"
         class="text-muted transition-colors hover:text-accent">{t('projects.repo')} ↗</a
       >
-      <a href={href} class="text-accent hover:underline">{t('projects.details')} →</a>
+      <a href={href} class="text-accent hover:underline"
+        >{t('projects.details')} <span class="inline-block rtl:-scale-x-100">→</span></a
+      >
     </div>
   </div>
 </article>

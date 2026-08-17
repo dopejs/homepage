@@ -1,7 +1,7 @@
 # dopejs homepage
 
-The website for [dopejs](https://github.com/dopejs) — a static, bilingual (English / 中文) landing
-page listing the organization's open source projects.
+The website for [dopejs](https://github.com/dopejs) — a static, multilingual site listing the
+organization's projects in 11 languages.
 
 Built with [Astro](https://astro.build) 7 and Tailwind CSS 4. No client framework; the only client
 JavaScript is a small copy-to-clipboard handler that degrades gracefully.
@@ -21,12 +21,28 @@ pnpm preview
 > `astro check` requires TypeScript 6.x. TypeScript 7's native compiler does not yet expose the
 > programmatic API the Astro language server uses, so the dependency is pinned to `^6` on purpose.
 
-## Content
+## Content and languages
 
-All project copy lives in [`src/data/projects.ts`](src/data/projects.ts), one entry per repository
-with `en` / `zh` strings side by side. UI chrome (nav, headings, buttons) lives in
-[`src/i18n/ui.ts`](src/i18n/ui.ts). Adding a project means adding one object; adding a language means
-adding a key to `ui`, a locale to `astro.config.mjs`, and a page under `src/pages/<lang>/`.
+Structural project metadata (slug, status, languages, license, repo, commands) lives in
+[`src/data/projects.ts`](src/data/projects.ts). Translated prose lives per locale in
+`src/data/copy/<locale>.ts`, and UI chrome in `src/i18n/ui/<locale>.ts`. English is the canonical
+source for both — other locales are translations of it, and TypeScript enforces that every locale
+defines every UI key.
+
+Locales: `en` (root), `zh`, `zh-tw`, `es`, `fr`, `de`, `ru`, `he`, `ar`, `ja`, `ko`. Hebrew and
+Arabic render RTL: `dir` comes from the locale registry and the layout uses logical properties
+(`ms-*`, `text-start`), so no separate stylesheet is needed. Shell commands stay LTR everywhere.
+
+> **Translations are machine-generated and have not been reviewed by native speakers.** The footer
+> says so on every page. Replacing any locale file with a reviewed translation is a drop-in change —
+> no code touches needed.
+
+Adding a language: add an entry to [`src/i18n/config.ts`](src/i18n/config.ts), a UI file under
+`src/i18n/ui/`, a copy file under `src/data/copy/`, register both in the respective `index.ts`, and
+add the locale to `astro.config.mjs`. Routes, hreflang, the sitemap and the language menu are all
+derived from the registry.
+
+Adding a project: one object in `src/data/projects.ts` plus one entry per locale copy file.
 
 Status labels (`stable` / `active` / `early` / `design`) are deliberately conservative — they should
 reflect what a reader can rely on today, not what the project aims to be. Keep them in sync when a
@@ -53,10 +69,11 @@ moves back to `dopejs.github.io/homepage/`, set `SITE=https://dopejs.github.io` 
 
 ```
 src/
-  components/   Header, Footer, Home (shared page body), ProjectCard
-  data/         projects.ts (project registry), site.ts (org/repo URLs)
-  i18n/         ui.ts (strings), utils.ts (locale detection, base-aware paths)
-  layouts/      Base.astro (head, hreflang, OG, skip link)
-  pages/        index.astro (en), zh/index.astro (zh)
+  components/   Header, Footer, LanguageMenu, Home, ProjectCard, ProjectDetail, CommandBlock
+  data/         projects.ts (metadata), site.ts (org/repo URLs), copy/<locale>.ts (prose)
+  i18n/         config.ts (locale registry), ui/<locale>.ts (strings), utils.ts (paths, lookup)
+  layouts/      Base.astro (head, dir, hreflang, OG, skip link)
+  lib/          status.ts (badge tones), project-paths.ts (static paths + prev/next)
+  pages/        index.astro + projects/[slug].astro (en), [lang]/… (every other locale)
   styles/       global.css (Tailwind theme + base layer)
 ```

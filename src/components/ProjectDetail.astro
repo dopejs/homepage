@@ -1,7 +1,7 @@
 ---
 import CommandBlock from './CommandBlock.astro';
-import { useTranslations, localePath } from '../i18n/utils';
-import type { Lang } from '../i18n/ui';
+import { useTranslations, localePath, projectCopy, displayFont } from '../i18n/utils';
+import type { Lang } from '../i18n/config';
 import type { Project } from '../data/projects';
 import { statusTone, statusKey } from '../lib/status';
 
@@ -14,34 +14,38 @@ interface Props {
 
 const { lang, project, prev, next } = Astro.props;
 const t = useTranslations(lang);
+const c = projectCopy(lang, project.slug);
+const display = displayFont(lang);
 
-// Monospace suits Latin display type but spaces CJK glyphs badly.
-const display = lang === 'zh' ? 'font-sans' : 'font-mono';
 const projectHref = (p: Project) => localePath(lang, `/projects/${p.slug}/`);
+const commands = (project.commands ?? []).map((command, i) => ({ command, label: c.commandLabels?.[i] }));
 ---
 
 <article class="wrap pt-12 pb-8 sm:pt-16">
-  <a href={`${localePath(lang, '/')}#projects`} class="mono-label transition-colors hover:text-accent"
-    >← {t('project.back')}</a
-  >
+  <a href={`${localePath(lang, '/')}#projects`} class="mono-label transition-colors hover:text-accent">
+    <span class="inline-block rtl:-scale-x-100">←</span>
+    {t('project.back')}
+  </a>
 
   <header class="mt-6 border-b border-line/70 pb-10">
     <div class="flex flex-wrap items-center gap-3">
-      <h1 class="font-mono text-4xl font-semibold tracking-tight sm:text-5xl">{project.name}</h1>
+      <h1 class="font-mono text-4xl font-semibold tracking-tight sm:text-5xl" dir="ltr">{project.name}</h1>
       <span class={`rounded-full border px-2.5 py-0.5 font-mono text-xs ${statusTone[project.status]}`}>
         {t(statusKey(project.status))}
       </span>
     </div>
-    <p class:list={['mt-5 max-w-3xl text-xl leading-snug text-fg/90', display]}>{project.tagline[lang]}</p>
-    <p class="mt-4 max-w-3xl leading-relaxed text-muted">{project.summary[lang]}</p>
+    <p class:list={['mt-5 max-w-3xl text-xl leading-snug text-fg/90', display]}>{c.tagline}</p>
+    <p class="mt-4 max-w-3xl leading-relaxed text-muted">{c.summary}</p>
 
     <div class="mt-7 flex flex-wrap items-center gap-3">
       <a
         href={project.repo}
         rel="noopener noreferrer"
         target="_blank"
-        class="rounded-lg bg-accent px-5 py-2.5 font-mono text-sm font-semibold text-ink transition-opacity hover:opacity-90"
-        >{t('projects.repo')} ↗</a
+        class:list={[
+          'rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-ink transition-opacity hover:opacity-90',
+          display,
+        ]}>{t('projects.repo')} ↗</a
       >
       {
         project.homepage && (
@@ -49,7 +53,10 @@ const projectHref = (p: Project) => localePath(lang, `/projects/${p.slug}/`);
             href={project.homepage}
             rel="noopener noreferrer"
             target="_blank"
-            class="rounded-lg border border-line px-5 py-2.5 font-mono text-sm text-fg transition-colors hover:border-accent/60 hover:text-accent"
+            class:list={[
+              'rounded-lg border border-line px-5 py-2.5 text-sm text-fg transition-colors hover:border-accent/60 hover:text-accent',
+              display,
+            ]}
           >
             {t('projects.homepage')} ↗
           </a>
@@ -63,7 +70,7 @@ const projectHref = (p: Project) => localePath(lang, `/projects/${p.slug}/`);
       <section>
         <h2 class:list={['text-xl font-semibold tracking-tight', display]}>{t('project.overview')}</h2>
         <div class="mt-4 space-y-4">
-          {project.body.map((paragraph) => <p class="leading-relaxed text-muted">{paragraph[lang]}</p>)}
+          {c.body.map((paragraph) => <p class="leading-relaxed text-muted">{paragraph}</p>)}
         </div>
       </section>
 
@@ -71,10 +78,10 @@ const projectHref = (p: Project) => localePath(lang, `/projects/${p.slug}/`);
         <h2 class:list={['text-xl font-semibold tracking-tight', display]}>{t('project.highlights')}</h2>
         <ul class="mt-4 space-y-3">
           {
-            project.highlights.map((item) => (
+            c.highlights.map((item) => (
               <li class="flex gap-3 leading-relaxed text-muted">
                 <span class="mt-2 size-1.5 shrink-0 rounded-full bg-accent/70" aria-hidden="true" />
-                <span>{item[lang]}</span>
+                <span>{item}</span>
               </li>
             ))
           }
@@ -82,19 +89,19 @@ const projectHref = (p: Project) => localePath(lang, `/projects/${p.slug}/`);
       </section>
 
       {
-        (project.installs || project.requirements) && (
+        (commands.length > 0 || c.requirements) && (
           <section class="mt-12">
             <h2 class:list={['text-xl font-semibold tracking-tight', display]}>{t('project.getStarted')}</h2>
-            {project.requirements && (
+            {c.requirements && (
               <p class="mt-4 leading-relaxed text-muted">
                 <span class="text-fg/80">{t('project.requirements')}: </span>
-                {project.requirements[lang]}
+                {c.requirements}
               </p>
             )}
-            {project.installs && (
+            {commands.length > 0 && (
               <div class="mt-5 space-y-5">
-                {project.installs.map((install) => (
-                  <CommandBlock lang={lang} command={install.command} label={install.label[lang]} />
+                {commands.map(({ command, label }) => (
+                  <CommandBlock lang={lang} command={command} label={label} />
                 ))}
               </div>
             )}
@@ -113,12 +120,12 @@ const projectHref = (p: Project) => localePath(lang, `/projects/${p.slug}/`);
           </div>
           <div>
             <dt class="text-muted">{t('project.facts.languages')}</dt>
-            <dd class="mt-1 font-mono text-fg/90">{project.languages.join(' · ')}</dd>
+            <dd class="mt-1 font-mono text-fg/90" dir="ltr">{project.languages.join(' · ')}</dd>
           </div>
           <div>
             <dt class="text-muted">{t('project.facts.license')}</dt>
             <dd class="mt-1 font-mono text-fg/90">{project.license ?? t('project.facts.noLicense')}</dd>
-            {project.licenseNote && <dd class="mt-1 text-xs leading-relaxed text-muted">{project.licenseNote[lang]}</dd>}
+            {c.licenseNote && <dd class="mt-1 text-xs leading-relaxed text-muted">{c.licenseNote}</dd>}
           </div>
         </dl>
 
@@ -138,7 +145,7 @@ const projectHref = (p: Project) => localePath(lang, `/projects/${p.slug}/`);
             >
           </li>
           {
-            project.installs && (
+            project.commands && (
               <li>
                 <a
                   href={`${project.repo}/releases`}
@@ -172,15 +179,15 @@ const projectHref = (p: Project) => localePath(lang, `/projects/${p.slug}/`);
 
   <nav class="mt-16 grid gap-4 border-t border-line/70 pt-8 sm:grid-cols-2" aria-label={t('projects.title')}>
     <a href={projectHref(prev)} class="rounded-xl border border-line p-5 transition-colors hover:border-accent/40">
-      <span class="mono-label">← {t('project.prev')}</span>
-      <span class="mt-2 block font-mono text-lg">{prev.name}</span>
+      <span class="mono-label"><span class="inline-block rtl:-scale-x-100">←</span> {t('project.prev')}</span>
+      <span class="mt-2 block font-mono text-lg" dir="ltr">{prev.name}</span>
     </a>
     <a
       href={projectHref(next)}
-      class="rounded-xl border border-line p-5 transition-colors hover:border-accent/40 sm:text-right"
+      class="rounded-xl border border-line p-5 transition-colors hover:border-accent/40 sm:text-end"
     >
-      <span class="mono-label">{t('project.next')} →</span>
-      <span class="mt-2 block font-mono text-lg">{next.name}</span>
+      <span class="mono-label">{t('project.next')} <span class="inline-block rtl:-scale-x-100">→</span></span>
+      <span class="mt-2 block font-mono text-lg" dir="ltr">{next.name}</span>
     </a>
   </nav>
 </article>
