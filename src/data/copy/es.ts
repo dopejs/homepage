@@ -20,6 +20,28 @@ export const es: ProjectCopyMap = {
     licenseNote: 'El repositorio todavía no incluye un archivo de licencia.',
   },
 
+  'dsh-tui': {
+    tagline: 'Una interfaz de terminal nativa de plugins para DeepSeek Harness.',
+    summary:
+      'dsh-tui se distribuye como un paquete de Harness fuera del árbol y se ejecuta en el mismo proceso que el runtime del agente. Crea y reanuda agentes mediante `ctx.agents`, renderiza el registro duradero de sesión y eventos sin depender del código del cliente web, y aporta adaptadores de terminal para aprobaciones, preguntas y comandos. La versión 0.1.0 es la primera publicada.',
+    body: [
+      'Es un plugin de Harness y no un cliente aparte: vive en el mismo proceso que el runtime del agente. La arquitectura de proceso único es deliberada; un transporte remoto queda como posible adaptador y modo de producto posterior en lugar de mezclarse con la primera implementación.',
+      'La 0.1.0 fija exactamente las dependencias de Harness `0.1.0-rc.6`, así que no afirma compatibilidad entre candidatas de versión de Harness. Antes de que una sesión pueda hacer algo debe existir una credencial de proveedor como `DEEPSEEK_API_KEY`; `dsh --profile tui --doctor` realiza una comprobación de solo lectura de servicios, selector de modelo, persistencia de sesiones y capacidades del terminal, sin iniciar sesión ni agente.',
+      'La ergonomía del terminal es la sustancia del proyecto: un editor multilínea con movimiento de cursor Unicode, selección, deshacer/rehacer, historial acotado y pegado entre corchetes; una transcripción que sigue la salida hasta que la navegación la desacopla, con búsqueda acotada; una paleta de comandos difusa en Ctrl-P que combina los comandos de Harness del agente con la navegación de la TUI; y un centro de sesiones acotado en Ctrl-O que solo cambia de sesión con el agente inactivo y el editor vacío, vaciando y liberando antes la conexión anterior.',
+    ],
+    highlights: [
+      'Plugin de Harness en el mismo proceso: crea y reanuda agentes con `ctx.agents` y renderiza el registro duradero de sesión y eventos sin código del cliente web.',
+      'Intenciones de presentación propiedad de cada herramienta para terminal, diff, búsqueda, lectura y resultados web.',
+      'Editor multilínea con movimiento de cursor Unicode, selección, deshacer/rehacer, historial acotado y pegado entre corchetes.',
+      'La paleta de comandos de Ctrl-P combina los comandos de Harness con la navegación de la TUI, de modo que todos los paneles siguen siendo accesibles en terminales que no pueden emitir combinaciones de teclas.',
+      'Accesibilidad incorporada: temas `default`, `high-contrast` y `no-color`, paneles que nombran tonos semánticos en lugar de colores, modo lector de pantalla sin dibujo de cajas, movimiento reducido y reasignación de teclas en un único objeto de preferencias validado.',
+      'Cada manejador de agente, escucha, aviso y modo de terminal adquirido se trata como un recurso de propiedad explícita.',
+    ],
+    commandLabels: ['Ejecutar la TUI', 'Comprobación de solo lectura'],
+    requirements:
+      'Node.js ^22.19.0 || >=24.0.0, pnpm 11.7.0 y una credencial de proveedor como DEEPSEEK_API_KEY. La instalación del paquete como plugin de Harness está documentada en el README del repositorio.',
+  },
+
   gozen: {
     tagline: 'Conmutador de entornos para varias CLI con conmutación por error automática del proxy de API.',
     summary:

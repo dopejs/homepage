@@ -20,6 +20,28 @@ export const zh: ProjectCopyMap = {
     licenseNote: '仓库尚未添加 license 文件。',
   },
 
+  'dsh-tui': {
+    tagline: '为 DeepSeek Harness 打造的插件原生终端界面。',
+    summary:
+      'dsh-tui 以 out-of-tree 的 Harness bundle 形式分发，与 Agent 运行时运行在同一进程内。它通过 `ctx.agents` 创建与恢复 Agent，不依赖 Web 客户端代码即可渲染持久化的 session/event 日志，并为审批、提问与命令提供终端适配层。0.1.0 是首个正式发布版本。',
+    body: [
+      '它是 Harness 插件，而不是独立客户端：与 Agent 运行时同进程运行。同进程架构是刻意的选择 —— 远程传输被留作后续可能的适配器与产品形态，而不是混进第一版实现里。',
+      '0.1.0 精确锁定 `0.1.0-rc.6` 的 Harness 依赖，因此不对 Harness 各 RC 版本之间的兼容性做任何承诺。会话要能真正工作，必须先具备供应商凭据（如 `DEEPSEEK_API_KEY`）；`dsh --profile tui --doctor` 会以只读方式检查服务、模型选择器、会话持久化与终端能力，不启动任何会话或 Agent。',
+      '终端体验才是这个项目的实质：多行编辑器支持 Unicode 光标移动、选区、撤销/重做、有界历史与 bracketed paste；转录区跟随输出直到导航将其脱离，并提供有界搜索；Ctrl-P 的模糊命令面板把该 Agent 的 Harness 命令与 TUI 导航合并在一起；Ctrl-O 的会话中心仅在 Agent 空闲且编辑器为空时才允许切换，并会先完整冲刷并释放旧的连接。',
+    ],
+    highlights: [
+      '同进程 Harness 插件：通过 `ctx.agents` 创建与恢复 Agent，不依赖 Web 客户端代码渲染持久化的 session/event 日志。',
+      '终端、diff、搜索、读取与 Web 结果均采用工具自有的呈现意图（presentation intents）。',
+      '多行编辑器：Unicode 光标移动、选区、撤销/重做、有界历史与 bracketed paste。',
+      'Ctrl-P 命令面板融合 Harness 命令与 TUI 导航，即使终端无法发出组合键，所有面板依然可达。',
+      '无障碍是内建能力：`default`、`high-contrast`、`no-color` 三套主题，面板以语义色调而非颜色命名，屏幕阅读器模式去除画框字符，减弱动效与按键重绑定统一收在一份经校验的偏好文档中。',
+      '每一个取得的 Agent 句柄、监听器、提示与终端模式都被视为显式持有的资源。',
+    ],
+    commandLabels: ['运行 TUI', '只读环境自检'],
+    requirements:
+      'Node.js ^22.19.0 || >=24.0.0、pnpm 11.7.0，以及供应商凭据（如 DEEPSEEK_API_KEY）。以 Harness 插件方式安装该 bundle 的步骤见仓库 README。',
+  },
+
   gozen: {
     tagline: '多 CLI 环境切换器，内置 API 代理自动故障转移。',
     summary:

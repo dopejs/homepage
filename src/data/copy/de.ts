@@ -20,6 +20,28 @@ export const de: ProjectCopyMap = {
     licenseNote: 'Das Repository enthält noch keine Lizenzdatei.',
   },
 
+  'dsh-tui': {
+    tagline: 'Eine plugin-native Terminaloberfläche für DeepSeek Harness.',
+    summary:
+      'dsh-tui wird als Harness-Bundle außerhalb des Quellbaums ausgeliefert und läuft im selben Prozess wie die Agent-Runtime. Es erzeugt und setzt Agenten über `ctx.agents` fort, stellt das dauerhafte Session-/Event-Log ohne Web-Client-Code dar und bietet Terminal-Adapter für Freigaben, Rückfragen und Kommandos. Version 0.1.0 ist die erste veröffentlichte Fassung.',
+    body: [
+      'Das hier ist ein Harness-Plugin und kein eigener Client: Es lebt im selben Prozess wie die Agent-Runtime. Die Ein-Prozess-Architektur ist Absicht — ein entfernter Transport bleibt ein möglicher späterer Adapter und Produktmodus, statt in die erste Implementierung hineingemischt zu werden.',
+      '0.1.0 pinnt exakt die Harness-Peers `0.1.0-rc.6` und erhebt damit keinen Kompatibilitätsanspruch über Harness-Release-Candidates hinweg. Bevor eine Sitzung überhaupt etwas tun kann, muss eine Provider-Anmeldung wie `DEEPSEEK_API_KEY` vorhanden sein; `dsh --profile tui --doctor` prüft nur lesend Dienste, Modellauswahl, Sitzungspersistenz und Terminalfähigkeiten, ohne Sitzung oder Agent zu starten.',
+      'Die Terminal-Ergonomie ist der eigentliche Inhalt des Projekts: ein mehrzeiliger Editor mit Unicode-Cursorbewegung, Auswahl, Rückgängig/Wiederholen, begrenzter Historie und Bracketed Paste; ein Transkript, das der Ausgabe folgt, bis die Navigation es löst, mit begrenzter Suche; eine unscharfe Befehlspalette auf Strg-P, die die Harness-Kommandos des Agenten mit der TUI-Navigation zusammenführt; und eine begrenzte Sitzungszentrale auf Strg-O, die nur bei untätigem Agenten und leerem Editor wechselt und die alte Anbindung zuvor vollständig leert und freigibt.',
+    ],
+    highlights: [
+      'Harness-Plugin im selben Prozess: erzeugt und setzt Agenten über `ctx.agents` fort und stellt das dauerhafte Session-/Event-Log ohne Web-Client-Code dar.',
+      'Werkzeugeigene Darstellungsabsichten für Terminal, Diff, Suche, Lesen und Web-Ergebnisse.',
+      'Mehrzeiliger Editor mit Unicode-Cursorbewegung, Auswahl, Rückgängig/Wiederholen, begrenzter Historie und Bracketed Paste.',
+      'Die Strg-P-Befehlspalette verbindet Harness-Kommandos mit der TUI-Navigation, sodass jedes Panel auch auf Terminals erreichbar bleibt, die keine Tastenkombinationen senden können.',
+      'Barrierefreiheit ist eingebaut: Themes `default`, `high-contrast` und `no-color`, Panels benennen semantische Tonalitäten statt Farben, ein Screenreader-Modus ohne Rahmenzeichen, reduzierte Bewegung und Tastenbelegungen in einem validierten Einstellungsobjekt.',
+      'Jedes erworbene Agent-Handle, jeder Listener, jede Eingabeaufforderung und jeder Terminalmodus gilt als ausdrücklich besessene Ressource.',
+    ],
+    commandLabels: ['TUI starten', 'Prüfung nur lesend'],
+    requirements:
+      'Node.js ^22.19.0 || >=24.0.0, pnpm 11.7.0 und eine Provider-Anmeldung wie DEEPSEEK_API_KEY. Die Installation des Bundles als Harness-Plugin ist im README des Repositorys beschrieben.',
+  },
+
   gozen: {
     tagline: 'Umgebungsumschalter für mehrere CLIs mit automatischem API-Proxy-Failover.',
     summary:

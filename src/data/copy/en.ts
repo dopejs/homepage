@@ -24,6 +24,28 @@ export const en: ProjectCopyMap = {
     licenseNote: 'No license file in the repository yet.',
   },
 
+  'dsh-tui': {
+    tagline: 'A plugin-native terminal UI for DeepSeek Harness.',
+    summary:
+      'dsh-tui ships as an out-of-tree Harness bundle and runs in the same process as the agent runtime. It creates and resumes agents through `ctx.agents`, renders the durable session/event log without depending on Web client code, and provides terminal adapters for approvals, questions and commands. Version 0.1.0 is the first published release.',
+    body: [
+      'This is a Harness plugin rather than a separate client: it lives in the same process as the agent runtime. The same-process architecture is deliberate — a remote transport is left as a possible later adapter and product mode instead of being mixed into the first implementation.',
+      '0.1.0 pins exact `0.1.0-rc.6` Harness peers, so it makes no compatibility claim across Harness release candidates. A provider credential such as `DEEPSEEK_API_KEY` must exist before a session can do anything; `dsh --profile tui --doctor` runs a read-only check of services, model selector, session persistence and terminal capabilities without starting a session or an agent.',
+      'Terminal ergonomics are the substance of the project: a multi-line composer with Unicode cursor movement, selection, undo/redo, bounded history and bracketed paste; a transcript that follows output until navigation detaches it, with bounded search; a fuzzy command palette on Ctrl-P that merges the agent’s Harness commands with TUI navigation; and a bounded session center on Ctrl-O that switches sessions only when the agent is idle and the composer empty, flushing and disposing the old attachment first.',
+    ],
+    highlights: [
+      'Same-process Harness plugin: creates and resumes agents through `ctx.agents` and renders the durable session/event log without Web client code.',
+      'Tool-owned presentation intents for terminal, diff, search, read and Web results.',
+      'Multi-line composer with Unicode cursor movement, selection, undo/redo, bounded history and bracketed paste.',
+      'Ctrl-P command palette merges Harness commands with TUI navigation, so every panel stays reachable on terminals that cannot emit chords.',
+      'Accessibility is built in: `default`, `high-contrast` and `no-color` themes, panels naming semantic tones rather than colors, a screen-reader mode without box drawing, reduced motion and key-binding overrides in one validated preference object.',
+      'Every acquired agent handle, listener, prompt and terminal mode is treated as an explicitly owned resource.',
+    ],
+    commandLabels: ['Run the TUI', 'Read-only environment check'],
+    requirements:
+      'Node.js ^22.19.0 || >=24.0.0, pnpm 11.7.0, and a provider credential such as DEEPSEEK_API_KEY. Installing the bundle as a Harness plugin is documented in the repository README.',
+  },
+
   gozen: {
     tagline: 'Multi-CLI environment switcher with API proxy auto-failover.',
     summary:

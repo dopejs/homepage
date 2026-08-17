@@ -20,6 +20,28 @@ export const zhTW: ProjectCopyMap = {
     licenseNote: '儲存庫尚未加入 license 檔案。',
   },
 
+  'dsh-tui': {
+    tagline: '為 DeepSeek Harness 打造的外掛原生終端介面。',
+    summary:
+      'dsh-tui 以 out-of-tree 的 Harness bundle 形式散布，與 Agent 執行時運行在同一行程內。它透過 `ctx.agents` 建立與復原 Agent，不依賴 Web 用戶端程式碼即可算繪持久化的 session/event 紀錄，並為核准、提問與指令提供終端轉接層。0.1.0 是首個正式發布版本。',
+    body: [
+      '它是 Harness 外掛，而非獨立用戶端：與 Agent 執行時同行程運行。同行程架構是刻意的選擇 —— 遠端傳輸被留作後續可能的轉接器與產品形態，而不是混進第一版實作裡。',
+      '0.1.0 精確鎖定 `0.1.0-rc.6` 的 Harness 相依套件，因此不對 Harness 各 RC 版本之間的相容性做任何承諾。工作階段要能真正運作，必須先具備供應商憑證（例如 `DEEPSEEK_API_KEY`）；`dsh --profile tui --doctor` 會以唯讀方式檢查服務、模型選擇器、工作階段持久化與終端能力，不會啟動任何工作階段或 Agent。',
+      '終端體驗才是這個專案的實質：多行編輯器支援 Unicode 游標移動、選取、復原/重做、有界歷史與 bracketed paste；轉錄區跟隨輸出直到導覽將其脫離，並提供有界搜尋；Ctrl-P 的模糊指令面板把該 Agent 的 Harness 指令與 TUI 導覽合併在一起；Ctrl-O 的工作階段中心僅在 Agent 閒置且編輯器為空時才允許切換，並會先完整清空並釋放舊的連結。',
+    ],
+    highlights: [
+      '同行程 Harness 外掛：透過 `ctx.agents` 建立與復原 Agent，不依賴 Web 用戶端程式碼即可算繪持久化的 session/event 紀錄。',
+      '終端、diff、搜尋、讀取與 Web 結果均採用工具自有的呈現意圖（presentation intents）。',
+      '多行編輯器：Unicode 游標移動、選取、復原/重做、有界歷史與 bracketed paste。',
+      'Ctrl-P 指令面板融合 Harness 指令與 TUI 導覽，即使終端無法送出組合鍵，所有面板依然可達。',
+      '無障礙為內建能力：`default`、`high-contrast`、`no-color` 三套主題，面板以語意色調而非顏色命名，螢幕閱讀器模式移除框線字元，降低動態效果與按鍵重新綁定統一收在一份經驗證的偏好設定文件中。',
+      '每一個取得的 Agent handle、監聽器、提示與終端模式都被視為明確持有的資源。',
+    ],
+    commandLabels: ['執行 TUI', '唯讀環境檢查'],
+    requirements:
+      'Node.js ^22.19.0 || >=24.0.0、pnpm 11.7.0，以及供應商憑證（例如 DEEPSEEK_API_KEY）。以 Harness 外掛方式安裝此 bundle 的步驟見儲存庫 README。',
+  },
+
   gozen: {
     tagline: '多 CLI 環境切換器，內建 API 代理自動故障移轉。',
     summary:
