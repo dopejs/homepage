@@ -70,6 +70,18 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: 'loopforge',
+    name: 'Loopforge',
+    status: 'early',
+    languages: ['Python'],
+    license: null,
+    repo: 'https://github.com/dopejs/loopforge',
+    commands: [
+      { command: 'uv tool install git+https://github.com/dopejs/loopforge.git', kind: 'install' },
+      { command: 'loopforge setup --host codex', kind: 'run' },
+    ],
+  },
+  {
     slug: 'doper',
     name: 'doper',
     status: 'early',

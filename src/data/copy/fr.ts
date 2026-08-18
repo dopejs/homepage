@@ -68,6 +68,29 @@ export const fr: ProjectCopyMap = {
     commandLabels: ['Installation', 'Première utilisation'],
   },
 
+  loopforge: {
+    tagline: 'Une boîte à outils de développement de jeux faite d’Agent Skills et d’une CLI déterministe.',
+    summary:
+      'Loopforge aide un agent de code que vous utilisez déjà à transformer une idée de jeu en builds jouables, testés et étayés par des preuves, sans enfermer l’état du projet dans une conversation. Le jugement créatif reste dans les skills et la relecture humaine ; les transitions d’état, la validation, les preuves et la reprise restent dans la CLI. Le projet en est à une implémentation précoce.',
+    body: [
+      'C’est précisément cette séparation qui compte. Les skills portent le jugement créatif et la relecture humaine ; la CLI possède les transitions d’état, la validation, les preuves et la reprise. Plutôt que de construire un runtime d’agents propriétaire, Loopforge pilote les agents de code que vous exécutez déjà : `loopforge setup --host codex` installe les skills officielles dans le répertoire de skills de Codex, et `$loopforge-router` lit l’état durable du projet pour orienter l’action suivante vers le prototypage de gameplay, l’implémentation Godot, le game design ou la production artistique.',
+      'L’état du projet est durable et inspectable au lieu de vivre dans un journal de conversation : événements chaînés par empreinte, verrouillage, réconciliation, diagnostics en lecture seule, validation de l’intégrité des artefacts, preuves enregistrées, fiches d’hypothèses et avancement d’étape sous garde. `status` dérive en outre des affirmations de qualité à portée définie et les marque comme périmées lorsque l’identité de leur source change : une affirmation ne peut pas survivre à ce qu’elle décrivait.',
+      'Le dépôt dit clairement ce qui n’est pas fait. Il s’agit d’une implémentation précoce : la validation contre une installation Godot réelle et les skills de publication en production ne sont pas encore implémentées. Le paquet n’est pas non plus publié sur PyPI — `uv tool install loopforge` ne désigne pas ce projet — installez donc depuis l’URL Git et épinglez une étiquette ou un commit relu pour des environnements reproductibles.',
+    ],
+    highlights: [
+      'Des Agent Skills et une CLI Python déterministe : le jugement créatif dans les skills, les transitions d’état et la validation dans la CLI.',
+      'État d’événements chaîné par empreinte, avec verrouillage, réconciliation et reprise : l’historique du projet est auditable plutôt que conversationnel.',
+      'Démarche fondée sur les preuves : preuves enregistrées, fiches d’hypothèses, validation de l’intégrité des artefacts et avancement d’étape sous garde.',
+      'Des affirmations de qualité à portée définie, qui périment d’elles-mêmes quand l’identité de leur source change.',
+      'Adaptateur de build et de test pour Godot 4, import de playtests et décisions atomiques de conserver, abandonner ou refondre un prototype.',
+      'Pilote les agents de code que vous utilisez déjà au lieu d’imposer un runtime d’agents propriétaire.',
+    ],
+    commandLabels: ['Installer la CLI', 'Installer les skills dans Codex'],
+    requirements:
+      'Python 3.11+, uv et Git ; Godot 4 uniquement pour le flux de build Godot. Non publié sur PyPI : installez depuis l’URL Git.',
+    licenseNote: 'Le dépôt ne contient pas encore de fichier de licence.',
+  },
+
   doper: {
     tagline: 'Un moteur de rendu Canvas pour le web, conçu de zéro.',
     summary:

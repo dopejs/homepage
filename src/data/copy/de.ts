@@ -68,6 +68,29 @@ export const de: ProjectCopyMap = {
     commandLabels: ['Installation', 'Erster Start'],
   },
 
+  loopforge: {
+    tagline: 'Ein Werkzeugkasten für Spieleentwicklung aus Agent Skills und einer deterministischen CLI.',
+    summary:
+      'Loopforge hilft einem Coding-Agent, den du ohnehin nutzt, aus einer Spielidee getestete, belegte und spielbare Builds zu machen — ohne den Projektzustand in einem Chat zu verstecken. Das kreative Urteil bleibt in den Skills und in der menschlichen Durchsicht; Zustandsübergänge, Validierung, Belege und Wiederherstellung bleiben in der CLI. Das Projekt steht am Anfang der Implementierung.',
+    body: [
+      'Genau diese Aufteilung ist der Punkt. Die Skills tragen kreatives Urteil und menschliche Durchsicht, die CLI besitzt Zustandsübergänge, Validierung, Belege und Wiederherstellung. Statt eine eigene Agent-Runtime zu bauen, steuert Loopforge die Coding-Agents, die du schon betreibst: `loopforge setup --host codex` installiert die offiziellen Skills in das Skills-Verzeichnis von Codex, und `$loopforge-router` liest den dauerhaften Projektzustand und leitet den nächsten Schritt an Gameplay-Prototyping, Godot-Implementierung, Game Design oder Art-Produktion weiter.',
+      'Der Projektzustand ist dauerhaft und prüfbar, statt in einem Chatverlauf zu leben: hash-verkettete Events, Sperren, Abgleich, nur lesende Diagnosen, Integritätsprüfung von Artefakten, registrierte Belege, Hypothesen-Einträge und abgesicherte Stufenwechsel. `status` leitet zusätzlich abgegrenzte Qualitätsaussagen ab und markiert sie als veraltet, sobald sich die Identität ihrer Quelle ändert — eine Aussage überlebt nicht das, worüber sie gemacht wurde.',
+      'Das Repository benennt auch das Fehlende. Dies ist eine frühe Implementierung: Die Validierung gegen eine echte Godot-Installation und Release-Skills für die Produktionsstufe fehlen noch. Das Paket ist außerdem nicht auf PyPI veröffentlicht — `uv tool install loopforge` meint nicht dieses Projekt —, also über die Git-URL installieren und für reproduzierbare Umgebungen ein geprüftes Tag oder einen Commit festnageln.',
+    ],
+    highlights: [
+      'Agent Skills plus deterministische Python-CLI: kreatives Urteil in den Skills, Zustandsübergänge und Validierung in der CLI.',
+      'Hash-verketteter Ereigniszustand mit Sperren, Abgleich und Wiederherstellung — die Projekthistorie ist prüfbar statt gesprächsbasiert.',
+      'Belege zuerst: registrierte Belege, Hypothesen-Einträge, Integritätsprüfung von Artefakten und abgesicherte Stufenwechsel.',
+      'Abgegrenzte Qualitätsaussagen, die automatisch veralten, wenn sich die Identität ihrer Quelle ändert.',
+      'Build-/Test-Adapter für Godot 4, Import von Playtests und atomare Entscheidungen: Prototyp behalten, verwerfen oder umbauen.',
+      'Steuert Coding-Agents, die du bereits nutzt, statt eine eigene Agent-Runtime mitzubringen.',
+    ],
+    commandLabels: ['CLI installieren', 'Skills in Codex installieren'],
+    requirements:
+      'Python 3.11+, uv und Git; Godot 4 nur für den Godot-Build-Workflow. Nicht auf PyPI veröffentlicht — über die Git-URL installieren.',
+    licenseNote: 'Das Repository enthält noch keine Lizenzdatei.',
+  },
+
   doper: {
     tagline: 'Eine von Grund auf entworfene Canvas-Rendering-Engine fürs Web.',
     summary:

@@ -68,6 +68,29 @@ export const zhTW: ProjectCopyMap = {
     commandLabels: ['安裝', '首次執行'],
   },
 
+  loopforge: {
+    tagline: '由 Agent Skills 與確定性 CLI 組成的遊戲開發工具包。',
+    summary:
+      'Loopforge 讓你既有的編碼 Agent 把遊戲創意變成經過測試、有證據支撐的可玩建置，而不是把專案狀態藏在聊天紀錄裡。創意判斷留在 skills 與人工審查中；狀態轉移、驗證、證據與復原則由 CLI 掌管。專案目前處於早期實作階段。',
+    body: [
+      '這種拆分正是重點所在。Skills 承載創意判斷與人工審查，CLI 掌管狀態轉移、驗證、證據與復原。Loopforge 不自建專有的 Agent 執行時，而是驅動你已經在用的編碼 Agent：`loopforge setup --host codex` 會把官方 skills 安裝到 Codex 的 skills 目錄，`$loopforge-router` 則讀取持久化的專案狀態，把下一步動作路由到玩法原型、Godot 實作、遊戲設計或美術製作。',
+      '專案狀態是持久且可檢視的，而不是散落在對話裡：雜湊鏈事件、鎖定、對帳、唯讀診斷、產物完整性驗證、已登記的證據、假設紀錄，以及帶門檻的階段推進。`status` 還會推導出具作用域的品質結論，並在來源識別改變時標記為過期 —— 結論不能比它所描述的對象活得更久。',
+      '儲存庫對「還沒做什麼」寫得很直接：目前是早期實作，針對真實 Godot 安裝的驗證與生產階段的發布 skills 尚未實作；套件也沒有發布到 PyPI —— `uv tool install loopforge` 指向的並不是本專案 —— 因此請從 Git URL 安裝，並在需要可重現環境時鎖定經過審查的 tag 或 commit。',
+    ],
+    highlights: [
+      'Agent Skills 加上確定性的 Python CLI：創意判斷在 skills，狀態轉移與驗證在 CLI。',
+      '雜湊鏈事件狀態，搭配鎖定、對帳與復原，專案歷史可稽核，而不是靠聊天回溯。',
+      '以證據為先的流程：證據登記、假設紀錄、產物完整性驗證與帶門檻的階段推進。',
+      '具作用域的品質結論，在來源識別改變時自動失效。',
+      'Godot 4 建置/測試轉接器、playtest 匯入，以及對原型的保留、捨棄或重構的原子決策。',
+      '驅動你已經在用的編碼 Agent，而不是另造一套專有的 Agent 執行時。',
+    ],
+    commandLabels: ['安裝 CLI', '把 skills 安裝到 Codex'],
+    requirements:
+      'Python 3.11+、uv 與 Git；僅在使用 Godot 建置流程時需要 Godot 4。未發布到 PyPI —— 請從 Git URL 安裝。',
+    licenseNote: '儲存庫尚未加入 license 檔案。',
+  },
+
   doper: {
     tagline: '從零設計的 Web Canvas 算繪引擎。',
     summary:

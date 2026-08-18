@@ -72,6 +72,29 @@ export const en: ProjectCopyMap = {
     commandLabels: ['Install', 'First run'],
   },
 
+  loopforge: {
+    tagline: 'A game-development toolkit made of Agent Skills and a deterministic CLI.',
+    summary:
+      'Loopforge helps an existing coding agent turn a game idea into tested, evidence-backed playable builds without hiding project state inside a chat. Creative judgment stays in the skills and in human review; state transitions, validation, evidence and recovery stay in the CLI. The project is in early implementation.',
+    body: [
+      'The split is the point. Skills hold creative judgment and human review; the CLI owns state transitions, validation, evidence and recovery. Rather than building a proprietary agent runtime, Loopforge drives coding agents you already run: `loopforge setup --host codex` installs the official skills into the Codex skills directory, and `$loopforge-router` reads durable project state to route the next action to gameplay prototyping, Godot implementation, game design or art production.',
+      'Project state is durable and inspectable instead of living in a chat log: hash-chained events, locking, reconciliation, read-only diagnostics, artifact integrity validation, registered evidence, hypothesis records and guarded stage advancement. `status` also derives scoped quality claims and marks them stale when the source identity changes, so a claim cannot outlive the thing it was made about.',
+      'The repository is explicit about what is not done. This is early implementation: validation against a real Godot installation and production-stage release skills are not implemented yet. The package is not published to PyPI either — `uv tool install loopforge` does not refer to this project — so install from the Git URL and pin a reviewed tag or commit for reproducible environments.',
+    ],
+    highlights: [
+      'Agent Skills plus a deterministic Python CLI: creative judgment in the skills, state transitions and validation in the CLI.',
+      'Hash-chained event state with locking, reconciliation and recovery, so project history is auditable rather than conversational.',
+      'Evidence-first workflow: registered evidence, hypothesis records, artifact integrity validation and guarded stage advancement.',
+      'Scoped quality claims that go stale automatically when the identity of their source changes.',
+      'Godot 4 build/test adapter, playtest import, and atomic keep, kill or refactor decisions on prototypes.',
+      'Drives coding agents you already use instead of shipping a proprietary agent runtime.',
+    ],
+    commandLabels: ['Install the CLI', 'Install the skills into Codex'],
+    requirements:
+      'Python 3.11+, uv and Git; Godot 4 only for the Godot build workflow. Not published to PyPI — install from the Git URL.',
+    licenseNote: 'No license file in the repository yet.',
+  },
+
   doper: {
     tagline: 'A Web Canvas rendering engine designed from scratch.',
     summary:
