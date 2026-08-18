@@ -21,25 +21,30 @@ export const de: ProjectCopyMap = {
   },
 
   'dsh-tui': {
-    tagline: 'Eine plugin-native Terminaloberfläche für DeepSeek Harness.',
+    tagline: 'Eine Terminal-Oberfläche im Stil von Claude Code für DeepSeek Harness.',
     summary:
-      'dsh-tui wird als Harness-Bundle außerhalb des Quellbaums ausgeliefert und läuft im selben Prozess wie die Agent-Runtime. Es erzeugt und setzt Agenten über `ctx.agents` fort, stellt das dauerhafte Session-/Event-Log ohne Web-Client-Code dar und bietet Terminal-Adapter für Freigaben, Rückfragen und Kommandos. Version 0.1.0 ist die erste veröffentlichte Fassung.',
+      'dsh-tui wird als Out-of-Tree-Harness-Bundle ausgeliefert und läuft im selben Prozess wie die Agent-Laufzeit. Es erzeugt und setzt Agents über `ctx.agents` fort, rendert das dauerhafte session/event-Log ohne Web-Client-Code und stellt Terminal-Adapter für Freigaben, Rückfragen und Befehle bereit. Installation über npm, Start mit `dtui`.',
     body: [
-      'Das hier ist ein Harness-Plugin und kein eigener Client: Es lebt im selben Prozess wie die Agent-Runtime. Die Ein-Prozess-Architektur ist Absicht — ein entfernter Transport bleibt ein möglicher späterer Adapter und Produktmodus, statt in die erste Implementierung hineingemischt zu werden.',
-      '0.1.0 pinnt exakt die Harness-Peers `0.1.0-rc.6` und erhebt damit keinen Kompatibilitätsanspruch über Harness-Release-Candidates hinweg. Bevor eine Sitzung überhaupt etwas tun kann, muss eine Provider-Anmeldung wie `DEEPSEEK_API_KEY` vorhanden sein; `dsh --profile tui --doctor` prüft nur lesend Dienste, Modellauswahl, Sitzungspersistenz und Terminalfähigkeiten, ohne Sitzung oder Agent zu starten.',
-      'Die Terminal-Ergonomie ist der eigentliche Inhalt des Projekts: ein mehrzeiliger Editor mit Unicode-Cursorbewegung, Auswahl, Rückgängig/Wiederholen, begrenzter Historie und Bracketed Paste; ein Transkript, das der Ausgabe folgt, bis die Navigation es löst, mit begrenzter Suche; eine unscharfe Befehlspalette auf Strg-P, die die Harness-Kommandos des Agenten mit der TUI-Navigation zusammenführt; und eine begrenzte Sitzungszentrale auf Strg-O, die nur bei untätigem Agenten und leerem Editor wechselt und die alte Anbindung zuvor vollständig leert und freigibt.',
+      'Dies ist ein Harness-Plugin und kein eigener Client: Es lebt im selben Prozess wie die Agent-Laufzeit. Die Ein-Prozess-Architektur ist bewusst gewählt — ein Remote-Transport bleibt ein möglicher späterer Adapter und Produktmodus, statt in die erste Implementierung hineingemischt zu werden.',
+      'Die Oberfläche folgt Claude Code: Das Transkript liest sich als ein zusammenhängendes Gespräch statt als Raster konkurrierender Bereiche, Markdown wird schon während des Streamens gerendert, und eine Statuszeile nennt verstrichene Zeit und Durchsatz. Die Herleitung ist hinter Ctrl-E eingeklappt und weder in der Zwischenablage noch im `--print`-Vertrag enthalten, damit Überlegungen nie für die Antwort gehalten werden.',
+      'Die Harness-Peers sind als `^0.1.0-rc.6` und optional deklariert, denn die Harness-Laufzeit liefert die `dsh`-CLI, und niemand installiert diese Pakete stellvertretend für das Plugin. Jede Veröffentlichung prüft globale und lokale Installation gegen das aktuelle `latest` des Hosts, damit ein neuer Upstream-Release-Candidate das Paket nicht unbemerkt uninstallierbar macht.',
+      'Die Ergonomie im Terminal ist die eigentliche Substanz: ein mehrzeiliger Editor mit Unicode-Cursorbewegung, Auswahl, Undo/Redo, begrenzter Historie und Bracketed Paste; `@Pfad`-Referenzen, die beim Absenden aufgelöst werden; ein Transkript, das der Ausgabe folgt, bis Navigation es löst, mit begrenzter Suche; eine Fuzzy-Befehlspalette auf Ctrl-P; und ein Sitzungscenter auf Ctrl-O, das nur wechselt, wenn der Agent untätig und der Editor leer ist.',
     ],
     highlights: [
-      'Harness-Plugin im selben Prozess: erzeugt und setzt Agenten über `ctx.agents` fort und stellt das dauerhafte Session-/Event-Log ohne Web-Client-Code dar.',
-      'Werkzeugeigene Darstellungsabsichten für Terminal, Diff, Suche, Lesen und Web-Ergebnisse.',
-      'Mehrzeiliger Editor mit Unicode-Cursorbewegung, Auswahl, Rückgängig/Wiederholen, begrenzter Historie und Bracketed Paste.',
-      'Die Strg-P-Befehlspalette verbindet Harness-Kommandos mit der TUI-Navigation, sodass jedes Panel auch auf Terminals erreichbar bleibt, die keine Tastenkombinationen senden können.',
-      'Barrierefreiheit ist eingebaut: Themes `default`, `high-contrast` und `no-color`, Panels benennen semantische Tonalitäten statt Farben, ein Screenreader-Modus ohne Rahmenzeichen, reduzierte Bewegung und Tastenbelegungen in einem validierten Einstellungsobjekt.',
-      'Jedes erworbene Agent-Handle, jeder Listener, jede Eingabeaufforderung und jeder Terminalmodus gilt als ausdrücklich besessene Ressource.',
+      'Einspaltiges Transkript im Stil von Claude Code: ein zusammenhängendes Gespräch, Panels werden bei Bedarf geholt, statt um den Bildschirm zu konkurrieren.',
+      'Markdown wird schon beim Streamen gerendert, durch einen begrenzten Reader, der nie wirft — ein nicht geschlossener Code-Fence wird gemeldet, nicht versteckt.',
+      '`@Pfad`-Referenzen werden beim Absenden gegen den Workspace aufgelöst; jede Ablehnung wird benannt: außerhalb des Workspace, nicht lesbar, binär oder kein Attachment-Store.',
+      'Eine Statuszeile mit verstrichener Zeit und Reasoning-Aufwand; die Token-Rate wird zurückgehalten statt geraten, wenn das Zeitfenster zu kurz für eine ehrliche Messung ist.',
+      'Die Herleitung ist hinter Ctrl-E eingeklappt und aus Zwischenablage und `--print`-Vertrag ausgeschlossen, damit sie nie als Antwort weiterverarbeitet wird.',
+      'Oberflächensprache Englisch oder Chinesisch, die ohne ausdrückliche Wahl der Locale des Hosts folgt.',
+      'Ein `dtui`-Starter, der das Profil beim ersten Lauf einrichtet und es nach einem Upgrade selbst angleicht, statt einen Befehl zum Abtippen auszugeben.',
+      'Die Ctrl-P-Befehlspalette vereint Harness-Befehle und TUI-Navigation, sodass jedes Panel auch auf Terminals erreichbar bleibt, die keine Tastenkombinationen senden können.',
+      'Barrierefreiheit ist eingebaut: Themes `default`, `high-contrast` und `no-color`, Panels, die semantische Töne statt Farben benennen, ein Screenreader-Modus ohne Rahmenzeichen, reduzierte Bewegung und Tastenbelegungen in einem geprüften Einstellungsobjekt.',
+      'Was der Host nicht bereitstellt, wird als nicht verfügbar gemeldet statt erfunden — Job-Ausgabe, Hooks, MCP-Zustand und Kosten sagen das jeweils klar.',
     ],
-    commandLabels: ['TUI starten', 'Prüfung nur lesend'],
+    commandLabels: ['Installieren', 'TUI starten', 'Nur-Lese-Umgebungsprüfung'],
     requirements:
-      'Node.js ^22.19.0 || >=24.0.0, pnpm 11.7.0 und eine Provider-Anmeldung wie DEEPSEEK_API_KEY. Die Installation des Bundles als Harness-Plugin ist im README des Repositorys beschrieben.',
+      'Node.js ^22.19.0 || >=24.0.0 und ein Provider-Zugang wie DEEPSEEK_API_KEY. Die `dsh`-CLI delegiert Profilinstallationen an pnpm, das daher beim ersten Start verfügbar sein muss.',
   },
 
   gozen: {

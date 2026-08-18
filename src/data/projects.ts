@@ -50,8 +50,9 @@ export const projects: Project[] = [
     repo: 'https://github.com/dopejs/dsh-tui',
     hasReleases: true,
     commands: [
-      { command: 'pnpm dlx --allow-build=node-pty @deepseek-ai/dsh@0.1.0-rc.6 --profile tui', kind: 'run' },
-      { command: 'dsh --profile tui --doctor', kind: 'run' },
+      { command: 'npm install -g @deepseek-ai/dsh @dopejs/dsh-tui', kind: 'install' },
+      { command: 'dtui', kind: 'run' },
+      { command: 'dtui --doctor', kind: 'run' },
     ],
   },
   {

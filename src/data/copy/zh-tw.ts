@@ -21,25 +21,30 @@ export const zhTW: ProjectCopyMap = {
   },
 
   'dsh-tui': {
-    tagline: '為 DeepSeek Harness 打造的外掛原生終端介面。',
+    tagline: '為 DeepSeek Harness 打造的 Claude Code 風格終端介面。',
     summary:
-      'dsh-tui 以 out-of-tree 的 Harness bundle 形式散布，與 Agent 執行時運行在同一行程內。它透過 `ctx.agents` 建立與復原 Agent，不依賴 Web 用戶端程式碼即可算繪持久化的 session/event 紀錄，並為核准、提問與指令提供終端轉接層。0.1.0 是首個正式發布版本。',
+      'dsh-tui 以 out-of-tree 的 Harness bundle 形式發佈，與 Agent 執行時執行在同一行程內。它透過 `ctx.agents` 建立與恢復 Agent，不依賴 Web 用戶端程式碼即可渲染持久化的 session/event 紀錄，並為審批、提問與指令提供終端轉接層。用 npm 安裝，用 `dtui` 啟動。',
     body: [
-      '它是 Harness 外掛，而非獨立用戶端：與 Agent 執行時同行程運行。同行程架構是刻意的選擇 —— 遠端傳輸被留作後續可能的轉接器與產品形態，而不是混進第一版實作裡。',
-      '0.1.0 精確鎖定 `0.1.0-rc.6` 的 Harness 相依套件，因此不對 Harness 各 RC 版本之間的相容性做任何承諾。工作階段要能真正運作，必須先具備供應商憑證（例如 `DEEPSEEK_API_KEY`）；`dsh --profile tui --doctor` 會以唯讀方式檢查服務、模型選擇器、工作階段持久化與終端能力，不會啟動任何工作階段或 Agent。',
-      '終端體驗才是這個專案的實質：多行編輯器支援 Unicode 游標移動、選取、復原/重做、有界歷史與 bracketed paste；轉錄區跟隨輸出直到導覽將其脫離，並提供有界搜尋；Ctrl-P 的模糊指令面板把該 Agent 的 Harness 指令與 TUI 導覽合併在一起；Ctrl-O 的工作階段中心僅在 Agent 閒置且編輯器為空時才允許切換，並會先完整清空並釋放舊的連結。',
+      '它是 Harness 外掛，而不是獨立用戶端：與 Agent 執行時同行程執行。同行程架構是刻意的選擇 —— 遠端傳輸被留作後續可能的轉接器與產品形態，而不是混進第一版實作裡。',
+      '介面對齊 Claude Code：轉錄區是一條連貫的對話流，而不是互相搶佔畫面的分欄；助理輸出的 Markdown 邊串流邊渲染；Agent 執行時有一行狀態回報已用時間與吞吐。推理過程摺疊在 Ctrl-E 之後，並且既不進剪貼簿，也不進 `--print` 的輸出契約 —— 思考過程不應被當成結論。',
+      'Harness 相依宣告為 `^0.1.0-rc.6` 且是選用的：Harness 執行時由 `dsh` CLI 提供，沒有任何安裝器會替外掛安裝這些套件。每次發佈都會對著 host 目前的 `latest` 驗證全域安裝與本地安裝，因此上游發佈新的 RC 不會讓這個套件在無人察覺的情況下變得裝不起來。',
+      '終端體驗才是這個專案的實質：多行編輯器支援 Unicode 游標移動、選取、復原/重做、有界歷史與 bracketed paste；送出時解析 `@路徑` 參照；轉錄區跟隨輸出直到導覽將其脫離，並提供有界搜尋；Ctrl-P 提供模糊指令面板；Ctrl-O 的工作階段中心僅在 Agent 閒置且編輯器為空時才允許切換。',
     ],
     highlights: [
-      '同行程 Harness 外掛：透過 `ctx.agents` 建立與復原 Agent，不依賴 Web 用戶端程式碼即可算繪持久化的 session/event 紀錄。',
-      '終端、diff、搜尋、讀取與 Web 結果均採用工具自有的呈現意圖（presentation intents）。',
-      '多行編輯器：Unicode 游標移動、選取、復原/重做、有界歷史與 bracketed paste。',
+      'Claude Code 風格的單欄轉錄：一條連貫的對話流，面板按需喚出，而不是常駐搶佔畫面。',
+      '助理 Markdown 邊串流邊渲染，讀取器有界且從不擲出例外 —— 未閉合的程式碼圍籬會被如實回報，而不是被隱藏。',
+      '送出時對著工作區解析 `@路徑` 參照，每一次拒絕都會說明原因：越出工作區、不可讀、二進位、或沒有附件儲存。',
+      '執行狀態列給出已用時間與推理強度；當時間窗太短、無法誠實量測時，寧可不給 token 速率，也不猜一個。',
+      '推理摺疊在 Ctrl-E 之後，並被排除在剪貼簿投影與 `--print` 契約之外，確保它永遠不會被當作結論去執行。',
+      '介面語言支援中文與英文；未明確選擇時跟隨主機 locale。',
+      '`dtui` 啟動器在首次執行時自舉 profile，升級後自動對齊版本，而不是印出一條指令讓你重打。',
       'Ctrl-P 指令面板融合 Harness 指令與 TUI 導覽，即使終端無法送出組合鍵，所有面板依然可達。',
-      '無障礙為內建能力：`default`、`high-contrast`、`no-color` 三套主題，面板以語意色調而非顏色命名，螢幕閱讀器模式移除框線字元，降低動態效果與按鍵重新綁定統一收在一份經驗證的偏好設定文件中。',
-      '每一個取得的 Agent handle、監聽器、提示與終端模式都被視為明確持有的資源。',
+      '無障礙是內建能力：`default`、`high-contrast`、`no-color` 三套主題，面板以語意色調而非顏色命名，螢幕閱讀器模式去除畫框字元，減弱動效與按鍵重新綁定統一收在一份經驗證的偏好設定中。',
+      '主機沒有提供的能力會如實回報為「不可用」，而不是編造 —— 工作輸出、hooks、MCP 健康狀態與成本都會明說。',
     ],
-    commandLabels: ['執行 TUI', '唯讀環境檢查'],
+    commandLabels: ['安裝', '啟動 TUI', '唯讀環境檢查'],
     requirements:
-      'Node.js ^22.19.0 || >=24.0.0、pnpm 11.7.0，以及供應商憑證（例如 DEEPSEEK_API_KEY）。以 Harness 外掛方式安裝此 bundle 的步驟見儲存庫 README。',
+      'Node.js ^22.19.0 || >=24.0.0，以及供應商憑證（如 DEEPSEEK_API_KEY）。`dsh` CLI 把 profile 的安裝委派給 pnpm，因此首次執行時機器上需要有 pnpm。',
   },
 
   gozen: {
