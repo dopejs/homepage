@@ -8,6 +8,8 @@
 
 **Tech Stack:** SVG、Astro 7、Node 22、opentype.js（临时）、qlmanage（macOS 原生 SVG 光栅化，已验证 512×512 输出）
 
+> 修正记录：Task 1/2 代码块中的 `<title>` 缺少 `id="title"`（aria-labelledby 悬空），实施中已在资产与 spec 修复（commit 6ff80d8）；上方代码块保留原样作为历史记录。Task 3 导出方法已从 qlmanage（白底合成）改为 Chrome headless 透明底（见 Task 3 内文）。
+
 **已验证的外部依赖：**
 - `https://github.com/JetBrains/JetBrainsMono/releases/download/v2.304/JetBrainsMono-2.304.zip` → HTTP 200
 - `qlmanage -t -s 512 -o <dir> <file>.svg` → 输出 512×512 PNG（文件名带 `.svg.png` 后缀，需重命名）

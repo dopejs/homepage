@@ -16,7 +16,7 @@ viewBox `0 0 32 32`，所有尺寸以此为唯一事实来源：
 | --- | --- |
 | 容器 | 32×32 圆角矩形，`rx=7`，填充 `#b6ff3b` |
 | 字形 `d` | 复用现有 `public/favicon.svg` 的 d 路径，`transform="translate(-0.95,2.4) scale(0.85)"`，填充 `#08090a` |
-| 光标方块 | `x=20.6 y=14.15 w=6.5 h=9.5`，填充 `#08090a`，底部与字碗基线（y=25）对齐 |
+| 光标方块 | `x=20.6 y=14.15 w=6.5 h=9.5`，填充 `#08090a`，底部与变换后字碗基线（32 网格 y=23.65，即字形原始 y=25 经 scale(0.85)+translate(2.4) 后的位置）对齐 |
 
 ```svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-labelledby="title">
