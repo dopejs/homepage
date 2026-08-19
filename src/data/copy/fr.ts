@@ -1,7 +1,7 @@
 import type { ProjectCopyMap } from './types';
 
 export const fr: ProjectCopyMap = {
-  'dope-agent': {
+  kura: {
     tagline: 'Un OS d’agents personnel — un daemon local, de nombreux clients légers.',
     summary:
       'Un plan de contrôle en Rust s’exécute localement et prend en charge le runtime, les fournisseurs de LLM, les connecteurs de canaux, le stockage et les événements. Les clients restent légers : une interface web React, une TUI Rust plein écran, des connecteurs de messagerie et un SDK TypeScript — tous fondés sur les mêmes contrats JSON Schema.',
@@ -84,24 +84,24 @@ export const fr: ProjectCopyMap = {
     licenseNote: 'Le dépôt ne contient pas encore de fichier de licence.',
   },
 
-  'dope-canvas': {
+  deckle: {
     tagline: 'Un canvas infini pour de grandes collections d’artefacts web générés par IA.',
     summary:
-      'Des centaines d’iframes actives ne passent pas à l’échelle ; aplatir chaque page en image fait perdre la sélection et le ciblage des événements. dope-canvas conserve les artefacts — source, état durable, arbre d’interaction, cache de rendu et runtime actif optionnel — pour que la sélection et l’activation à la Figma survivent. Le dépôt en est à sa base d’avant-développement : architecture, plan de livraison et modèle de sécurité, mais pas encore de canvas fonctionnel.',
+      'Des centaines d’iframes actives ne passent pas à l’échelle ; aplatir chaque page en image fait perdre la sélection et le ciblage des événements. Deckle conserve les artefacts — source, état durable, arbre d’interaction, cache de rendu et runtime actif optionnel — pour que la sélection et l’activation à la Figma survivent. Les contrats du moteur, indépendants du backend, sont implémentés et testés ; les portes de preuve navigateur ne sont pas encore franchies.',
     body: [
       'Chaque iframe conserve un contexte de navigation, un état DOM/CSS, un realm de scripts, des ressources et un état de rendu : garder des centaines de pages générées en vie passe donc très mal à l’échelle. La réponse de conception est un modèle d’artefact conservé — `artefact = source + état durable + arbre d’interaction + cache de rendu + runtime actif optionnel` — où une capture n’est qu’un cache de rendu. Le document et le modèle d’interaction restent disponibles pour la sélection, le routage d’événements, l’activation et une restauration sûre entre révisions.',
-      'Le canvas gère le déplacement de caméra, la virtualisation spatiale, le cycle de vie actif/capture, les métadonnées d’interaction, les budgets de ressources et la composition du rendu ; les artefacts apportent HTML, CSS et JavaScript contrôlé. Le découpage en paquets suit ces frontières — protocol, spatial, core, artifact, security, runtime, renderer, editor — et tous sont privés, en version 0.0.0 : aucun n’est présenté comme un contrat public stable.',
-      'Deux limites sont annoncées d’emblée : les portes de preuve navigateur du jalon M0 ne sont pas franchies, si bien que la prise en charge des API expérimentales HTML-in-Canvas reste une capacité et non une promesse ; et aucune licence n’a été choisie, donc tant que les responsables n’en ajoutent pas une, le contenu n’est pas proposé sous licence open source.',
+      'Comme les artefacts proviennent d’agents, ils arrivent progressivement : le streaming est donc une propriété de premier ordre du modèle de nœuds, et non une couche posée autour. Chaque type de contenu valide à sa propre frontière — un graphème, une ligne, une construction markdown fermée, une valeur JSON, une balise HTML décidée — et cette frontière n’avance que dans un sens, si bien qu’un lecteur ne voit jamais une interprétation être retirée.',
+      'Implémenté et testé aujourd’hui : transactions de scène, caméra et virtualisation spatiale, cycle de vie et budgets, révisions d’artefacts, assainissement, protocole de runtime contrôlé, rendu conservé et hit-testing interne. Pas encore : les portes de preuve navigateur de M0 ne sont pas franchies, la prise en charge des API expérimentales HTML-in-Canvas est une capacité détectée par la sonde et non une promesse, et les seuils absolus de performance et de mémoire restent non fixés tant qu’il n’y a pas de mesures. Rien n’est encore un contrat public stable.',
+      'Le nom résume la thèse. Un deckle est le cadre qui délimite une feuille de papier fait main pendant que la pâte se dépose encore, et le bord irrégulier qu’il laisse s’appelle un bord de deckle : un cadre autour d’un contenu qui n’a pas fini d’arriver, qui laisse la limite visible au lieu de prétendre que la feuille est terminée.',
     ],
     highlights: [
       'Modèle d’artefact conservé : une capture n’est qu’un cache de rendu, la sélection et le ciblage des événements survivent.',
-      'Le canvas gère la caméra, la virtualisation spatiale, le cycle de vie actif/capture, les budgets de ressources et la composition.',
-      'Les frontières des paquets reflètent la conception : protocol, spatial, core, artifact, security, runtime, renderer, editor.',
+      'Le streaming est intégré au modèle de nœuds, avec des frontières de validation par type qui n’avancent que dans un sens — aucune interprétation retirée.',
+      'Contrats du moteur implémentés et testés : transactions de scène, caméra et virtualisation spatiale, cycle de vie, budgets, révisions, assainissement, protocole de runtime, rendu conservé, hit-testing.',
       'La sécurité est un paquet de premier ordre — assainisseur, politique d’URL, quotas et capacités — et non un durcissement tardif.',
-      'Documenté dès le départ : conception technique, plan de livraison, modèle de sécurité, stratégie de compatibilité, protocole de benchmark et questions ouvertes.',
+      'Apache-2.0, choisie pour la concession de brevets : le modèle de frontières de streaming et le profil de rendu natif Canvas sont un travail d’implémentation qui gagne à une concession explicite.',
+      'Les bibliothèques ont été publiées sous `@dopejs/canvas-*` jusqu’à 0.3.0 et sont renommées `@dopejs/deckle-*` à partir de 0.4.0 ; seul le nom change.',
     ],
     requirements: 'Node.js 22.12+ et pnpm 10.33.2.',
-    licenseNote:
-      'Aucune licence choisie pour l’instant — tant qu’elle n’est pas ajoutée, le contenu n’est pas proposé sous licence open source.',
   },
 };

@@ -34,12 +34,13 @@ export interface Command {
 
 export const projects: Project[] = [
   {
-    slug: 'dope-agent',
-    name: 'DopeAgent',
+    slug: 'kura',
+    name: 'Kura',
     status: 'active',
     languages: ['Rust', 'TypeScript'],
     license: null,
-    repo: 'https://github.com/dopejs/dope-agent',
+    repo: 'https://github.com/dopejs/kura',
+    homepage: 'https://kura.dopejs.com/',
   },
   {
     slug: 'gozen',
@@ -81,13 +82,13 @@ export const projects: Project[] = [
     commands: [{ command: 'pnpm install --frozen-lockfile && pnpm m0:check && pnpm probe:dev', kind: 'dev' }],
   },
   {
-    slug: 'dope-canvas',
-    name: 'dope-canvas',
-    status: 'design',
+    slug: 'deckle',
+    name: 'Deckle',
+    status: 'early',
     languages: ['TypeScript'],
-    license: null,
-    repo: 'https://github.com/dopejs/dope-canvas',
-    homepage: 'https://canvas.dopejs.com/',
+    license: 'Apache-2.0',
+    repo: 'https://github.com/dopejs/deckle',
+    homepage: 'https://deckle.dopejs.com/',
     hasReleases: true,
   },
 ];

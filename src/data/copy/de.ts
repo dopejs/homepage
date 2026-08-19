@@ -1,7 +1,7 @@
 import type { ProjectCopyMap } from './types';
 
 export const de: ProjectCopyMap = {
-  'dope-agent': {
+  kura: {
     tagline: 'Ein persönliches Agenten-Betriebssystem — ein lokaler Daemon, viele schlanke Clients.',
     summary:
       'Eine Control Plane in Rust läuft lokal und verantwortet Runtime, LLM-Provider, Kanal-Konnektoren, Speicher und Events. Die Clients bleiben schlank: eine React-Weboberfläche, eine Vollbild-TUI in Rust, Chat-Konnektoren und ein TypeScript-SDK — alle sprechen dieselben JSON-Schema-Verträge.',
@@ -84,24 +84,24 @@ export const de: ProjectCopyMap = {
     licenseNote: 'Das Repository enthält noch keine Lizenzdatei.',
   },
 
-  'dope-canvas': {
+  deckle: {
     tagline: 'Ein unendliches Canvas für große Mengen KI-generierter Web-Artefakte.',
     summary:
-      'Hunderte aktive iframes skalieren nicht; jede Seite auf ein Bild zu reduzieren, kostet Auswahl und Event-Zuordnung. dope-canvas hält Artefakte vor — Quelltext, dauerhafter Zustand, Interaktionsbaum, Paint-Cache und optionale Live-Runtime —, sodass Auswahl und Aktivierung wie in Figma erhalten bleiben. Das Repository steht auf seiner Basislinie vor der Entwicklung: Architektur, Lieferplan und Sicherheitsmodell, aber noch kein funktionierendes Canvas.',
+      'Hunderte aktive iframes skalieren nicht; jede Seite auf ein Bild zu reduzieren, kostet Auswahl und Event-Zuordnung. Deckle hält Artefakte vor — Quelltext, dauerhafter Zustand, Interaktionsbaum, Paint-Cache und optionale Live-Runtime —, sodass Auswahl und Aktivierung wie in Figma erhalten bleiben. Die backend-unabhängigen Engine-Verträge sind implementiert und getestet; die Browser-Nachweis-Gates sind noch nicht bestanden.',
     body: [
       'Jedes iframe hält einen Browsing-Kontext, DOM/CSS-Zustand, ein Skript-Realm, Ressourcen und Renderzustand vor; hunderte generierte Seiten am Leben zu halten skaliert deshalb schlecht. Die Entwurfsantwort ist ein vorgehaltenes Artefaktmodell — `Artefakt = Quelltext + dauerhafter Zustand + Interaktionsbaum + Paint-Cache + optionale Live-Runtime` —, in dem ein Snapshot nur ein Paint-Cache ist. Dokument und Interaktionsmodell bleiben für Auswahl, Event-Routing, Aktivierung und revisionssichere Wiederherstellung verfügbar.',
-      'Das Canvas verantwortet Kamerabewegung, räumliche Virtualisierung, Live-/Snapshot-Lebenszyklus, Interaktionsmetadaten, Ressourcenbudgets und die Rendering-Komposition; die Artefakte liefern HTML, CSS und kontrolliertes JavaScript. Der Paketschnitt folgt diesen Grenzen — protocol, spatial, core, artifact, security, runtime, renderer, editor — und alle Pakete sind privat mit Version 0.0.0; keines gilt als stabiler öffentlicher Vertrag.',
-      'Zwei Grenzen werden vorab benannt: Die Browser-Nachweis-Gates von M0 sind nicht bestanden, deshalb bleibt die Unterstützung experimenteller HTML-in-Canvas-APIs eine Fähigkeit und kein Versprechen; und es wurde keine Lizenz gewählt, sodass die Inhalte bis dahin nicht unter einer Open-Source-Lizenz angeboten werden.',
+      'Weil die Artefakte von Agenten kommen, treffen sie schrittweise ein: Streaming ist deshalb eine Eigenschaft erster Klasse des Knotenmodells und keine Hülle darum. Jede Inhaltsart committet an ihrer eigenen Grenze — ein Graphem, eine Zeile, eine geschlossene Markdown-Konstruktion, ein JSON-Wert, ein entschiedenes HTML-Tag — und diese Grenze bewegt sich nur vorwärts, sodass Lesende nie erleben, dass eine Deutung zurückgenommen wird.',
+      'Heute implementiert und getestet: Szenen-Transaktionen, Kamera und räumliche Virtualisierung, Lebenszyklus und Budgets, Artefakt-Revisionen, Sanitizing, das kontrollierte Runtime-Protokoll, vorgehaltenes Rendering und internes Hit-Testing. Noch nicht: Die Browser-Nachweis-Gates von M0 sind nicht bestanden, die Unterstützung experimenteller HTML-in-Canvas-APIs ist eine von der Probe erkannte Fähigkeit und kein Versprechen, und absolute Performance- und Speichergrenzen bleiben ungesetzt, bis Messwerte vorliegen. Nichts ist bislang ein stabiler öffentlicher Vertrag.',
+      'Der Name ist die These. Ein Deckel (deckle) ist der Rahmen, der ein handgeschöpftes Blatt begrenzt, während der Faserbrei sich noch setzt, und die ausgefranste Kante, die er hinterlässt, heißt Büttenrand: ein Rahmen um Inhalt, der noch nicht fertig angekommen ist, der die Grenze sichtbar lässt, statt so zu tun, als wäre das Blatt fertig.',
     ],
     highlights: [
       'Vorgehaltenes Artefaktmodell: Ein Snapshot ist nur ein Paint-Cache, deshalb bleiben Auswahl und Event-Zuordnung erhalten.',
-      'Das Canvas verantwortet Kamera, räumliche Virtualisierung, Live-/Snapshot-Lebenszyklus, Ressourcenbudgets und Komposition.',
-      'Die Paketgrenzen spiegeln den Entwurf: protocol, spatial, core, artifact, security, runtime, renderer, editor.',
+      'Streaming steckt im Knotenmodell selbst, mit Commit-Grenzen je Inhaltsart, die sich nur vorwärts bewegen — keine zurückgenommenen Deutungen.',
+      'Implementierte und getestete Engine-Verträge: Szenen-Transaktionen, Kamera und räumliche Virtualisierung, Lebenszyklus, Budgets, Revisionen, Sanitizing, Runtime-Protokoll, vorgehaltenes Rendering, Hit-Testing.',
       'Sicherheit ist ein Paket erster Klasse — Sanitizer, URL-Policy, Kontingente und Capabilities — und keine nachträgliche Härtung.',
-      'Von Anfang an dokumentiert: technischer Entwurf, Lieferplan, Sicherheitsmodell, Kompatibilitätsstrategie, Benchmark-Protokoll und offene Fragen.',
+      'Apache-2.0, gewählt wegen der Patentlizenz: Das Streaming-Grenzmodell und das Canvas-native Rendering-Profil sind Implementierungsarbeit, der eine ausdrückliche Lizenz guttut.',
+      'Die Bibliotheken erschienen bis 0.3.0 als `@dopejs/canvas-*` und heißen ab 0.4.0 `@dopejs/deckle-*`; es ändert sich nur der Name.',
     ],
     requirements: 'Node.js 22.12+ und pnpm 10.33.2.',
-    licenseNote:
-      'Noch keine Lizenz gewählt — bis eine hinzugefügt wird, stehen die Inhalte nicht unter einer Open-Source-Lizenz.',
   },
 };

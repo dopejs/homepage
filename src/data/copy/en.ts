@@ -5,7 +5,7 @@ import type { ProjectCopyMap } from './types';
  * repository's README; other locales are translations of this file.
  */
 export const en: ProjectCopyMap = {
-  'dope-agent': {
+  kura: {
     tagline: 'A personal agent OS — one local daemon, many thin clients.',
     summary:
       'A Rust control plane runs locally and owns the runtime, LLM providers, channel connectors, storage and events. Clients stay thin: a React web UI, a full-screen Rust TUI, chat-channel connectors, and a TypeScript SDK — all speaking the same JSON Schema contracts.',
@@ -88,24 +88,24 @@ export const en: ProjectCopyMap = {
     licenseNote: 'No license file in the repository yet.',
   },
 
-  'dope-canvas': {
+  deckle: {
     tagline: 'An infinite canvas for large collections of AI-generated web artifacts.',
     summary:
-      'Hundreds of live iframes do not scale; flattening every page to an image loses selection and event targeting. dope-canvas keeps artifacts retained — source, durable state, interaction tree, paint cache and an optional live runtime — so Figma-like selection and activation survive. The repository is at its pre-development baseline: architecture, delivery plan and security model, not yet a working canvas.',
+      'Hundreds of live iframes do not scale; flattening every page to an image loses selection and event targeting. Deckle keeps artifacts retained — source, durable state, interaction tree, paint cache and an optional live runtime — so Figma-like selection and activation survive. The backend-independent engine contracts are implemented and tested; the browser-evidence gates are not exited yet.',
     body: [
-      'Every iframe retains a browsing context, DOM/CSS state, a script realm, resources and rendering state, so keeping hundreds of generated pages alive scales badly. The design answer here is a retained artifact model — `artifact = source + durable state + interaction tree + paint cache + optional live runtime` — in which a snapshot is only a paint cache. The document and interaction model stay available for selection, event routing, activation and revision-safe restoration.',
-      'The canvas itself owns camera movement, spatial virtualization, live/snapshot lifecycle, interaction metadata, resource budgets and rendering composition; artifacts contribute HTML, CSS and controlled JavaScript. The package split follows those boundaries — protocol, spatial, core, artifact, security, runtime, renderer, editor — and every package is private and versioned 0.0.0, with none presented as a stable public contract.',
-      'Two limits are stated up front: the M0 browser-evidence gates have not been exited, so support for experimental HTML-in-Canvas APIs remains a capability rather than a claim; and no license has been selected, so until the owners add one the contents are not offered under an open-source license.',
+      'Every iframe retains a browsing context, DOM/CSS state, a script realm, resources and rendering state, so keeping hundreds of generated pages alive scales badly. The design answer is a retained artifact model — `artifact = source + durable state + interaction tree + paint cache + optional live runtime` — in which a snapshot is only a paint cache. The document and interaction model stay available for selection, event routing, activation and revision-safe restoration.',
+      'Because the artifacts come from agents, they arrive incrementally, and streaming is a first-class property of the node model rather than a wrapper around it. Every content kind commits at its own boundary — a grapheme, a line, a closed markdown construct, a JSON value, a decided HTML tag — and that boundary only moves forward, so a reader never sees an interpretation get retracted.',
+      'Implemented and tested today: scene transactions, camera and spatial virtualization, lifecycle and budgets, artifact revisions, sanitization, the controlled runtime protocol, retained rendering and internal hit testing. Not yet: the M0 browser-evidence gates are not exited, support for the experimental HTML-in-Canvas APIs is a capability the probe detects rather than a claim, and absolute performance and memory gates stay unset until measurements exist. Nothing is a stable public contract yet.',
+      'The name is the thesis. A deckle is the frame that bounds a sheet of handmade paper while the pulp is still settling, and the ragged edge it leaves is called a deckle edge — a frame around content that has not finished arriving, leaving the boundary visible instead of pretending the sheet is done.',
     ],
     highlights: [
       'Retained artifact model: a snapshot is only a paint cache, so selection and event targeting survive.',
-      'Canvas owns camera, spatial virtualization, live/snapshot lifecycle, resource budgets and composition.',
-      'Package boundaries mirror the design: protocol, spatial, core, artifact, security, runtime, renderer, editor.',
+      'Streaming is built into the node model, with per-kind commit boundaries that only move forward — no retracted interpretations.',
+      'Engine contracts implemented and tested: scene transactions, camera and spatial virtualization, lifecycle, budgets, revisions, sanitization, runtime protocol, retained rendering, hit testing.',
       'Security is a first-class package — sanitizer, URL policy, quotas and capabilities — not a later hardening pass.',
-      'Documented up front: technical design, delivery plan, security model, compatibility strategy, benchmark protocol and open questions.',
+      'Apache-2.0, chosen for the patent grant: the streaming boundary model and the canvas-native rendering profile are implementation work that benefits from an explicit grant.',
+      'Libraries shipped as `@dopejs/canvas-*` through 0.3.0 and are being renamed to `@dopejs/deckle-*` from 0.4.0; only the name changes.',
     ],
     requirements: 'Node.js 22.12+ and pnpm 10.33.2.',
-    licenseNote:
-      'No license selected yet — until one is added, the contents are not offered under an open-source license.',
   },
 };

@@ -1,7 +1,7 @@
 import type { ProjectCopyMap } from './types';
 
 export const es: ProjectCopyMap = {
-  'dope-agent': {
+  kura: {
     tagline: 'Un sistema operativo personal de agentes: un daemon local y muchos clientes ligeros.',
     summary:
       'Un plano de control en Rust se ejecuta localmente y se encarga del runtime, los proveedores de LLM, los conectores de canal, el almacenamiento y los eventos. Los clientes son ligeros: una interfaz web en React, una TUI de pantalla completa en Rust, conectores de chat y un SDK de TypeScript, todos hablando los mismos contratos JSON Schema.',
@@ -84,24 +84,24 @@ export const es: ProjectCopyMap = {
     licenseNote: 'El repositorio todavía no incluye un archivo de licencia.',
   },
 
-  'dope-canvas': {
+  deckle: {
     tagline: 'Un lienzo infinito para grandes colecciones de artefactos web generados por IA.',
     summary:
-      'Cientos de iframes activos no escalan; aplanar cada página a una imagen pierde la selección y el enrutado de eventos. dope-canvas mantiene los artefactos retenidos —fuente, estado duradero, árbol de interacción, caché de pintado y un runtime activo opcional— de modo que la selección y la activación al estilo Figma sobreviven. El repositorio está en su línea base previa al desarrollo: arquitectura, plan de entrega y modelo de seguridad, todavía sin un lienzo funcional.',
+      'Cientos de iframes activos no escalan; aplanar cada página a una imagen pierde la selección y el enrutado de eventos. Deckle mantiene los artefactos retenidos — fuente, estado duradero, árbol de interacción, caché de pintado y un runtime activo opcional — de modo que la selección y la activación al estilo Figma sobreviven. Los contratos del motor, independientes del backend, están implementados y probados; las puertas de evidencia de navegador aún no se han superado.',
     body: [
-      'Cada iframe retiene un contexto de navegación, estado DOM/CSS, un realm de scripts, recursos y estado de renderizado, así que mantener vivas cientos de páginas generadas escala mal. La respuesta de diseño es un modelo de artefacto retenido —`artefacto = fuente + estado duradero + árbol de interacción + caché de pintado + runtime activo opcional`— en el que una instantánea es solo una caché de pintado. El documento y el modelo de interacción siguen disponibles para la selección, el enrutado de eventos, la activación y la restauración segura entre revisiones.',
-      'El lienzo se encarga del movimiento de cámara, la virtualización espacial, el ciclo de vida activo/instantánea, los metadatos de interacción, los presupuestos de recursos y la composición del renderizado; los artefactos aportan HTML, CSS y JavaScript controlado. La división en paquetes sigue esas fronteras —protocol, spatial, core, artifact, security, runtime, renderer, editor— y todos son privados y con versión 0.0.0: ninguno se presenta como contrato público estable.',
-      'Se declaran dos límites por adelantado: no se han superado las puertas de evidencia de navegador de M0, así que el soporte de las APIs experimentales de HTML en Canvas sigue siendo una capacidad y no una promesa; y no se ha elegido licencia, por lo que hasta que los responsables añadan una, el contenido no se ofrece bajo una licencia de código abierto.',
+      'Cada iframe retiene un contexto de navegación, estado DOM/CSS, un realm de scripts, recursos y estado de renderizado, así que mantener vivas cientos de páginas generadas escala mal. La respuesta de diseño es un modelo de artefacto retenido — `artefacto = fuente + estado duradero + árbol de interacción + caché de pintado + runtime activo opcional` — en el que una instantánea es solo una caché de pintado. El documento y el modelo de interacción siguen disponibles para la selección, el enrutado de eventos, la activación y la restauración segura entre revisiones.',
+      'Como los artefactos vienen de agentes, llegan de forma incremental, y el streaming es una propiedad de primera clase del modelo de nodos y no una capa que lo envuelve. Cada tipo de contenido confirma en su propia frontera — un grafema, una línea, una construcción markdown cerrada, un valor JSON, una etiqueta HTML ya decidida — y esa frontera solo avanza, de modo que quien lee nunca ve retirarse una interpretación.',
+      'Implementado y probado hoy: transacciones de escena, cámara y virtualización espacial, ciclo de vida y presupuestos, revisiones de artefactos, saneamiento, el protocolo de runtime controlado, renderizado retenido y hit testing interno. Todavía no: las puertas de evidencia de navegador de M0 no se han superado, el soporte de las APIs experimentales de HTML en Canvas es una capacidad que detecta la sonda y no una promesa, y los límites absolutos de rendimiento y memoria siguen sin fijarse hasta que existan mediciones. Nada es aún un contrato público estable.',
+      'El nombre es la tesis. Un deckle es el marco que delimita una hoja de papel hecho a mano mientras la pulpa todavía se asienta, y el borde irregular que deja se llama borde de deckle: un marco alrededor de un contenido que aún no ha terminado de llegar, que deja el límite a la vista en lugar de fingir que la hoja está acabada.',
     ],
     highlights: [
       'Modelo de artefacto retenido: una instantánea es solo una caché de pintado, así que la selección y el enrutado de eventos sobreviven.',
-      'El lienzo gestiona la cámara, la virtualización espacial, el ciclo de vida activo/instantánea, los presupuestos de recursos y la composición.',
-      'Las fronteras entre paquetes reflejan el diseño: protocol, spatial, core, artifact, security, runtime, renderer, editor.',
-      'La seguridad es un paquete de primera clase —sanitizador, política de URL, cuotas y capacidades—, no un endurecimiento posterior.',
-      'Documentado desde el inicio: diseño técnico, plan de entrega, modelo de seguridad, estrategia de compatibilidad, protocolo de benchmark y preguntas abiertas.',
+      'El streaming está integrado en el modelo de nodos, con fronteras de confirmación por tipo que solo avanzan: ninguna interpretación se retira.',
+      'Contratos del motor implementados y probados: transacciones de escena, cámara y virtualización espacial, ciclo de vida, presupuestos, revisiones, saneamiento, protocolo de runtime, renderizado retenido y hit testing.',
+      'La seguridad es un paquete de primera clase —saneador, política de URL, cuotas y capacidades—, no un endurecimiento posterior.',
+      'Apache-2.0, elegida por la concesión de patentes: el modelo de fronteras de streaming y el perfil de renderizado nativo en Canvas son trabajo de implementación que se beneficia de una concesión explícita.',
+      'Las bibliotecas se publicaron como `@dopejs/canvas-*` hasta 0.3.0 y pasan a llamarse `@dopejs/deckle-*` desde 0.4.0; solo cambia el nombre.',
     ],
     requirements: 'Node.js 22.12+ y pnpm 10.33.2.',
-    licenseNote:
-      'Aún no se ha elegido licencia: hasta que se añada una, el contenido no se ofrece bajo una licencia de código abierto.',
   },
 };
