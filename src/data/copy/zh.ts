@@ -64,12 +64,12 @@ export const zh: ProjectCopyMap = {
     licenseNote: '仓库尚未添加 license 文件。',
   },
 
-  doper: {
+  pingo: {
     tagline: '从零设计的 Web Canvas 渲染引擎。',
     summary:
       '高性能 TSX 运行时，原生虚拟滚动，确定性 Rust/WASM Core 与版本化二进制 ABI，完整文本渲染与 Canvas 原生编辑能力。M0–M3 里程碑已完成，M4 将补齐编辑、事件、命中与无障碍主链。',
     body: [
-      'doper 目前还不是可以直接接入业务的渲染引擎，仓库本身也是这么写的。P0/M0 至 M3 已完成，下一阶段是 M4 —— 编辑、事件、命中与无障碍主链。技术决策以 `docs/design.md` 为准，交付顺序与出口门禁见 `docs/plan.md`。',
+      'Pingo 目前还不是可以直接接入业务的渲染引擎，仓库本身也是这么写的。P0/M0 至 M3 已完成，下一阶段是 M4 —— 编辑、事件、命中与无障碍主链。技术决策以 `docs/design.md` 为准，交付顺序与出口门禁见 `docs/plan.md`。',
       '当前真正可运行的是 `apps/platform-probe`：一条用于度量而非演示的切片。它采集 Worker rAF 帧间隔、主线程经 SharedArrayBuffer 到 Worker 的延迟、主线程阻塞 200ms 时 Worker 的自驱情况、Canvas2D 与 scroll-copy 吞吐、WASM 体积与加载开销，以及 Canvas 编辑输入路径（EditContext 优先，集中式 textarea proxy 降级），并含可确定性回放的 IME 录制。',
       '探针只证明本地环境可用（开发服务器会发送 COOP/COEP 响应头以启用跨源隔离），不代表业务部署已满足这些条件。真机性能与真实输入法行为属于独立的平台资格认证：在通过 `pnpm platform:qualify` 认证之前，项目不对外宣称对应指标。',
     ],

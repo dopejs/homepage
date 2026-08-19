@@ -69,15 +69,15 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: 'doper',
-    name: 'doper',
+    slug: 'pingo',
+    name: 'Pingo',
     status: 'early',
     languages: ['TypeScript', 'Rust'],
     license: null,
-    repo: 'https://github.com/dopejs/doper',
-    homepage: 'https://doper.dopejs.com/',
+    repo: 'https://github.com/dopejs/pingo',
+    homepage: 'https://pingo.dopejs.com/',
     hasReleases: true,
-    // Contributor-only: this runs the probe from a checkout. doper publishes
+    // Contributor-only: this runs the probe from a checkout. Pingo publishes
     // package tarballs on its releases, but no documented consumer install.
     commands: [{ command: 'pnpm install --frozen-lockfile && pnpm m0:check && pnpm probe:dev', kind: 'dev' }],
   },

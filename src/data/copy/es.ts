@@ -64,12 +64,12 @@ export const es: ProjectCopyMap = {
     licenseNote: 'El repositorio todavía no incluye un archivo de licencia.',
   },
 
-  doper: {
+  pingo: {
     tagline: 'Un motor de renderizado Canvas para la web diseñado desde cero.',
     summary:
       'Un runtime TSX de alto rendimiento con scroll virtual nativo, un núcleo determinista en Rust/WASM tras una ABI binaria versionada, renderizado de texto completo y edición nativa sobre Canvas. Los hitos M0–M3 están completos; M4 trae la cadena de edición, eventos, hit-testing y accesibilidad.',
     body: [
-      'doper todavía no es un motor de renderizado que puedas integrar en un producto, y el repositorio lo dice sin rodeos. P0/M0 hasta M3 están hechos; la siguiente etapa es M4: la cadena de edición, eventos, hit-testing y accesibilidad. Las decisiones técnicas se fijan en `docs/design.md`, y el orden de entrega y los criterios de salida en `docs/plan.md`.',
+      'Pingo todavía no es un motor de renderizado que puedas integrar en un producto, y el repositorio lo dice sin rodeos. P0/M0 hasta M3 están hechos; la siguiente etapa es M4: la cadena de edición, eventos, hit-testing y accesibilidad. Las decisiones técnicas se fijan en `docs/design.md`, y el orden de entrega y los criterios de salida en `docs/plan.md`.',
       'Lo que se ejecuta hoy es `apps/platform-probe`: una porción de medición, no una demo. Registra los intervalos de frame de rAF en el worker, la latencia del hilo principal al worker a través de SharedArrayBuffer, la autonomía del worker mientras el hilo principal se bloquea 200 ms, el rendimiento de Canvas2D y scroll-copy, el tamaño y coste de carga del WASM y la ruta de entrada de edición en Canvas —EditContext primero, con un proxy de textarea centralizado como alternativa—, incluidas sesiones de IME grabadas y reproducidas de forma determinista.',
       'La sonda demuestra que el entorno local es viable —el servidor de desarrollo envía cabeceras COOP/COEP para el aislamiento entre orígenes—, no que un despliegue en producción cumpla esas condiciones. El rendimiento en dispositivos reales y el comportamiento real del IME se tratan como una cualificación de plataforma aparte: hasta que una plataforma se cualifica con `pnpm platform:qualify`, el proyecto no reivindica esas cifras.',
     ],

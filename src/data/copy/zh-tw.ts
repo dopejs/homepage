@@ -64,12 +64,12 @@ export const zhTW: ProjectCopyMap = {
     licenseNote: '儲存庫尚未加入 license 檔案。',
   },
 
-  doper: {
+  pingo: {
     tagline: '從零設計的 Web Canvas 算繪引擎。',
     summary:
       '高效能 TSX 執行時，原生虛擬捲動，具確定性的 Rust/WASM Core 與版本化二進位 ABI，完整文字算繪與 Canvas 原生編輯能力。M0–M3 里程碑已完成，M4 將補齊編輯、事件、命中測試與無障礙主鏈。',
     body: [
-      'doper 目前還不是可直接接入產品的算繪引擎，儲存庫本身也是這麼寫的。P0/M0 至 M3 已完成，下一階段是 M4 —— 編輯、事件、命中測試與無障礙主鏈。技術決策以 `docs/design.md` 為準，交付順序與出場門檻見 `docs/plan.md`。',
+      'Pingo 目前還不是可直接接入產品的算繪引擎，儲存庫本身也是這麼寫的。P0/M0 至 M3 已完成，下一階段是 M4 —— 編輯、事件、命中測試與無障礙主鏈。技術決策以 `docs/design.md` 為準，交付順序與出場門檻見 `docs/plan.md`。',
       '目前真正可執行的是 `apps/platform-probe`：一條用於量測而非展示的切片。它蒐集 Worker rAF 影格間隔、主執行緒經 SharedArrayBuffer 到 Worker 的延遲、主執行緒阻塞 200ms 時 Worker 的自驅情況、Canvas2D 與 scroll-copy 吞吐、WASM 體積與載入成本，以及 Canvas 編輯輸入路徑（EditContext 優先，集中式 textarea proxy 降級），並包含可確定性重播的 IME 錄製。',
       '探針只證明本機環境可用（開發伺服器會送出 COOP/COEP 標頭以啟用跨來源隔離），不代表正式部署已滿足這些條件。實機效能與真實輸入法行為屬於獨立的平台資格認證：在通過 `pnpm platform:qualify` 認證之前，專案不對外宣稱對應指標。',
     ],

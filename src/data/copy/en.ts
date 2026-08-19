@@ -68,12 +68,12 @@ export const en: ProjectCopyMap = {
     licenseNote: 'No license file in the repository yet.',
   },
 
-  doper: {
+  pingo: {
     tagline: 'A Web Canvas rendering engine designed from scratch.',
     summary:
       'A high-performance TSX runtime with native virtual scrolling, a deterministic Rust/WASM core behind a versioned binary ABI, full text rendering and canvas-native editing. Milestones M0–M3 are complete; M4 brings the editing, event, hit-testing and accessibility chain.',
     body: [
-      'doper is not yet a rendering engine you can drop into a product, and the repository says so plainly. P0/M0 through M3 are done; M4 — the editing, event, hit-testing and accessibility chain — is the next stage. Technical decisions are settled in `docs/design.md`, and delivery order and exit gates in `docs/plan.md`.',
+      'Pingo is not yet a rendering engine you can drop into a product, and the repository says so plainly. P0/M0 through M3 are done; M4 — the editing, event, hit-testing and accessibility chain — is the next stage. Technical decisions are settled in `docs/design.md`, and delivery order and exit gates in `docs/plan.md`.',
       'What runs today is `apps/platform-probe`: a measurement slice rather than a demo. It records worker rAF frame intervals, main-thread-to-worker latency through SharedArrayBuffer, worker self-drive while the main thread blocks for 200 ms, Canvas2D and scroll-copy throughput, WASM size and load cost, and the Canvas editing input path — EditContext first, with a centralized textarea proxy as fallback — including recorded IME sessions replayed for determinism.',
       'The probe proves the local environment is viable — the dev server sends COOP/COEP headers for cross-origin isolation — not that a production deployment meets those conditions. Real-device performance and real IME behaviour are treated as a separate platform qualification: until a platform is qualified with `pnpm platform:qualify`, the project does not claim its numbers.',
     ],

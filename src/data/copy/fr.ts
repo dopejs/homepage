@@ -64,12 +64,12 @@ export const fr: ProjectCopyMap = {
     licenseNote: 'Le dépôt ne contient pas encore de fichier de licence.',
   },
 
-  doper: {
+  pingo: {
     tagline: 'Un moteur de rendu Canvas pour le web, conçu de zéro.',
     summary:
       'Un runtime TSX performant avec défilement virtuel natif, un cœur Rust/WASM déterministe derrière une ABI binaire versionnée, un rendu de texte complet et une édition native sur Canvas. Les jalons M0 à M3 sont terminés ; M4 apportera la chaîne édition, événements, hit-testing et accessibilité.',
     body: [
-      'doper n’est pas encore un moteur de rendu que l’on peut intégrer tel quel dans un produit, et le dépôt le dit clairement. P0/M0 à M3 sont achevés ; l’étape suivante est M4 — la chaîne édition, événements, hit-testing et accessibilité. Les décisions techniques sont arrêtées dans `docs/design.md`, l’ordre de livraison et les critères de sortie dans `docs/plan.md`.',
+      'Pingo n’est pas encore un moteur de rendu que l’on peut intégrer tel quel dans un produit, et le dépôt le dit clairement. P0/M0 à M3 sont achevés ; l’étape suivante est M4 — la chaîne édition, événements, hit-testing et accessibilité. Les décisions techniques sont arrêtées dans `docs/design.md`, l’ordre de livraison et les critères de sortie dans `docs/plan.md`.',
       'Ce qui tourne aujourd’hui, c’est `apps/platform-probe` : une tranche de mesure, pas une démo. Elle enregistre les intervalles d’images rAF du worker, la latence du thread principal vers le worker via SharedArrayBuffer, l’autonomie du worker pendant un blocage de 200 ms du thread principal, le débit de Canvas2D et du scroll-copy, la taille et le coût de chargement du WASM, ainsi que le chemin de saisie pour l’édition Canvas — EditContext d’abord, avec un proxy textarea centralisé en repli — y compris des sessions IME enregistrées puis rejouées de façon déterministe.',
       'La sonde prouve que l’environnement local est viable — le serveur de développement envoie les en-têtes COOP/COEP pour l’isolation cross-origin — et non qu’un déploiement en production remplit ces conditions. Les performances sur appareil réel et le comportement réel des IME relèvent d’une qualification de plateforme distincte : tant qu’une plateforme n’est pas qualifiée via `pnpm platform:qualify`, le projet n’en revendique pas les chiffres.',
     ],
