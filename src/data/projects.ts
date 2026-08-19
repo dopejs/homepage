@@ -14,6 +14,8 @@ export interface Project {
   repo: string;
   /** Project homepage, when it has one that is not the repo. */
   homepage?: string;
+  /** Filename under public/logos/, when the project ships its own mark. */
+  logo?: string;
   /** Whether the repository publishes GitHub releases (drives the sidebar link). */
   hasReleases?: boolean;
   /** Shell commands, shown verbatim in every locale. Labels are translated. */
@@ -36,6 +38,7 @@ export const projects: Project[] = [
   {
     slug: 'kura',
     name: 'Kura',
+    logo: 'kura.svg',
     status: 'active',
     languages: ['Rust', 'TypeScript'],
     license: null,
@@ -45,6 +48,7 @@ export const projects: Project[] = [
   {
     slug: 'gozen',
     name: 'GoZen',
+    logo: 'gozen.svg',
     status: 'stable',
     languages: ['Go'],
     license: 'MIT',
@@ -84,6 +88,7 @@ export const projects: Project[] = [
   {
     slug: 'deckle',
     name: 'Deckle',
+    logo: 'deckle.svg',
     status: 'early',
     languages: ['TypeScript'],
     license: 'Apache-2.0',

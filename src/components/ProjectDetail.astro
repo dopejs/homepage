@@ -1,5 +1,6 @@
 ---
 import CommandBlock from './CommandBlock.astro';
+import ProjectLogo from './ProjectLogo.astro';
 import { useTranslations, localePath, projectCopy, displayFont } from '../i18n/utils';
 import type { Lang } from '../i18n/config';
 import type { Project } from '../data/projects';
@@ -29,6 +30,7 @@ const commands = (project.commands ?? []).map((entry, i) => ({ ...entry, label: 
 
   <header class="mt-6 border-b border-line/70 pb-10">
     <div class="flex flex-wrap items-center gap-3">
+      <ProjectLogo project={project} size={44} />
       <h1 class="font-mono text-4xl font-semibold tracking-tight sm:text-5xl" dir="ltr">{project.name}</h1>
       <span class={`rounded-full border px-2.5 py-0.5 font-mono text-xs ${statusTone[project.status]}`}>
         {t(statusKey(project.status))}

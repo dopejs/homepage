@@ -1,5 +1,6 @@
 ---
 import CommandBlock from './CommandBlock.astro';
+import ProjectLogo from './ProjectLogo.astro';
 import { useTranslations, localePath, projectCopy } from '../i18n/utils';
 import type { Lang } from '../i18n/config';
 import type { Project } from '../data/projects';
@@ -28,6 +29,7 @@ const primaryCommand = project.commands?.find((c) => c.kind !== 'dev');
 >
   <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
     <span class="font-mono text-xs text-muted/70" dir="ltr">{String(index + 1).padStart(2, '0')}</span>
+    <ProjectLogo project={project} size={30} />
     <h3 class="font-mono text-xl font-semibold tracking-tight">
       <!-- Stretched link: the whole card is the target, inner links stay clickable via z-10. -->
       <a href={href} class="after:absolute after:inset-0 hover:text-accent">{project.name}</a>
