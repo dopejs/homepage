@@ -18,10 +18,14 @@ const home = localePath(lang, '/');
 <header class="sticky top-0 z-40 border-b border-line/70 bg-ink/80 backdrop-blur">
   <div class="wrap flex h-16 items-center justify-between gap-4">
     <a href={home} class="group flex shrink-0 items-center gap-2.5">
-      <span
-        class="grid size-7 place-items-center rounded-[6px] bg-accent font-mono text-sm font-bold text-ink"
-        aria-hidden="true">d</span
-      >
+      <img
+        src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/logo.svg`}
+        alt=""
+        aria-hidden="true"
+        width="28"
+        height="28"
+        class="size-7 shrink-0 rounded-[6px]"
+      />
       <span class="font-mono text-base font-semibold tracking-tight">dopejs</span>
     </a>
 
