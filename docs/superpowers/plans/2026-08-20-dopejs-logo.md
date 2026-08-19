@@ -169,18 +169,23 @@ git commit -m "Add outlined dopejs wordmark lockup for README banner"
 **Files:**
 - Create: `public/logo-512.png`
 
-- [ ] **Step 1: qlmanage 光栅化并重命名**
+注意（实施中发现）：`qlmanage -t` 会把 SVG 缩略图合成到不透明白底上，org 头像的圆角外会变成白色三角。必须用 Chrome headless 透明底截图：
+
+- [ ] **Step 1: Chrome headless 透明底导出**
 
 ```bash
 cd /Users/John/Code/dopejs-page
-qlmanage -t -s 512 -o public public/logo.svg
-mv public/logo.svg.png public/logo-512.png
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --disable-gpu --no-first-run \
+  --screenshot=/tmp/logo-512.png --window-size=512,512 \
+  --default-background-color=00000000 --hide-scrollbars \
+  "file://$PWD/public/logo.svg"
+cp /tmp/logo-512.png public/logo-512.png
 ```
 
-- [ ] **Step 2: 验证尺寸**
+- [ ] **Step 2: 验证尺寸与透明度**
 
-Run: `sips -g pixelWidth -g pixelHeight public/logo-512.png`
-Expected: `pixelWidth: 512` / `pixelHeight: 512`
+Run: `sips -g pixelWidth -g pixelHeight -g hasAlpha public/logo-512.png`
+Expected: `pixelWidth: 512` / `pixelHeight: 512` / `hasAlpha: yes`；圆角外四角 alpha 应为 0（像素级验证方法见 commit 4eb9b4e 的修正记录）
 
 - [ ] **Step 3: Commit**
 
