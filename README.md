@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://dopejs.com">
+    <img src="https://dopejs.com/logo-lockup.svg" alt="dopejs" width="420">
+  </a>
+</p>
+
 # dopejs homepage
 
 The website for [dopejs](https://github.com/dopejs) — a static, multilingual site listing the
