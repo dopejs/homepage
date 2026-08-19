@@ -20,33 +20,6 @@ export const fr: ProjectCopyMap = {
     licenseNote: 'Le dépôt ne contient pas encore de fichier de licence.',
   },
 
-  'dsh-tui': {
-    tagline: 'Une interface terminal dans l’esprit de Claude Code pour DeepSeek Harness.',
-    summary:
-      'dsh-tui est distribué comme bundle Harness out-of-tree et s’exécute dans le même processus que le runtime d’agent. Il crée et reprend des agents via `ctx.agents`, rend le journal session/event durable sans dépendre du code client Web, et fournit des adaptateurs terminal pour les approbations, les questions et les commandes. Installation avec npm, démarrage avec `dtui`.',
-    body: [
-      'C’est un plugin Harness et non un client séparé : il vit dans le même processus que le runtime d’agent. Cette architecture mono-processus est un choix délibéré — un transport distant reste un adaptateur et un mode produit possibles plus tard, plutôt que d’être mêlé à la première implémentation.',
-      'L’interface suit Claude Code : la transcription se lit comme une conversation continue plutôt que comme une grille de volets qui se disputent l’écran, le Markdown est rendu au fil du streaming, et une ligne d’état indique le temps écoulé et le débit. Le raisonnement est replié derrière Ctrl-E et exclu du presse-papiers comme du contrat `--print`, pour qu’une délibération ne soit jamais prise pour la réponse.',
-      'Les pairs Harness sont déclarés `^0.1.0-rc.6` et optionnels, car le runtime Harness est fourni par la CLI `dsh` et rien n’installe ces paquets à la place du plugin. Chaque publication vérifie les installations globale et locale contre le `latest` courant de l’hôte, afin qu’une nouvelle release candidate en amont ne rende pas le paquet silencieusement non installable.',
-      'L’ergonomie du terminal est la substance du projet : un éditeur multiligne avec déplacement de curseur Unicode, sélection, annuler/rétablir, historique borné et bracketed paste ; des références `@chemin` résolues à l’envoi ; une transcription qui suit la sortie jusqu’à ce que la navigation l’en détache, avec recherche bornée ; une palette de commandes floue sur Ctrl-P ; et un centre de sessions sur Ctrl-O qui ne change de session que si l’agent est au repos et l’éditeur vide.',
-    ],
-    highlights: [
-      'Transcription en colonne unique dans l’esprit de Claude Code : une conversation continue, les panneaux s’ouvrant à la demande au lieu de se disputer l’écran.',
-      'Markdown rendu pendant le streaming, via un lecteur borné qui ne lève jamais d’exception — une clôture de bloc de code manquante est signalée, pas masquée.',
-      'Références `@chemin` résolues contre l’espace de travail à l’envoi, chaque refus étant motivé : sortie de l’espace de travail, illisible, binaire, ou absence de stockage de pièces jointes.',
-      'Une ligne d’état avec le temps écoulé et l’effort de raisonnement ; le débit de tokens est tu plutôt que deviné quand la fenêtre est trop courte pour une mesure honnête.',
-      'Le raisonnement est replié derrière Ctrl-E et exclu de la projection presse-papiers et du contrat `--print`, pour ne jamais être exploité comme réponse.',
-      'Langue d’interface anglais ou chinois, suivant la locale de l’hôte en l’absence de choix explicite.',
-      'Un lanceur `dtui` qui initialise le profil au premier lancement et le réaligne après une mise à jour, au lieu d’afficher une commande à retaper.',
-      'La palette Ctrl-P fusionne les commandes Harness et la navigation TUI, si bien que chaque panneau reste atteignable sur les terminaux incapables d’émettre des combinaisons.',
-      'L’accessibilité est native : thèmes `default`, `high-contrast` et `no-color`, panneaux nommant des tonalités sémantiques plutôt que des couleurs, mode lecteur d’écran sans filets, mouvement réduit et remappage des touches dans un unique objet de préférences validé.',
-      'Ce que l’hôte ne fournit pas est signalé comme indisponible plutôt que fabriqué — sortie des tâches, hooks, santé MCP et coût le disent chacun clairement.',
-    ],
-    commandLabels: ['Installer', 'Lancer le TUI', 'Vérification en lecture seule'],
-    requirements:
-      'Node.js ^22.19.0 || >=24.0.0 et un identifiant fournisseur tel que DEEPSEEK_API_KEY. La CLI `dsh` délègue l’installation des profils à pnpm, qui doit donc être disponible au premier lancement.',
-  },
-
   gozen: {
     tagline: 'Commutateur d’environnements multi-CLI avec bascule automatique du proxy d’API.',
     summary:

@@ -42,20 +42,6 @@ export const projects: Project[] = [
     repo: 'https://github.com/dopejs/dope-agent',
   },
   {
-    slug: 'dsh-tui',
-    name: 'dsh-tui',
-    status: 'stable',
-    languages: ['TypeScript'],
-    license: 'MIT',
-    repo: 'https://github.com/dopejs/dsh-tui',
-    hasReleases: true,
-    commands: [
-      { command: 'npm install -g @deepseek-ai/dsh @dopejs/dsh-tui', kind: 'install' },
-      { command: 'dtui', kind: 'run' },
-      { command: 'dtui --doctor', kind: 'run' },
-    ],
-  },
-  {
     slug: 'gozen',
     name: 'GoZen',
     status: 'stable',

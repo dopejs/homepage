@@ -24,33 +24,6 @@ export const en: ProjectCopyMap = {
     licenseNote: 'No license file in the repository yet.',
   },
 
-  'dsh-tui': {
-    tagline: 'A Claude Code-style terminal interface for DeepSeek Harness.',
-    summary:
-      'dsh-tui ships as an out-of-tree Harness bundle and runs in the same process as the agent runtime. It creates and resumes agents through `ctx.agents`, renders the durable session/event log without depending on Web client code, and provides terminal adapters for approvals, questions and commands. Install it with npm and start it with `dtui`.',
-    body: [
-      'This is a Harness plugin rather than a separate client: it lives in the same process as the agent runtime. The same-process architecture is deliberate — a remote transport is left as a possible later adapter and product mode instead of being mixed into the first implementation.',
-      'The interface follows Claude Code: the transcript reads as one flowing conversation rather than a grid of panes, assistant Markdown is rendered as it streams, and a working line reports elapsed time and throughput while the agent runs. Reasoning is folded behind Ctrl-E and kept out of both the clipboard and the `--print` contract, so deliberation is never mistaken for the answer.',
-      'Harness peers are declared `^0.1.0-rc.6` and optional, because the `dsh` CLI provides the Harness runtime and nothing installs those packages on the plugin’s behalf. Every release verifies the global and local installs against the host’s current `latest`, so a new upstream release candidate cannot silently make the package uninstallable.',
-      'Terminal ergonomics are the substance of the project: a multi-line composer with Unicode cursor movement, selection, undo/redo, bounded history and bracketed paste; `@path` references resolved on submit; a transcript that follows output until navigation detaches it, with bounded search; a fuzzy command palette on Ctrl-P; and a bounded session center on Ctrl-O that switches sessions only when the agent is idle and the composer empty.',
-    ],
-    highlights: [
-      'A Claude Code-style single-column transcript: one flowing conversation, with panels reachable on demand rather than competing for the screen.',
-      'Assistant Markdown rendered as it streams, through a bounded reader that never throws — an unterminated fence is reported, not hidden.',
-      '`@path` references resolved against the workspace on submit, with every refusal reported: escaping the workspace, unreadable, binary, or no attachment store.',
-      'A working line with elapsed time and reasoning effort; the token rate is withheld rather than guessed when the window is too short to measure honestly.',
-      'Reasoning folded behind Ctrl-E, and excluded from the clipboard projection and the `--print` contract so it can never be acted on as the answer.',
-      'Interface language in English or Chinese, following the host locale when nothing was chosen.',
-      'A `dtui` launcher that bootstraps the profile on first run and realigns it after an upgrade, instead of printing a command to retype.',
-      'Ctrl-P command palette merges Harness commands with TUI navigation, so every panel stays reachable on terminals that cannot emit chords.',
-      'Accessibility is built in: `default`, `high-contrast` and `no-color` themes, panels naming semantic tones rather than colors, a screen-reader mode without box drawing, reduced motion and key-binding overrides in one validated preference object.',
-      'Capabilities the host does not provide are reported as unavailable rather than fabricated — job output, hooks, MCP health and cost each say so plainly.',
-    ],
-    commandLabels: ['Install', 'Run the TUI', 'Read-only environment check'],
-    requirements:
-      'Node.js ^22.19.0 || >=24.0.0 and a provider credential such as DEEPSEEK_API_KEY. The `dsh` CLI delegates profile installs to pnpm, so pnpm must be available on first run.',
-  },
-
   gozen: {
     tagline: 'Multi-CLI environment switcher with API proxy auto-failover.',
     summary:
