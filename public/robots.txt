@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dopejs.com/sitemap-index.xml
+Sitemap: https://dopejs.com/sitemap.xml

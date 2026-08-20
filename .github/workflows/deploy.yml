@@ -20,9 +20,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       # Custom domain configured under Settings → Pages; public/CNAME keeps it
-      # from being reset by an Actions deploy. Root domain => no path prefix.
+      # from being reset by an Actions deploy.
       SITE: https://dopejs.com
-      BASE_PATH: /
     steps:
       - uses: actions/checkout@v4
 

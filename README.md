@@ -9,8 +9,9 @@
 The website for [dopejs](https://github.com/dopejs) — a static, multilingual site listing the
 organization's projects in 11 languages.
 
-Built with [Astro](https://astro.build) 7 and Tailwind CSS 4. No client framework; the only client
-JavaScript is a small copy-to-clipboard handler that degrades gracefully.
+Built with React 19, Vite and Tailwind CSS 4, on the same architecture as the other dopejs sites:
+routes are language-neutral and pre-rendered to static HTML, every translation ships in the bundle,
+and the visitor's language is resolved on the client from the shared preference.
 
 ## Develop
 
@@ -24,8 +25,8 @@ pnpm build      # static output in dist/
 pnpm preview
 ```
 
-> `astro check` requires TypeScript 6.x. TypeScript 7's native compiler does not yet expose the
-> programmatic API the Astro language server uses, so the dependency is pinned to `^6` on purpose.
+`pnpm build` runs the client build, then an SSR build, then renders each route to static HTML with
+its route descriptor embedded, and finally writes the sitemap and the legacy locale redirects.
 
 ## Content and languages
 
@@ -35,9 +36,23 @@ Structural project metadata (slug, status, languages, license, repo, commands) l
 source for both — other locales are translations of it, and TypeScript enforces that every locale
 defines every UI key.
 
-Locales: `en` (root), `zh`, `zh-tw`, `es`, `fr`, `de`, `ru`, `he`, `ar`, `ja`, `ko`. Hebrew and
-Arabic render RTL: `dir` comes from the locale registry and the layout uses logical properties
-(`ms-*`, `text-start`), so no separate stylesheet is needed. Shell commands stay LTR everywhere.
+Locales live in [`src/locales.ts`](src/locales.ts), keyed by BCP 47 tag: `en` (default), `zh-Hans`,
+`zh-Hant`, `es`, `fr`, `de`, `ru`, `he`, `ar`, `ja`, `ko`. Hebrew and Arabic render RTL: `dir` comes
+from the registry and the layout uses logical properties (`ms-*`, `text-start`), so no separate
+stylesheet is needed. Shell commands stay LTR everywhere.
+
+## Language preference
+
+There are no per-language URLs. [`src/language-preference.ts`](src/language-preference.ts) resolves
+the language from `localStorage["dopejs.locale"]`, then the `dopejs_locale` cookie, then
+`navigator.languages`. Choosing a language writes both, and the cookie is set on `Domain=dopejs.com`,
+so the choice follows the visitor across dopejs.com, kura.dopejs.com, pingo.dopejs.com and the rest.
+The file is a port of the one in the Pingo site; the cookie name, storage key and BCP 47 values are
+the shared contract between the sites, so change them everywhere at once or not at all.
+
+The trade-off is deliberate and worth knowing: without JavaScript, or for a crawler, every route
+serves its default-locale HTML, and there are no hreflang alternates to index. The previous
+per-language URLs (`/zh/`, `/ja/projects/kura/`, …) now redirect to their language-neutral route.
 
 > **Translations are machine-generated and have not been reviewed by native speakers.** The footer
 > says so on every page. Replacing any locale file with a reviewed translation is a drop-in change —
@@ -75,11 +90,15 @@ moves back to `dopejs.github.io/homepage/`, set `SITE=https://dopejs.github.io` 
 
 ```
 src/
-  components/   Header, Footer, LanguageMenu, Home, ProjectCard, ProjectDetail, CommandBlock
-  data/         projects.ts (metadata), site.ts (org/repo URLs), copy/<locale>.ts (prose)
-  i18n/         config.ts (locale registry), ui/<locale>.ts (strings), utils.ts (paths, lookup)
-  layouts/      Base.astro (head, dir, hreflang, OG, skip link)
-  lib/          status.ts (badge tones), project-paths.ts (static paths + prev/next)
-  pages/        index.astro + projects/[slug].astro (en), [lang]/… (every other locale)
-  styles/       global.css (Tailwind theme + base layer)
+  App.tsx              route + locale state, header/footer shell
+  main.tsx             client entry: resolves the language, hydrates or renders
+  ssr.tsx              server entry: render(route) and metaForRoute(route)
+  routes.ts            the six language-neutral routes, and prev/next neighbours
+  locales.ts           locale registry (path, lang, dir, label, ui strings)
+  language-preference.ts   shared localStorage + cross-subdomain cookie
+  components/          Header, Footer, LanguageMenu, Home, ProjectCard, ProjectDetail, ...
+  data/                projects.ts (metadata), site.ts (URLs), copy/<locale>.ts (prose)
+  i18n/ui/<locale>.ts  interface strings
+  styles.css           Tailwind theme + base layer
+scripts/build-site.mjs  static build: client, SSR, HTML per route, sitemap, redirects
 ```

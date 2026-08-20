@@ -5,19 +5,22 @@
   "private": true,
   "description": "Website for dopejs — open source tools for AI-era development",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "check": "astro check"
+    "dev": "vite",
+    "build": "node scripts/build-site.mjs",
+    "preview": "vite preview --outDir dist",
+    "check": "tsc --noEmit"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.3",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.2.2",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.10",
-    "typescript": "^6.0.3"
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.1.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.2.2"
   }
 }
