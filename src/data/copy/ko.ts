@@ -17,7 +17,6 @@ export const ko: ProjectCopyMap = {
       '테스트와 프로덕션 환경 분리 — `~/.dope-test`는 19192 포트, `~/.dope`는 19191 포트. 테스트에서는 실제 커넥터가 기본 비활성화.',
       '이전 Go 데몬은 Rust 워크스페이스로 완전히 대체되었으며 마이그레이션 기록은 `crates/MIGRATION.md`에 있습니다.',
     ],
-    licenseNote: '저장소에 아직 라이선스 파일이 없습니다.',
   },
 
   gozen: {
@@ -80,7 +79,6 @@ export const ko: ProjectCopyMap = {
     ],
     commandLabels: ['저장소 체크아웃에서 프로브 실행'],
     requirements: 'Node.js 22.12+, pnpm 10.33.2, Rust 1.96.0(wasm32-unknown-unknown 타깃 포함).',
-    licenseNote: '저장소에 아직 라이선스 파일이 없습니다.',
   },
 
   deckle: {

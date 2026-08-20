@@ -69,7 +69,7 @@ export const projects: Project[] = [
     logo: 'loopforge.svg',
     status: 'early',
     languages: ['Python'],
-    license: 'MIT',
+    license: 'Apache-2.0',
     repo: 'https://github.com/dopejs/loopforge',
     commands: [
       { command: 'uv tool install git+https://github.com/dopejs/loopforge.git', kind: 'install' },
@@ -83,7 +83,7 @@ export const projects: Project[] = [
     logoLight: 'pingo-light.svg',
     status: 'early',
     languages: ['TypeScript', 'Rust'],
-    license: null,
+    license: 'Apache-2.0',
     repo: 'https://github.com/dopejs/pingo',
     homepage: 'https://pingo.dopejs.com/',
     hasReleases: true,

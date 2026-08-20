@@ -17,7 +17,6 @@ export const ru: ProjectCopyMap = {
       'Разделённые тестовая и боевая среды — `~/.dope-test` на порту 19192 против `~/.dope` на 19191, причём в тесте реальные коннекторы по умолчанию отключены.',
       'Прежний демон на Go полностью заменён Rust-воркспейсом; миграция описана в `crates/MIGRATION.md`.',
     ],
-    licenseNote: 'В репозитории пока нет файла лицензии.',
   },
 
   gozen: {
@@ -80,7 +79,6 @@ export const ru: ProjectCopyMap = {
     ],
     commandLabels: ['Запустить пробу из клона репозитория'],
     requirements: 'Node.js 22.12+, pnpm 10.33.2 и Rust 1.96.0 с целью wasm32-unknown-unknown.',
-    licenseNote: 'В репозитории пока нет файла лицензии.',
   },
 
   deckle: {

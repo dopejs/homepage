@@ -17,7 +17,6 @@ export const fr: ProjectCopyMap = {
       'Environnements de test et de production séparés — `~/.dope-test` sur le port 19192 contre `~/.dope` sur 19191, les connecteurs réels étant désactivés par défaut en test.',
       'L’ancien daemon Go a été entièrement remplacé par le workspace Rust ; la migration est consignée dans `crates/MIGRATION.md`.',
     ],
-    licenseNote: 'Le dépôt ne contient pas encore de fichier de licence.',
   },
 
   gozen: {
@@ -80,7 +79,6 @@ export const fr: ProjectCopyMap = {
     ],
     commandLabels: ['Lancer la sonde depuis un clone du dépôt'],
     requirements: 'Node.js 22.12+, pnpm 10.33.2 et Rust 1.96.0 avec la cible wasm32-unknown-unknown.',
-    licenseNote: 'Le dépôt ne contient pas encore de fichier de licence.',
   },
 
   deckle: {

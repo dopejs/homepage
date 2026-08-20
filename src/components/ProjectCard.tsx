@@ -41,9 +41,20 @@ export function ProjectCard({ locale, project, index }: Props) {
       <p className="text-[0.95rem] leading-relaxed text-muted">{c.tagline}</p>
 
       <div className="mt-auto flex flex-wrap items-center gap-x-3 gap-y-2 pt-2 text-sm">
-        <span className="font-mono text-[11px] text-faint" dir="ltr">
-          {project.languages.join(' · ')}
-          {project.license !== null && ` · ${project.license}`}
+        <span className="flex flex-wrap items-center gap-1.5" dir="ltr">
+          {project.languages.map((language) => (
+            <span
+              key={language}
+              className="rounded-md border border-line px-1.5 py-0.5 font-mono text-[10px] text-muted"
+            >
+              {language}
+            </span>
+          ))}
+          {project.license !== null && (
+            <span className="rounded-md border border-line px-1.5 py-0.5 font-mono text-[10px] text-muted">
+              {project.license}
+            </span>
+          )}
         </span>
         <span className="ms-auto inline-flex items-center gap-1 font-semibold text-accent">
           {locale.ui['projects.details']}

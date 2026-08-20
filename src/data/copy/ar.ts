@@ -17,7 +17,6 @@ export const ar: ProjectCopyMap = {
       'فصل بيئتي الاختبار والإنتاج — `~/.dope-test` على المنفذ 19192 مقابل `~/.dope` على 19191، مع تعطيل الموصلات الحقيقية افتراضيًا في بيئة الاختبار.',
       'استُبدلت خدمة Go السابقة بالكامل بمساحة عمل Rust، وموثّق ذلك في `crates/MIGRATION.md`.',
     ],
-    licenseNote: 'لا يحتوي المستودع بعد على ملف ترخيص.',
   },
 
   gozen: {
@@ -80,7 +79,6 @@ export const ar: ProjectCopyMap = {
     ],
     commandLabels: ['تشغيل شريحة القياس من نسخة محلية من المستودع'],
     requirements: 'Node.js 22.12+ و pnpm 10.33.2 و Rust 1.96.0 مع هدف wasm32-unknown-unknown.',
-    licenseNote: 'لا يحتوي المستودع بعد على ملف ترخيص.',
   },
 
   deckle: {

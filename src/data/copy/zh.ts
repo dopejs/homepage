@@ -17,7 +17,6 @@ export const zh: ProjectCopyMap = {
       '测试与生产环境隔离 —— `~/.dope-test` 使用 19192 端口，`~/.dope` 使用 19191；测试环境默认关闭真实连接器。',
       '早期的 Go 守护进程已被 Rust workspace 完全替代，迁移过程记录在 `crates/MIGRATION.md`。',
     ],
-    licenseNote: '仓库尚未添加 license 文件。',
   },
 
   gozen: {
@@ -80,7 +79,6 @@ export const zh: ProjectCopyMap = {
     ],
     commandLabels: ['从仓库源码运行平台探针'],
     requirements: 'Node.js 22.12+、pnpm 10.33.2、Rust 1.96.0，并安装 wasm32-unknown-unknown target。',
-    licenseNote: '仓库尚未添加 license 文件。',
   },
 
   deckle: {

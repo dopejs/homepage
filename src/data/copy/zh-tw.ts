@@ -17,7 +17,6 @@ export const zhTW: ProjectCopyMap = {
       '測試與正式環境隔離 —— `~/.dope-test` 使用 19192 連接埠，`~/.dope` 使用 19191；測試環境預設關閉真實連接器。',
       '早期的 Go 常駐程式已被 Rust workspace 完全取代，遷移過程記錄在 `crates/MIGRATION.md`。',
     ],
-    licenseNote: '儲存庫尚未加入 license 檔案。',
   },
 
   gozen: {
@@ -80,7 +79,6 @@ export const zhTW: ProjectCopyMap = {
     ],
     commandLabels: ['從儲存庫原始碼執行平台探針'],
     requirements: 'Node.js 22.12+、pnpm 10.33.2、Rust 1.96.0，並安裝 wasm32-unknown-unknown target。',
-    licenseNote: '儲存庫尚未加入 license 檔案。',
   },
 
   deckle: {

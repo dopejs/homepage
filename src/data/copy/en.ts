@@ -21,7 +21,6 @@ export const en: ProjectCopyMap = {
       'Separate test and prod environments — `~/.dope-test` on port 19192 versus `~/.dope` on 19191, with live connectors disabled by default in test.',
       'The earlier Go daemon was fully replaced by the Rust workspace; the migration is recorded in `crates/MIGRATION.md`.',
     ],
-    licenseNote: 'No license file in the repository yet.',
   },
 
   gozen: {
@@ -84,7 +83,6 @@ export const en: ProjectCopyMap = {
     ],
     commandLabels: ['Run the probe from a checkout of the repository'],
     requirements: 'Node.js 22.12+, pnpm 10.33.2, Rust 1.96.0 with the wasm32-unknown-unknown target.',
-    licenseNote: 'No license file in the repository yet.',
   },
 
   deckle: {

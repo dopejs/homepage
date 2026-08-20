@@ -17,7 +17,6 @@ export const de: ProjectCopyMap = {
       'Getrennte Test- und Produktionsumgebungen — `~/.dope-test` auf Port 19192 gegenüber `~/.dope` auf 19191, echte Konnektoren im Test standardmäßig deaktiviert.',
       'Der frühere Go-Daemon wurde vollständig durch den Rust-Workspace ersetzt; die Migration ist in `crates/MIGRATION.md` dokumentiert.',
     ],
-    licenseNote: 'Das Repository enthält noch keine Lizenzdatei.',
   },
 
   gozen: {
@@ -80,7 +79,6 @@ export const de: ProjectCopyMap = {
     ],
     commandLabels: ['Probe aus einem Checkout des Repositorys ausführen'],
     requirements: 'Node.js 22.12+, pnpm 10.33.2 und Rust 1.96.0 mit dem Target wasm32-unknown-unknown.',
-    licenseNote: 'Das Repository enthält noch keine Lizenzdatei.',
   },
 
   deckle: {

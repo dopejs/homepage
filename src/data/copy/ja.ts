@@ -17,7 +17,6 @@ export const ja: ProjectCopyMap = {
       'テスト環境と本番環境を分離 — `~/.dope-test` はポート 19192、`~/.dope` は 19191。テストでは実際のコネクターは既定で無効。',
       '以前の Go 製デーモンは Rust ワークスペースに完全に置き換えられ、その記録は `crates/MIGRATION.md` にあります。',
     ],
-    licenseNote: 'リポジトリにはまだライセンスファイルがありません。',
   },
 
   gozen: {
@@ -80,7 +79,6 @@ export const ja: ProjectCopyMap = {
     ],
     commandLabels: ['リポジトリのチェックアウトからプローブを実行'],
     requirements: 'Node.js 22.12+、pnpm 10.33.2、Rust 1.96.0（wasm32-unknown-unknown ターゲット付き）。',
-    licenseNote: 'リポジトリにはまだライセンスファイルがありません。',
   },
 
   deckle: {

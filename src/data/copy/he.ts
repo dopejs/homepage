@@ -17,7 +17,6 @@ export const he: ProjectCopyMap = {
       'הפרדה בין סביבת בדיקות לייצור — `~/.dope-test` בפורט 19192 מול `~/.dope` בפורט 19191, כשמחברים אמיתיים מושבתים כברירת מחדל בבדיקות.',
       'הדימון הקודם ב-Go הוחלף לגמרי ב-workspace של Rust; המעבר מתועד ב-`crates/MIGRATION.md`.',
     ],
-    licenseNote: 'עדיין אין קובץ רישיון במאגר.',
   },
 
   gozen: {
@@ -80,7 +79,6 @@ export const he: ProjectCopyMap = {
     ],
     commandLabels: ['הרצת הבדיקה מתוך עותק מקומי של המאגר'],
     requirements: 'Node.js 22.12+‎, pnpm 10.33.2 ו-Rust 1.96.0 עם היעד wasm32-unknown-unknown.',
-    licenseNote: 'עדיין אין קובץ רישיון במאגר.',
   },
 
   deckle: {
