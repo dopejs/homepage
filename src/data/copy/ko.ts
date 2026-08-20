@@ -61,7 +61,6 @@ export const ko: ProjectCopyMap = {
     commandLabels: ['CLI 설치', 'skills를 Codex에 설치'],
     requirements:
       'Python 3.11+, uv, Git. Godot 4는 Godot 빌드 워크플로를 쓸 때만 필요합니다. PyPI에 게시되지 않았으므로 Git URL로 설치하세요.',
-    licenseNote: '저장소에 아직 라이선스 파일이 없습니다.',
   },
 
   pingo: {

@@ -61,7 +61,6 @@ export const ar: ProjectCopyMap = {
     commandLabels: ['تثبيت واجهة الأوامر', 'تثبيت الـ skills في Codex'],
     requirements:
       'Python 3.11+ و uv و Git، أما Godot 4 فيلزم فقط لمسار البناء عبر Godot. غير منشور على PyPI — ثبِّت من عنوان Git.',
-    licenseNote: 'لا يحتوي المستودع بعد على ملف ترخيص.',
   },
 
   pingo: {

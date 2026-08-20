@@ -61,7 +61,6 @@ export const fr: ProjectCopyMap = {
     commandLabels: ['Installer la CLI', 'Installer les skills dans Codex'],
     requirements:
       'Python 3.11+, uv et Git ; Godot 4 uniquement pour le flux de build Godot. Non publié sur PyPI : installez depuis l’URL Git.',
-    licenseNote: 'Le dépôt ne contient pas encore de fichier de licence.',
   },
 
   pingo: {

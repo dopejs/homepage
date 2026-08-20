@@ -61,7 +61,6 @@ export const he: ProjectCopyMap = {
     commandLabels: ['התקנת ה-CLI', 'התקנת ה-skills ל-Codex'],
     requirements:
       'Python 3.11+‎, uv ו-Git; ‏Godot 4 נדרש רק לתהליך הבנייה של Godot. לא פורסם ב-PyPI — התקינו מכתובת ה-Git.',
-    licenseNote: 'עדיין אין קובץ רישיון במאגר.',
   },
 
   pingo: {

@@ -63,9 +63,10 @@ export const projects: Project[] = [
   {
     slug: 'loopforge',
     name: 'Loopforge',
+    logo: 'loopforge.svg',
     status: 'early',
     languages: ['Python'],
-    license: null,
+    license: 'MIT',
     repo: 'https://github.com/dopejs/loopforge',
     commands: [
       { command: 'uv tool install git+https://github.com/dopejs/loopforge.git', kind: 'install' },

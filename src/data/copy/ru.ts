@@ -61,7 +61,6 @@ export const ru: ProjectCopyMap = {
     commandLabels: ['Установить CLI', 'Установить skills в Codex'],
     requirements:
       'Python 3.11+, uv и Git; Godot 4 нужен только для сборочного процесса Godot. В PyPI не опубликовано — ставьте по Git-URL.',
-    licenseNote: 'В репозитории пока нет файла лицензии.',
   },
 
   pingo: {

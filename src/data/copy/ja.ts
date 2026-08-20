@@ -61,7 +61,6 @@ export const ja: ProjectCopyMap = {
     commandLabels: ['CLI をインストール', 'skills を Codex に導入'],
     requirements:
       'Python 3.11+、uv、Git。Godot 4 は Godot ビルドのワークフローを使うときのみ必要です。PyPI には未公開のため、Git URL からインストールしてください。',
-    licenseNote: 'リポジトリにはまだライセンスファイルがありません。',
   },
 
   pingo: {

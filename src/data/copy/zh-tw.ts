@@ -61,7 +61,6 @@ export const zhTW: ProjectCopyMap = {
     commandLabels: ['安裝 CLI', '把 skills 安裝到 Codex'],
     requirements:
       'Python 3.11+、uv 與 Git；僅在使用 Godot 建置流程時需要 Godot 4。未發布到 PyPI —— 請從 Git URL 安裝。',
-    licenseNote: '儲存庫尚未加入 license 檔案。',
   },
 
   pingo: {
