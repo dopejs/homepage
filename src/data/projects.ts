@@ -75,6 +75,7 @@ export const projects: Project[] = [
   {
     slug: 'pingo',
     name: 'Pingo',
+    logo: 'pingo.svg',
     status: 'early',
     languages: ['TypeScript', 'Rust'],
     license: null,
