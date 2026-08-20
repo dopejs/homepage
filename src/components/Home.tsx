@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 
 import { HeroVisual } from './HeroVisual';
 import { ProjectCard } from './ProjectCard';
@@ -15,7 +15,7 @@ export function Home({ locale }: { readonly locale: SiteLocale }) {
         <div>
           <p className="mono-label text-accent">{locale.ui['hero.eyebrow']}</p>
           <p className={`mt-5 text-4xl leading-none font-extrabold tracking-tight text-accent sm:text-5xl ${display}`}>
-            dopejs
+            DopeJs
           </p>
           <h1
             className={`mt-2 max-w-2xl text-4xl leading-[1.08] font-extrabold tracking-tight sm:text-[3.25rem] ${display}`}
@@ -55,12 +55,25 @@ export function Home({ locale }: { readonly locale: SiteLocale }) {
           <p className="mt-3 max-w-2xl leading-relaxed text-muted">{locale.ui['projects.lead']}</p>
         </div>
 
-        {/* grid-cols-1 so the implicit column is minmax(0,1fr): otherwise the
-            nowrap install command widens every card past the viewport. */}
-        <div className="mt-8 grid grid-cols-1 gap-4">
+        {/* One bordered container with internal dividers, as on the other
+            dopejs sites; the trailing cell keeps the last row from ending in a
+            gap and points at the rest of the organisation. */}
+        <div className="mt-8 grid grid-cols-1 overflow-hidden rounded-2xl border border-line sm:grid-cols-2 lg:grid-cols-3 [&>*]:border-b [&>*]:border-line [&>*:last-child]:border-b-0 sm:[&>*]:border-e sm:[&>*:nth-child(2n)]:border-e-0 sm:[&>*:nth-child(n+5)]:border-b-0 lg:[&>*:nth-child(2n)]:border-e lg:[&>*:nth-child(3n)]:border-e-0 lg:[&>*:nth-child(n+4)]:border-b-0">
           {projects.map((project, index) => (
             <ProjectCard key={project.slug} locale={locale} project={project} index={index} />
           ))}
+          <a
+            href={ORG_URL}
+            rel="noopener noreferrer"
+            target="_blank"
+            className="group flex flex-col justify-center gap-2 bg-surface p-6 text-muted transition-colors hover:bg-surface-2 sm:p-7"
+          >
+            <span className="inline-flex items-center gap-1.5 font-semibold">
+              {locale.ui['about.cta']}
+              <ArrowUpRight size={16} />
+            </span>
+            <span className="font-mono text-[11px] text-faint">github.com/dopejs</span>
+          </a>
         </div>
       </section>
 

@@ -1,9 +1,9 @@
 import type { UIStrings } from './en';
 
 export const ja: UIStrings = {
-  'site.title': 'dopejs — AI ネイティブ開発のためのオープンソースツール',
+  'site.title': 'DopeJs — AI ネイティブ開発のためのオープンソースツール',
   'site.description':
-    'dopejs は AI ネイティブな開発のためのオープンソースツールを開発しています。エージェントランタイム、ターミナル向けコーディングエージェント、CLI 環境ツール、Canvas レンダリングエンジン。',
+    'DopeJs は AI ネイティブな開発のためのオープンソースツールを開発しています。エージェントランタイム、ターミナル向けコーディングエージェント、CLI 環境ツール、Canvas レンダリングエンジン。',
 
   'nav.projects': 'プロジェクト',
   'nav.about': 'について',
@@ -15,7 +15,7 @@ export const ja: UIStrings = {
   'hero.eyebrow': 'オープンソース · 公開開発',
   'hero.title': 'AI ネイティブ開発のためのツール。',
   'hero.body':
-    'dopejs は、ひとつの問いを軸にした小さなオープンソースプロジェクト群です。エージェントが開発ループの一部になったとき、毎日使うソフトウェアはどうあるべきか。エージェントランタイム、ターミナル向けコーディングエージェント、CLI 環境ツール、Canvas レンダリングエンジン — すべて公開の場で開発しています。',
+    'DopeJs は、ひとつの問いを軸にした小さなオープンソースプロジェクト群です。エージェントが開発ループの一部になったとき、毎日使うソフトウェアはどうあるべきか。エージェントランタイム、ターミナル向けコーディングエージェント、CLI 環境ツール、Canvas レンダリングエンジン — すべて公開の場で開発しています。',
   'hero.cta.projects': 'プロジェクトを見る',
   'hero.cta.github': 'GitHub で見る',
   'hero.count': '個のプロジェクト',
@@ -51,12 +51,12 @@ export const ja: UIStrings = {
   'project.prev': '前へ',
   'project.next': '次へ',
 
-  'about.title': 'dopejs について',
+  'about.title': 'DopeJs について',
   'about.body':
     'ここにあるものはすべて GitHub 上で公開開発されています。どのリポジトリでも Issue と Pull Request を歓迎します。「まだ動かない」という率直な報告も同じく歓迎です。いくつかのプロジェクトは意図的にプレリリース段階にあり、その場合はプロジェクト自身が明示しています。',
   'about.cta': 'GitHub で組織をフォローする',
 
   'footer.built': 'Astro で構築。ソースは GitHub にあります。',
-  'footer.rights': 'dopejs',
+  'footer.rights': 'DopeJs',
   'footer.translations': '翻訳は機械生成です。修正の提案を歓迎します。',
 };

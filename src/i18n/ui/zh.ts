@@ -1,9 +1,9 @@
 import type { UIStrings } from './en';
 
 export const zh: UIStrings = {
-  'site.title': 'dopejs —— 面向 AI 原生开发的开源工具',
+  'site.title': 'DopeJs —— 面向 AI 原生开发的开源工具',
   'site.description':
-    'dopejs 构建面向 AI 原生开发的开源工具：Agent 运行时、终端编码 Agent、CLI 环境工具与 Canvas 渲染引擎。',
+    'DopeJs 构建面向 AI 原生开发的开源工具：Agent 运行时、终端编码 Agent、CLI 环境工具与 Canvas 渲染引擎。',
 
   'nav.projects': '项目',
   'nav.about': '关于',
@@ -15,7 +15,7 @@ export const zh: UIStrings = {
   'hero.eyebrow': '开源 · 公开开发',
   'hero.title': '面向 AI 原生开发的工具。',
   'hero.body':
-    'dopejs 是一组围绕同一个问题展开的开源项目：当 Agent 成为开发闭环的一部分，你每天使用的软件应该长什么样？Agent 运行时、终端编码 Agent、CLI 环境工具、Canvas 渲染引擎 —— 全部公开开发。',
+    'DopeJs 是一组围绕同一个问题展开的开源项目：当 Agent 成为开发闭环的一部分，你每天使用的软件应该长什么样？Agent 运行时、终端编码 Agent、CLI 环境工具、Canvas 渲染引擎 —— 全部公开开发。',
   'hero.cta.projects': '查看项目',
   'hero.cta.github': '在 GitHub 上查看',
   'hero.count': '个项目',
@@ -51,12 +51,12 @@ export const zh: UIStrings = {
   'project.prev': '上一个',
   'project.next': '下一个',
 
-  'about.title': '关于 dopejs',
+  'about.title': '关于 DopeJs',
   'about.body':
     '所有项目都在 GitHub 上公开开发。欢迎在任意仓库提交 Issue 与 Pull Request —— 也欢迎如实反馈"这个还不能用"。其中若干项目按设计就处于预发布阶段，项目页面会明确说明。',
   'about.cta': '在 GitHub 上关注该组织',
 
   'footer.built': '由 Astro 构建，源码在 GitHub。',
-  'footer.rights': 'dopejs',
+  'footer.rights': 'DopeJs',
   'footer.translations': '译文由机器生成，欢迎指正。',
 };

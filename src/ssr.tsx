@@ -25,7 +25,7 @@ export function metaForRoute(route: SiteRoute): { title: string; description: st
   const project = getProject(route.slug);
   const text = copy.en[route.slug];
   return {
-    title: `${project?.name ?? route.slug} — dopejs`,
+    title: `${project?.name ?? route.slug} — DopeJs`,
     description: text?.tagline ?? ui.en['site.description'],
   };
 }

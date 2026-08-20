@@ -14,7 +14,7 @@ export function Header({ locale, onLocaleChange }: Props) {
       <div className="wrap flex h-16 items-center gap-4">
         <a href="/" className="group flex shrink-0 items-center gap-2.5">
           <img src="/logo.svg" alt="" aria-hidden="true" width={28} height={28} className="rounded-lg" />
-          <span className="text-[1.05rem] font-bold tracking-tight">dopejs</span>
+          <span className="text-[1.05rem] font-bold tracking-tight">DopeJs</span>
           <span className="mono-label rounded-full border border-line px-2 py-0.5 text-[0.62rem]">OSS</span>
         </a>
 
