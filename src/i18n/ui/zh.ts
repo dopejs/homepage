@@ -54,7 +54,7 @@ export const zh: UIStrings = {
     '所有项目都在 GitHub 上公开开发。欢迎在任意仓库提交 Issue 与 Pull Request —— 也欢迎如实反馈"这个还不能用"。其中若干项目按设计就处于预发布阶段，项目页面会明确说明。',
   'about.cta': '在 GitHub 上关注该组织',
 
-  'footer.built': '由 Astro 构建，源码在 GitHub。',
+  'footer.built': '由 React 与 Vite 构建，源码在 GitHub。',
   'footer.rights': 'DopeJs',
   'footer.translations': '译文由机器生成，欢迎指正。',
 };

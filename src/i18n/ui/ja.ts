@@ -54,7 +54,7 @@ export const ja: UIStrings = {
     'ここにあるものはすべて GitHub 上で公開開発されています。どのリポジトリでも Issue と Pull Request を歓迎します。「まだ動かない」という率直な報告も同じく歓迎です。いくつかのプロジェクトは意図的にプレリリース段階にあり、その場合はプロジェクト自身が明示しています。',
   'about.cta': 'GitHub で組織をフォローする',
 
-  'footer.built': 'Astro で構築。ソースは GitHub にあります。',
+  'footer.built': 'React と Vite で構築。ソースは GitHub にあります。',
   'footer.rights': 'DopeJs',
   'footer.translations': '翻訳は機械生成です。修正の提案を歓迎します。',
 };

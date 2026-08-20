@@ -54,7 +54,7 @@ export const zhTW: UIStrings = {
     '所有專案都在 GitHub 上公開開發。歡迎在任一儲存庫提交 Issue 與 Pull Request —— 也歡迎如實回報「這個還不能用」。其中若干專案依設計就處於預發布階段，專案頁面會明確說明。',
   'about.cta': '在 GitHub 上追蹤此組織',
 
-  'footer.built': '以 Astro 建置，原始碼在 GitHub。',
+  'footer.built': '以 React 與 Vite 建置，原始碼在 GitHub。',
   'footer.rights': 'DopeJs',
   'footer.translations': '譯文由機器產生，歡迎指正。',
 };

@@ -54,7 +54,7 @@ export const fr: UIStrings = {
     'Tout est développé au grand jour, sur GitHub. Les issues et les pull requests sont les bienvenues sur n’importe quel dépôt — tout comme les retours honnêtes signalant que quelque chose ne fonctionne pas encore. Plusieurs de ces projets sont en préversion par choix ; lorsque c’est le cas, le projet le dit.',
   'about.cta': 'Suivre l’organisation sur GitHub',
 
-  'footer.built': 'Construit avec Astro. Sources sur GitHub.',
+  'footer.built': 'Construit avec React et Vite. Sources sur GitHub.',
   'footer.rights': 'DopeJs',
   'footer.translations': 'Traductions générées automatiquement — les corrections sont bienvenues.',
 };

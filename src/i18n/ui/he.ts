@@ -54,7 +54,7 @@ export const he: UIStrings = {
     'כל מה שכאן מפותח בגלוי, ב-GitHub. issues ו-pull requests יתקבלו בברכה בכל מאגר — וכך גם דיווחים כנים על משהו שעדיין לא עובד. כמה מהפרויקטים נמצאים לפני שחרור מתוך בחירה, ובמקרים כאלה הפרויקט אומר זאת במפורש.',
   'about.cta': 'עקבו אחרי הארגון ב-GitHub',
 
-  'footer.built': 'נבנה עם Astro. הקוד ב-GitHub.',
+  'footer.built': 'נבנה עם React ו-Vite. הקוד ב-GitHub.',
   'footer.rights': 'DopeJs',
   'footer.translations': 'התרגומים נוצרו אוטומטית — תיקונים יתקבלו בברכה.',
 };

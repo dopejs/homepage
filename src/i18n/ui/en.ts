@@ -53,7 +53,7 @@ export const en = {
     'Everything here is developed in the open, on GitHub. Issues and pull requests are welcome on any repository — and so are honest reports that something does not work yet. Several of these projects are pre-release by design; where that is the case, the project says so.',
   'about.cta': 'Follow the org on GitHub',
 
-  'footer.built': 'Built with Astro. Source on GitHub.',
+  'footer.built': 'Built with React and Vite. Source on GitHub.',
   'footer.rights': 'DopeJs',
   'footer.translations': 'Translations are machine-generated — corrections are welcome.',
 } as const;

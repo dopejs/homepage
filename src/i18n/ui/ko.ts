@@ -54,7 +54,7 @@ export const ko: UIStrings = {
     '여기 있는 모든 것은 GitHub에서 공개적으로 개발됩니다. 어느 저장소든 이슈와 풀 리퀘스트를 환영하며, "아직 동작하지 않는다"는 솔직한 제보도 마찬가지로 환영합니다. 일부 프로젝트는 의도적으로 프리릴리스 상태이며, 해당하는 경우 프로젝트가 직접 밝히고 있습니다.',
   'about.cta': 'GitHub에서 조직 팔로우하기',
 
-  'footer.built': 'Astro로 제작. 소스는 GitHub에 있습니다.',
+  'footer.built': 'React와 Vite로 제작. 소스는 GitHub에 있습니다.',
   'footer.rights': 'DopeJs',
   'footer.translations': '번역은 기계 생성입니다 — 수정 제안을 환영합니다.',
 };
