@@ -41,25 +41,25 @@ export const fr: ProjectCopyMap = {
   },
 
   loopforge: {
-    tagline: 'Une boîte à outils de développement de jeux faite d’Agent Skills et d’une CLI déterministe.',
+    tagline: 'Un agent local et autonome de développement de jeux, avec un atelier de bureau.',
     summary:
-      'Loopforge aide un agent de code que vous utilisez déjà à transformer une idée de jeu en builds jouables, testés et étayés par des preuves, sans enfermer l’état du projet dans une conversation. Le jugement créatif reste dans les skills et la relecture humaine ; les transitions d’état, la validation, les preuves et la reprise restent dans la CLI. Le projet en est à une implémentation précoce.',
+      'Loopforge travaille à l’intérieur d’un dépôt de jeu ordinaire : il transforme des idées en expériences jouables, réunit des preuves techniques et humaines, et aide à décider explicitement de garder, d’abandonner ou de refondre. L’Agent est le plan de contrôle et le Workbench de bureau en est l’interface ; la CLI et les Skills sont des capacités internes, pas des outils à piloter à la main.',
     body: [
-      'C’est précisément cette séparation qui compte. Les skills portent le jugement créatif et la relecture humaine ; la CLI possède les transitions d’état, la validation, les preuves et la reprise. Plutôt que de construire un runtime d’agents propriétaire, Loopforge pilote les agents de code que vous exécutez déjà : `loopforge setup --host codex` installe les skills officielles dans le répertoire de skills de Codex, et `$loopforge-router` lit l’état durable du projet pour orienter l’action suivante vers le prototypage de gameplay, l’implémentation Godot, le game design ou la production artistique.',
-      'L’état du projet est durable et inspectable au lieu de vivre dans un journal de conversation : événements chaînés par empreinte, verrouillage, réconciliation, diagnostics en lecture seule, validation de l’intégrité des artefacts, preuves enregistrées, fiches d’hypothèses et avancement d’étape sous garde. `status` dérive en outre des affirmations de qualité à portée définie et les marque comme périmées lorsque l’identité de leur source change : une affirmation ne peut pas survivre à ce qu’elle décrivait.',
-      'Le dépôt dit clairement ce qui n’est pas fait. Il s’agit d’une implémentation précoce : la validation contre une installation Godot réelle et les skills de publication en production ne sont pas encore implémentées. Le paquet n’est pas non plus publié sur PyPI — `uv tool install loopforge` ne désigne pas ce projet — installez donc depuis l’URL Git et épinglez une étiquette ou un commit relu pour des environnements reproductibles.',
+      'Ouvrir un projet, c’est toute la préparation : le Workbench prend un dépôt de jeu via le sélecteur de dossier natif, démarre ou reconnecte l’Agent de ce projet et charge une part restreinte du contexte, sans exposer les identifiants de fournisseur, les variables d’environnement ni les jetons d’accès.',
+      'L’interface s’organise autour du projet et non du processus de l’Agent. Un menu de projet change de dépôt et de vue, l’en-tête porte l’identité du projet et ses actions, la zone de travail accueille les outils propres à chaque mode, et une barre flottante passe de l’exploration à la conception, à la compilation puis au test. Le chat accompagne le travail au lieu de le remplacer, car l’état et les preuves vivent dans le dépôt : l’historique de conversation n’est pas la seule trace de ce qui s’est passé.',
+      'Les frontières sont voulues. `apps/agent` porte l’Agent métier et tout ce que voit l’utilisateur ; `cli` porte les opérations déterministes et un adaptateur sans interface, et n’est explicitement pas le plan de contrôle ; `skills` porte des capacités versionnées pour le travail qui demande du jugement ; `contracts` porte les schémas versionnés. Kura fournit le comportement générique de modèle, de session et d’exécution sans conserver d’état Loopforge, et l’application publiée embarque l’Agent avec un sidecar Kura épinglé.',
     ],
     highlights: [
-      'Des Agent Skills et une CLI Python déterministe : le jugement créatif dans les skills, les transitions d’état et la validation dans la CLI.',
-      'État d’événements chaîné par empreinte, avec verrouillage, réconciliation et reprise : l’historique du projet est auditable plutôt que conversationnel.',
-      'Démarche fondée sur les preuves : preuves enregistrées, fiches d’hypothèses, validation de l’intégrité des artefacts et avancement d’étape sous garde.',
-      'Des affirmations de qualité à portée définie, qui périment d’elles-mêmes quand l’identité de leur source change.',
-      'Adaptateur de build et de test pour Godot 4, import de playtests et décisions atomiques de conserver, abandonner ou refondre un prototype.',
-      'Pilote les agents de code que vous utilisez déjà au lieu d’imposer un runtime d’agents propriétaire.',
+      'Un Workbench de bureau (Tauri + React) comme surface du produit, dont l’Agent est l’unique sidecar.',
+      'Les projets s’ouvrent depuis un dépôt de jeu ordinaire ; identifiants et variables d’environnement restent hors du contexte chargé.',
+      'Barre de modes pour l’exploration, la conception, la compilation et le test, avec le chat de l’Agent à côté du travail plutôt qu’à sa place.',
+      'L’état et les preuves sont écrits dans le dépôt : la trace de ce qui s’est passé ne dépend pas d’un journal de conversation.',
+      'Les opérations déterministes et les Skills versionnées restent disponibles pour l’automatisation et le diagnostic — des capacités internes, pas la porte d’entrée.',
+      'Le comportement générique de modèle, de session et d’exécution vient d’un sidecar Kura épinglé, la logique métier restant du côté de Loopforge.',
     ],
-    commandLabels: ['Installer la CLI', 'Installer les skills dans Codex'],
+    commandLabels: ['Lancer le Workbench depuis un clone'],
     requirements:
-      'Python 3.11+, uv et Git ; Godot 4 uniquement pour le flux de build Godot. Non publié sur PyPI : installez depuis l’URL Git.',
+      'Git, Node.js 22 et pnpm, Rust et Cargo, Python 3.11+ avec uv ; Godot 4 uniquement pour le flux Godot. Aucune version empaquetée n’existe encore : l’application de bureau se construit depuis un clone.',
   },
 
   pingo: {

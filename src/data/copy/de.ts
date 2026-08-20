@@ -41,25 +41,25 @@ export const de: ProjectCopyMap = {
   },
 
   loopforge: {
-    tagline: 'Ein Werkzeugkasten für Spieleentwicklung aus Agent Skills und einer deterministischen CLI.',
+    tagline: 'Ein eigenständiger, lokaler Agent für Spieleentwicklung, mit einer Desktop-Werkbank.',
     summary:
-      'Loopforge hilft einem Coding-Agent, den du ohnehin nutzt, aus einer Spielidee getestete, belegte und spielbare Builds zu machen — ohne den Projektzustand in einem Chat zu verstecken. Das kreative Urteil bleibt in den Skills und in der menschlichen Durchsicht; Zustandsübergänge, Validierung, Belege und Wiederherstellung bleiben in der CLI. Das Projekt steht am Anfang der Implementierung.',
+      'Loopforge arbeitet in einem ganz normalen Spiele-Repository: Es macht aus Ideen spielbare Experimente, sammelt technische und menschliche Belege und hilft, ausdrücklich zu entscheiden, ob etwas bleibt, wegfällt oder neu gebaut wird. Der Agent ist die Steuerungsebene, die Desktop-Werkbank die Oberfläche; CLI und Skills sind interne Fähigkeiten und nichts, was man von Hand bedient.',
     body: [
-      'Genau diese Aufteilung ist der Punkt. Die Skills tragen kreatives Urteil und menschliche Durchsicht, die CLI besitzt Zustandsübergänge, Validierung, Belege und Wiederherstellung. Statt eine eigene Agent-Runtime zu bauen, steuert Loopforge die Coding-Agents, die du schon betreibst: `loopforge setup --host codex` installiert die offiziellen Skills in das Skills-Verzeichnis von Codex, und `$loopforge-router` liest den dauerhaften Projektzustand und leitet den nächsten Schritt an Gameplay-Prototyping, Godot-Implementierung, Game Design oder Art-Produktion weiter.',
-      'Der Projektzustand ist dauerhaft und prüfbar, statt in einem Chatverlauf zu leben: hash-verkettete Events, Sperren, Abgleich, nur lesende Diagnosen, Integritätsprüfung von Artefakten, registrierte Belege, Hypothesen-Einträge und abgesicherte Stufenwechsel. `status` leitet zusätzlich abgegrenzte Qualitätsaussagen ab und markiert sie als veraltet, sobald sich die Identität ihrer Quelle ändert — eine Aussage überlebt nicht das, worüber sie gemacht wurde.',
-      'Das Repository benennt auch das Fehlende. Dies ist eine frühe Implementierung: Die Validierung gegen eine echte Godot-Installation und Release-Skills für die Produktionsstufe fehlen noch. Das Paket ist außerdem nicht auf PyPI veröffentlicht — `uv tool install loopforge` meint nicht dieses Projekt —, also über die Git-URL installieren und für reproduzierbare Umgebungen ein geprüftes Tag oder einen Commit festnageln.',
+      'Ein Projekt zu öffnen ist die ganze Einrichtung: Die Werkbank nimmt über den nativen Ordnerdialog ein Spiele-Repository entgegen, startet den Agent dieses Projekts oder verbindet sich neu und lädt einen begrenzten Ausschnitt des Projektkontexts — ohne Provider-Zugangsdaten, Umgebungsvariablen oder Zugriffstokens preiszugeben.',
+      'Die Oberfläche ist um das Projekt herum gebaut, nicht um den Agent-Prozess. Ein Projektmenü wechselt Repositories und Projektansichten, die Kopfzeile trägt Identität und Aktionen des Projekts, der Arbeitsbereich beherbergt modusspezifische Werkzeuge, und eine schwebende Leiste wechselt zwischen Erkunden, Entwerfen, Bauen und Testen. Der Chat steht neben der Arbeit, statt sie zu ersetzen, denn Zustand und Belege liegen im Repository: Der Chatverlauf ist nicht die einzige Aufzeichnung dessen, was geschehen ist.',
+      'Die Grenzen sind bewusst gezogen. `apps/agent` trägt den fachlichen Agent und alles, was Nutzende sehen; `cli` trägt deterministische Projektoperationen und einen kopflosen Adapter und ist ausdrücklich nicht die Steuerungsebene; `skills` trägt versionierte Fähigkeiten für Arbeit, die Urteilsvermögen braucht; `contracts` trägt die versionierten Schemata. Kura liefert generisches Modell-, Sitzungs- und Laufzeitverhalten und hält keinen Loopforge-Zustand; die Release-Anwendung bündelt den Agent mit einem festgepinnten Kura-Sidecar.',
     ],
     highlights: [
-      'Agent Skills plus deterministische Python-CLI: kreatives Urteil in den Skills, Zustandsübergänge und Validierung in der CLI.',
-      'Hash-verketteter Ereigniszustand mit Sperren, Abgleich und Wiederherstellung — die Projekthistorie ist prüfbar statt gesprächsbasiert.',
-      'Belege zuerst: registrierte Belege, Hypothesen-Einträge, Integritätsprüfung von Artefakten und abgesicherte Stufenwechsel.',
-      'Abgegrenzte Qualitätsaussagen, die automatisch veralten, wenn sich die Identität ihrer Quelle ändert.',
-      'Build-/Test-Adapter für Godot 4, Import von Playtests und atomare Entscheidungen: Prototyp behalten, verwerfen oder umbauen.',
-      'Steuert Coding-Agents, die du bereits nutzt, statt eine eigene Agent-Runtime mitzubringen.',
+      'Eine Desktop-Werkbank (Tauri + React) als Produktoberfläche, deren einziger Sidecar der Agent ist.',
+      'Projekte öffnen aus einem normalen Spiele-Repository; Zugangsdaten und Umgebungsvariablen bleiben außerhalb des geladenen Kontexts.',
+      'Modusleiste für Erkunden, Entwerfen, Bauen und Testen, mit dem Agent-Chat neben der Arbeit statt an ihrer Stelle.',
+      'Zustand und Belege landen im Repository, damit die Aufzeichnung nicht am Chatverlauf hängt.',
+      'Deterministische Operationen und versionierte Skills bleiben für Automatisierung und Diagnose verfügbar — interne Fähigkeiten, nicht der Einstieg.',
+      'Generisches Modell-, Sitzungs- und Laufzeitverhalten kommt aus einem festgepinnten Kura-Sidecar, die Fachlogik bleibt auf der Loopforge-Seite.',
     ],
-    commandLabels: ['CLI installieren', 'Skills in Codex installieren'],
+    commandLabels: ['Die Werkbank aus einem Checkout starten'],
     requirements:
-      'Python 3.11+, uv und Git; Godot 4 nur für den Godot-Build-Workflow. Nicht auf PyPI veröffentlicht — über die Git-URL installieren.',
+      'Git, Node.js 22 und pnpm, Rust und Cargo, Python 3.11+ mit uv; Godot 4 nur für den Godot-Workflow. Es gibt noch kein fertiges Release, die Desktop-Anwendung wird aus einem Checkout gebaut.',
   },
 
   pingo: {

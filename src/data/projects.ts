@@ -68,12 +68,13 @@ export const projects: Project[] = [
     name: 'Loopforge',
     logo: 'loopforge.svg',
     status: 'early',
-    languages: ['Python'],
+    languages: ['Python', 'TypeScript', 'Rust'],
     license: 'Apache-2.0',
     repo: 'https://github.com/dopejs/loopforge',
+    // The product is now a desktop application with no published release, so
+    // the only way in is a checkout: `dev.sh` builds the sidecars and starts it.
     commands: [
-      { command: 'uv tool install git+https://github.com/dopejs/loopforge.git', kind: 'install' },
-      { command: 'loopforge setup --host codex', kind: 'run' },
+      { command: 'git clone https://github.com/dopejs/loopforge.git && cd loopforge && ./dev.sh', kind: 'dev' },
     ],
   },
   {

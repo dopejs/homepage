@@ -41,25 +41,25 @@ export const es: ProjectCopyMap = {
   },
 
   loopforge: {
-    tagline: 'Un kit de desarrollo de juegos hecho de Agent Skills y una CLI determinista.',
+    tagline: 'Un agente local e independiente de desarrollo de videojuegos, con un banco de trabajo de escritorio.',
     summary:
-      'Loopforge ayuda a un agente de programación que ya usas a convertir una idea de juego en compilaciones jugables, probadas y respaldadas por evidencia, sin esconder el estado del proyecto dentro de un chat. El juicio creativo permanece en las skills y en la revisión humana; las transiciones de estado, la validación, la evidencia y la recuperación viven en la CLI. El proyecto está en implementación temprana.',
+      'Loopforge trabaja dentro de un repositorio de juego normal: convierte ideas en experimentos jugables, reúne evidencia técnica y humana, y ayuda a decidir de forma explícita si mantener, descartar o rehacer. El Agente es el plano de control y el Workbench de escritorio es la interfaz; la CLI y las Skills son capacidades internas, no algo que debas conducir a mano.',
     body: [
-      'La separación es justamente el punto. Las skills concentran el juicio creativo y la revisión humana; la CLI posee las transiciones de estado, la validación, la evidencia y la recuperación. En lugar de construir un runtime de agentes propio, Loopforge dirige los agentes de programación que ya ejecutas: `loopforge setup --host codex` instala las skills oficiales en el directorio de skills de Codex, y `$loopforge-router` lee el estado duradero del proyecto para encaminar la siguiente acción hacia el prototipado de jugabilidad, la implementación en Godot, el diseño de juego o la producción artística.',
-      'El estado del proyecto es duradero e inspeccionable en vez de vivir en un registro de chat: eventos encadenados por hash, bloqueo, reconciliación, diagnósticos de solo lectura, validación de integridad de artefactos, evidencia registrada, registros de hipótesis y avance de etapa con guardas. Además, `status` deriva afirmaciones de calidad con alcance definido y las marca como obsoletas cuando cambia la identidad de su fuente, de modo que una afirmación no sobreviva a aquello que describía.',
-      'El repositorio es explícito sobre lo que falta. Esto es implementación temprana: la validación contra una instalación real de Godot y las skills de publicación en etapa de producción todavía no existen. El paquete tampoco está publicado en PyPI — `uv tool install loopforge` no se refiere a este proyecto —, así que instala desde la URL de Git y fija una etiqueta o commit revisado para entornos reproducibles.',
+      'Abrir un proyecto es toda la preparación: el Workbench toma un repositorio de juego mediante el selector de carpetas del sistema, arranca o reconecta el Agente de ese proyecto y carga una porción acotada del contexto, sin exponer credenciales de proveedor, variables de entorno ni tokens de acceso.',
+      'La interfaz se organiza alrededor del proyecto y no del proceso del Agente. Un menú de proyecto cambia de repositorio y de vistas, la cabecera lleva la identidad del proyecto y sus acciones, el área de trabajo aloja herramientas propias de cada modo y una barra flotante alterna entre exploración, diseño, compilación y prueba. El chat acompaña al trabajo en vez de sustituirlo, porque el estado y la evidencia viven en el repositorio: el historial de chat no es el único registro de lo ocurrido.',
+      'Las fronteras son deliberadas. `apps/agent` contiene el Agente de dominio y todo lo que ve la persona usuaria; `cli` contiene operaciones deterministas y un adaptador headless, y explícitamente no es el plano de control; `skills` contiene capacidades versionadas para el trabajo que exige criterio; `contracts` contiene los esquemas versionados. Kura aporta el comportamiento genérico de modelo, sesión y runtime sin guardar estado de Loopforge, y la aplicación publicada incorpora el Agente junto a un sidecar de Kura fijado.',
     ],
     highlights: [
-      'Agent Skills más una CLI determinista en Python: el juicio creativo en las skills, las transiciones de estado y la validación en la CLI.',
-      'Estado de eventos encadenado por hash, con bloqueo, reconciliación y recuperación: el historial del proyecto es auditable en lugar de conversacional.',
-      'Flujo centrado en la evidencia: evidencia registrada, registros de hipótesis, validación de integridad de artefactos y avance de etapa con guardas.',
-      'Afirmaciones de calidad con alcance definido que caducan solas cuando cambia la identidad de su fuente.',
-      'Adaptador de compilación y pruebas para Godot 4, importación de playtests y decisiones atómicas de mantener, descartar o refactorizar prototipos.',
-      'Dirige los agentes de programación que ya usas en vez de imponer un runtime de agentes propio.',
+      'Un Workbench de escritorio (Tauri + React) como superficie del producto, con el Agente como su único sidecar.',
+      'Los proyectos se abren desde un repositorio de juego normal; las credenciales y variables de entorno quedan fuera del contexto cargado.',
+      'Barra de modos para exploración, diseño, compilación y prueba, con el chat del Agente junto al trabajo y no en su lugar.',
+      'El estado y la evidencia se escriben en el repositorio, así que el registro de lo ocurrido no depende de un chat.',
+      'Las operaciones deterministas y las Skills versionadas siguen disponibles para automatizar y diagnosticar: son capacidades internas, no la puerta de entrada.',
+      'El comportamiento genérico de modelo, sesión y runtime llega desde un sidecar de Kura fijado, y la lógica de dominio se queda del lado de Loopforge.',
     ],
-    commandLabels: ['Instalar la CLI', 'Instalar las skills en Codex'],
+    commandLabels: ['Ejecutar el Workbench desde una copia del repositorio'],
     requirements:
-      'Python 3.11+, uv y Git; Godot 4 solo para el flujo de compilación con Godot. No está publicado en PyPI: instala desde la URL de Git.',
+      'Git, Node.js 22 y pnpm, Rust y Cargo, Python 3.11+ con uv; Godot 4 solo para el flujo de Godot. Todavía no hay una versión empaquetada, así que la aplicación de escritorio se construye desde el repositorio.',
   },
 
   pingo: {

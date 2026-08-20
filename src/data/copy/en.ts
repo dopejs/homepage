@@ -45,25 +45,25 @@ export const en: ProjectCopyMap = {
   },
 
   loopforge: {
-    tagline: 'A game-development toolkit made of Agent Skills and a deterministic CLI.',
+    tagline: 'An independent, local game-development agent with a desktop workbench.',
     summary:
-      'Loopforge helps an existing coding agent turn a game idea into tested, evidence-backed playable builds without hiding project state inside a chat. Creative judgment stays in the skills and in human review; state transitions, validation, evidence and recovery stay in the CLI. The project is in early implementation.',
+      'Loopforge works inside a normal game repository: it turns ideas into playable experiments, gathers technical and human evidence, and helps make explicit keep, kill or refactor decisions. The Agent is the control plane and the desktop Workbench is the interface; the CLI and Skills are internal capabilities rather than things you drive by hand.',
     body: [
-      'The split is the point. Skills hold creative judgment and human review; the CLI owns state transitions, validation, evidence and recovery. Rather than building a proprietary agent runtime, Loopforge drives coding agents you already run: `loopforge setup --host codex` installs the official skills into the Codex skills directory, and `$loopforge-router` reads durable project state to route the next action to gameplay prototyping, Godot implementation, game design or art production.',
-      'Project state is durable and inspectable instead of living in a chat log: hash-chained events, locking, reconciliation, read-only diagnostics, artifact integrity validation, registered evidence, hypothesis records and guarded stage advancement. `status` also derives scoped quality claims and marks them stale when the source identity changes, so a claim cannot outlive the thing it was made about.',
-      'The repository is explicit about what is not done. This is early implementation: validation against a real Godot installation and production-stage release skills are not implemented yet. The package is not published to PyPI either — `uv tool install loopforge` does not refer to this project — so install from the Git URL and pin a reviewed tag or commit for reproducible environments.',
+      'Opening a project is the whole setup: the Workbench takes a game repository through the native folder picker, then starts or reconnects that project’s Agent and loads a constrained slice of project context — without exposing provider credentials, environment variables or access tokens.',
+      'The interface is organised around the project rather than around the Agent process. A project menu switches repositories and project-level views, the header carries project identity and its actions, the work area hosts mode-specific tools, and a floating toolbar moves between exploration, design, build and test. The chat sits beside the work instead of replacing it, because project state and evidence live in the game repository — chat history is not the only record of what happened.',
+      'The boundaries are deliberate. `apps/agent` holds the domain Agent and everything a user sees; `cli` holds deterministic project operations and a headless adapter, explicitly not the control plane; `skills` holds versioned capabilities for work that needs judgement; `contracts` holds the versioned schemas. Kura supplies the generic model, session and runtime behaviour and carries no Loopforge state, and the release application embeds the Agent with a pinned Kura sidecar.',
     ],
     highlights: [
-      'Agent Skills plus a deterministic Python CLI: creative judgment in the skills, state transitions and validation in the CLI.',
-      'Hash-chained event state with locking, reconciliation and recovery, so project history is auditable rather than conversational.',
-      'Evidence-first workflow: registered evidence, hypothesis records, artifact integrity validation and guarded stage advancement.',
-      'Scoped quality claims that go stale automatically when the identity of their source changes.',
-      'Godot 4 build/test adapter, playtest import, and atomic keep, kill or refactor decisions on prototypes.',
-      'Drives coding agents you already use instead of shipping a proprietary agent runtime.',
+      'A desktop Workbench (Tauri + React) as the product surface, with the Agent as its only sidecar.',
+      'Projects open from a normal game repository; credentials and environment variables stay out of the project context that is loaded.',
+      'Mode toolbar for exploration, design, build and test, with the Agent chat beside the work rather than in place of it.',
+      'State and evidence are written into the repository, so the record of what happened does not depend on a chat log.',
+      'Deterministic operations and versioned Skills remain available for automation and diagnosis — internal capabilities, not the way in.',
+      'Generic model, session and runtime behaviour comes from Kura as a pinned sidecar, keeping domain logic on the Loopforge side of the line.',
     ],
-    commandLabels: ['Install the CLI', 'Install the skills into Codex'],
+    commandLabels: ['Run the Workbench from a checkout'],
     requirements:
-      'Python 3.11+, uv and Git; Godot 4 only for the Godot build workflow. Not published to PyPI — install from the Git URL.',
+      'Git, Node.js 22 and pnpm, Rust and Cargo, Python 3.11+ with uv; Godot 4 only for the Godot workflow. There is no packaged release yet, so the desktop app is built from a checkout.',
   },
 
   pingo: {
