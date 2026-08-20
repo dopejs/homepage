@@ -44,7 +44,7 @@ export const projects: Project[] = [
     logoLight: 'kura-light.svg',
     status: 'active',
     languages: ['Rust', 'TypeScript'],
-    license: null,
+    license: 'Apache-2.0',
     repo: 'https://github.com/dopejs/kura',
     homepage: 'https://kura.dopejs.com/',
   },
