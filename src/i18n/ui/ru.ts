@@ -9,6 +9,7 @@ export const ru: UIStrings = {
   'nav.about': 'О проекте',
   'nav.github': 'GitHub',
   'nav.skip': 'Перейти к содержимому',
+  'nav.theme': 'Тема',
   'nav.language': 'Язык',
 
   'hero.eyebrow': 'открытый код · разработка на виду',

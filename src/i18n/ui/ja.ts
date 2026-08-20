@@ -9,6 +9,7 @@ export const ja: UIStrings = {
   'nav.about': 'について',
   'nav.github': 'GitHub',
   'nav.skip': '本文へスキップ',
+  'nav.theme': 'テーマ',
   'nav.language': '言語',
 
   'hero.eyebrow': 'オープンソース · 公開開発',

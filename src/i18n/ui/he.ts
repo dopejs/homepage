@@ -9,6 +9,7 @@ export const he: UIStrings = {
   'nav.about': 'אודות',
   'nav.github': 'GitHub',
   'nav.skip': 'דלג לתוכן',
+  'nav.theme': 'ערכת נושא',
   'nav.language': 'שפה',
 
   'hero.eyebrow': 'קוד פתוח · פיתוח גלוי',

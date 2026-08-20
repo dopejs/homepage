@@ -16,6 +16,8 @@ export interface Project {
   homepage?: string;
   /** Filename under public/logos/, when the project ships its own mark. */
   logo?: string;
+  /** Variant for the light theme, when the default mark is drawn for dark surfaces. */
+  logoLight?: string;
   /** Whether the repository publishes GitHub releases (drives the sidebar link). */
   hasReleases?: boolean;
   /** Shell commands, shown verbatim in every locale. Labels are translated. */
@@ -39,6 +41,7 @@ export const projects: Project[] = [
     slug: 'kura',
     name: 'Kura',
     logo: 'kura.svg',
+    logoLight: 'kura-light.svg',
     status: 'active',
     languages: ['Rust', 'TypeScript'],
     license: null,
@@ -77,6 +80,7 @@ export const projects: Project[] = [
     slug: 'pingo',
     name: 'Pingo',
     logo: 'pingo.svg',
+    logoLight: 'pingo-light.svg',
     status: 'early',
     languages: ['TypeScript', 'Rust'],
     license: null,

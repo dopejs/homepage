@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Pingo">
+  <g fill="#14161B">
+    <rect x="10" y="11" width="9" height="9" rx="2"/>
+    <rect x="20" y="11" width="9" height="9" rx="2"/>
+    <rect x="30" y="11" width="9" height="9" rx="2"/>
+    <rect x="40" y="11" width="9" height="9" rx="2"/>
+    <rect x="10" y="21" width="9" height="9" rx="2"/>
+    <rect x="50" y="21" width="9" height="9" rx="2"/>
+    <rect x="10" y="31" width="9" height="9" rx="2"/>
+    <rect x="20" y="31" width="9" height="9" rx="2"/>
+    <rect x="30" y="31" width="9" height="9" rx="2"/>
+    <rect x="40" y="31" width="9" height="9" rx="2"/>
+    <rect x="10" y="41" width="9" height="9" rx="2"/>
+    <rect x="10" y="51" width="9" height="9" rx="2"/>
+  </g>
+  <rect x="51" y="2" width="9" height="9" rx="2" fill="#2E5BFF" transform="rotate(18 55.5 6.5)"/>
+</svg>

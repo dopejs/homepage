@@ -9,6 +9,7 @@ export const zh: UIStrings = {
   'nav.about': '关于',
   'nav.github': 'GitHub',
   'nav.skip': '跳到正文',
+  'nav.theme': '主题',
   'nav.language': '语言',
 
   'hero.eyebrow': '开源 · 公开开发',

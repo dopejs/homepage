@@ -9,6 +9,7 @@ export const ko: UIStrings = {
   'nav.about': '소개',
   'nav.github': 'GitHub',
   'nav.skip': '본문으로 건너뛰기',
+  'nav.theme': '테마',
   'nav.language': '언어',
 
   'hero.eyebrow': '오픈소스 · 공개 개발',

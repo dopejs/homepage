@@ -1,3 +1,6 @@
+import { ArrowRight } from 'lucide-react';
+
+import { HeroVisual } from './HeroVisual';
 import { ProjectCard } from './ProjectCard';
 import { projects } from '../data/projects';
 import { ORG_URL } from '../data/site';
@@ -8,60 +11,71 @@ export function Home({ locale }: { readonly locale: SiteLocale }) {
 
   return (
     <>
-      <section className="wrap pt-20 pb-16 sm:pt-28 sm:pb-24">
-        <p className="mono-label">{locale.ui['hero.eyebrow']}</p>
-        <h1 className={`mt-5 max-w-3xl text-4xl leading-[1.15] font-semibold tracking-tight sm:text-6xl ${display}`}>
-          {locale.ui['hero.title']}
-        </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{locale.ui['hero.body']}</p>
+      <section className="wrap grid items-center gap-12 pt-16 pb-14 lg:grid-cols-[minmax(0,1fr)_360px] lg:pt-24 lg:pb-20">
+        <div>
+          <p className="mono-label text-accent">{locale.ui['hero.eyebrow']}</p>
+          <p className={`mt-5 text-4xl leading-none font-extrabold tracking-tight text-accent sm:text-5xl ${display}`}>
+            dopejs
+          </p>
+          <h1
+            className={`mt-2 max-w-2xl text-4xl leading-[1.08] font-extrabold tracking-tight sm:text-[3.25rem] ${display}`}
+          >
+            {locale.ui['hero.title']}
+          </h1>
+          <p className="mt-6 max-w-xl text-[1.05rem] leading-relaxed text-muted">{locale.ui['hero.body']}</p>
 
-        <div className="mt-9 flex flex-wrap items-center gap-3">
-          <a
-            href="#projects"
-            className={`rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-ink transition-opacity hover:opacity-90 ${display}`}
-          >
-            {locale.ui['hero.cta.projects']}
-          </a>
-          <a
-            href={ORG_URL}
-            rel="noopener noreferrer"
-            target="_blank"
-            className={`rounded-lg border border-line px-5 py-2.5 text-sm text-fg transition-colors hover:border-accent/60 hover:text-accent ${display}`}
-          >
-            {locale.ui['hero.cta.github']} ↗
-          </a>
-          <span className="ms-1 font-mono text-sm text-muted/80">
-            {projects.length} {locale.ui['hero.count']}
-          </span>
+          <div className="mt-9 flex flex-wrap items-center gap-3">
+            <a
+              href="#projects"
+              className={`inline-flex items-center gap-2 rounded-xl bg-accent-solid px-5 py-2.5 text-sm font-semibold text-accent-on transition-opacity hover:opacity-90 ${display}`}
+            >
+              {locale.ui['hero.cta.projects']}
+              <ArrowRight size={16} className="rtl:-scale-x-100" />
+            </a>
+            <a
+              href={ORG_URL}
+              rel="noopener noreferrer"
+              target="_blank"
+              className={`inline-flex items-center rounded-xl border border-line bg-surface px-5 py-2.5 text-sm font-semibold transition-colors hover:border-line-strong ${display}`}
+            >
+              {locale.ui['hero.cta.github']}
+            </a>
+            <span className="ms-1 font-mono text-sm text-faint">
+              {projects.length} {locale.ui['hero.count']}
+            </span>
+          </div>
         </div>
+
+        <HeroVisual />
       </section>
 
-      <section id="projects" className="wrap scroll-mt-20">
-        <div className="border-t border-line/70 pt-12">
-          <h2 className={`text-2xl font-semibold tracking-tight sm:text-3xl ${display}`}>{locale.ui['projects.title']}</h2>
+      <section id="projects" className="wrap scroll-mt-20 pb-4">
+        <div className="border-t border-line pt-12">
+          <h2 className={`text-2xl font-bold tracking-tight sm:text-3xl ${display}`}>{locale.ui['projects.title']}</h2>
           <p className="mt-3 max-w-2xl leading-relaxed text-muted">{locale.ui['projects.lead']}</p>
         </div>
 
         {/* grid-cols-1 so the implicit column is minmax(0,1fr): otherwise the
             nowrap install command widens every card past the viewport. */}
-        <div className="mt-10 grid grid-cols-1 gap-5">
+        <div className="mt-8 grid grid-cols-1 gap-4">
           {projects.map((project, index) => (
             <ProjectCard key={project.slug} locale={locale} project={project} index={index} />
           ))}
         </div>
       </section>
 
-      <section id="about" className="wrap mt-24 scroll-mt-20">
-        <div className="rounded-xl border border-line bg-surface/60 p-8 sm:p-12">
-          <h2 className={`text-2xl font-semibold tracking-tight ${display}`}>{locale.ui['about.title']}</h2>
+      <section id="about" className="wrap mt-20 scroll-mt-20">
+        <div className="rounded-2xl border border-line bg-surface p-8 sm:p-12">
+          <h2 className={`text-2xl font-bold tracking-tight ${display}`}>{locale.ui['about.title']}</h2>
           <p className="mt-4 max-w-2xl leading-relaxed text-muted">{locale.ui['about.body']}</p>
           <a
             href={ORG_URL}
             rel="noopener noreferrer"
             target="_blank"
-            className={`mt-6 inline-block text-sm text-accent hover:underline ${display}`}
+            className={`mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline ${display}`}
           >
-            {locale.ui['about.cta']} ↗
+            {locale.ui['about.cta']}
+            <ArrowRight size={15} className="rtl:-scale-x-100" />
           </a>
         </div>
       </section>

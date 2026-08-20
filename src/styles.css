@@ -1,96 +1,155 @@
 @import 'tailwindcss';
 
-/*
- * Dark-only by design: the site reads as a terminal-adjacent surface, and a
- * second theme would double the review surface for no product benefit today.
- */
-@theme {
-  --color-ink: #08090a;
-  --color-surface: #0e1113;
-  --color-surface-2: #14181b;
-  --color-line: #22282c;
-  --color-fg: #e8edf0;
-  --color-muted: #8b979e;
-  --color-accent: #b6ff3b;
-  --color-accent-dim: #7fb62a;
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
 
-  /* Covers Latin, Cyrillic, Simplified/Traditional Chinese, Japanese, Korean,
-     Arabic and Hebrew through system fonts — no webfont download. */
+/*
+ * Light by default with a dark toggle, matching the other dopejs sites. The
+ * palette lives in CSS variables so the Tailwind utilities below switch with
+ * `data-theme` instead of needing a second set of classes.
+ *
+ * The brand lime reads well as a filled button in both themes, but not as text
+ * on white, so `--color-accent` darkens in light mode while `--color-accent-solid`
+ * stays the brand colour.
+ */
+:root {
+  color-scheme: light;
+
+  --header-height: 64px;
+
+  --color-bg: #fbfcff;
+  --color-surface: #ffffff;
+  --color-surface-2: #f2f5f4;
+  --color-line: #dfe5e2;
+  --color-line-strong: #c3cec9;
+  --color-fg: #14181a;
+  --color-muted: #5c6b66;
+  --color-faint: #8b9691;
+  --color-accent: #3d7a12;
+  --color-accent-solid: #b6ff3b;
+  --color-accent-on: #08090a;
+  --color-accent-dim: rgb(182 255 59 / 18%);
+  --color-code: #0c1114;
+  --color-code-fg: #e6edea;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-bg: #0b0d0a;
+  --color-surface: #12150f;
+  --color-surface-2: #191d15;
+  --color-line: #262c22;
+  --color-line-strong: #3a4234;
+  --color-fg: #eef3e9;
+  --color-muted: #a7b0a0;
+  --color-faint: #77816f;
+  --color-accent: #b6ff3b;
+  --color-accent-solid: #b6ff3b;
+  --color-accent-on: #08090a;
+  --color-accent-dim: rgb(182 255 59 / 14%);
+  --color-code: #06080a;
+  --color-code-fg: #e6edea;
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-surface-2: var(--color-surface-2);
+  --color-line: var(--color-line);
+  --color-line-strong: var(--color-line-strong);
+  --color-fg: var(--color-fg);
+  --color-muted: var(--color-muted);
+  --color-faint: var(--color-faint);
+  --color-accent: var(--color-accent);
+  --color-accent-solid: var(--color-accent-solid);
+  --color-accent-on: var(--color-accent-on);
+  --color-code: var(--color-code);
+  --color-code-fg: var(--color-code-fg);
+
   --font-sans:
     'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'PingFang TC',
-    'Hiragino Sans GB', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Microsoft YaHei',
-    'Microsoft JhengHei', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans SC', 'Noto Sans TC',
-    'Noto Sans JP', 'Noto Sans KR', 'Geeza Pro', 'Noto Sans Arabic', 'Arial Hebrew',
-    'Noto Sans Hebrew', sans-serif;
-  --font-mono:
-    ui-monospace, 'SF Mono', 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace;
+    'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Microsoft YaHei', 'Apple SD Gothic Neo',
+    'Malgun Gothic', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans JP', 'Noto Sans KR', 'Geeza Pro',
+    'Noto Sans Arabic', 'Arial Hebrew', 'Noto Sans Hebrew', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    color-scheme: dark;
+    scroll-padding-top: calc(var(--header-height) + 20px);
   }
 
   @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-    *,
-    *::before,
-    *::after {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
       animation-duration: 0.01ms !important;
       transition-duration: 0.01ms !important;
     }
   }
 
   body {
-    background-color: var(--color-ink);
+    margin: 0;
+    background: var(--color-bg);
     color: var(--color-fg);
     font-family: var(--font-sans);
+    font-synthesis: none;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-  }
-
-  /* Faint engineering grid — the only decorative element on the page. */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
-    background-size: 72px 72px;
-    mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 40%, transparent 100%);
   }
 
   :focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 3px;
-    border-radius: 2px;
+    border-radius: 3px;
   }
 
   ::selection {
-    background: var(--color-accent);
-    color: var(--color-ink);
+    background: var(--color-accent-solid);
+    color: var(--color-accent-on);
   }
 }
 
 @layer components {
   .wrap {
     width: 100%;
-    max-width: 68rem;
+    max-width: 72rem;
     margin-inline: auto;
-    padding-inline: 1.5rem;
+    padding-inline: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .wrap { padding-inline: 1.5rem; }
   }
 
   .mono-label {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
+    color: var(--color-faint);
+  }
+
+  /* Small square control in the header: language, theme, repository. */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    height: 34px;
+    padding-inline: 0.6rem;
+    border: 1px solid var(--color-line);
+    border-radius: 9px;
+    background: var(--color-surface);
     color: var(--color-muted);
+    font-size: 0.8rem;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .chip:hover {
+    border-color: var(--color-line-strong);
+    color: var(--color-fg);
   }
 }

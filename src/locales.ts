@@ -43,9 +43,11 @@ export function localeForPath(path: string): SiteLocale {
   );
 }
 
-/** Monospace spaces CJK, Arabic and Hebrew glyphs badly, so those use the sans stack. */
-export function displayFont(locale: SiteLocale): string {
-  return ['zh-Hans', 'zh-Hant', 'ja', 'ko', 'ar', 'he'].includes(locale.lang)
-    ? 'font-sans'
-    : 'font-mono';
+/**
+ * Display type is the sans stack in every locale, as on the other dopejs sites.
+ * Kept as a function because the components ask for it per locale and a future
+ * locale may need a different stack.
+ */
+export function displayFont(_locale: SiteLocale): string {
+  return 'font-sans';
 }

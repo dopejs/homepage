@@ -9,6 +9,7 @@ export const zhTW: UIStrings = {
   'nav.about': '關於',
   'nav.github': 'GitHub',
   'nav.skip': '跳至內容',
+  'nav.theme': '主題',
   'nav.language': '語言',
 
   'hero.eyebrow': '開源 · 公開開發',

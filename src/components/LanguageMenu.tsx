@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import { Globe } from 'lucide-react';
+
 import { SITE_LOCALES, type SiteLocale } from '../locales';
 
 interface Props {
@@ -32,17 +34,16 @@ export function LanguageMenu({ locale, onChange }: Props) {
         aria-expanded={open}
         aria-label={locale.ui['nav.language']}
         onClick={() => setOpen((value) => !value)}
-        className="flex cursor-pointer items-center gap-1.5 rounded border border-line px-2.5 py-1.5 text-xs whitespace-nowrap text-muted transition-colors hover:border-accent/60 hover:text-accent"
+        className="chip"
       >
-        <svg viewBox="0 0 24 24" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true">
-          <circle cx="12" cy="12" r="9" />
-          <path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3z" />
-        </svg>
-        <span>{locale.label}</span>
+        <Globe size={15} />
+        <span className="hidden sm:inline">{locale.label}</span>
       </button>
 
+      {/* No `dir` on the entries: it would right-align the Hebrew and Arabic
+          endonyms inside an otherwise left-aligned menu. */}
       {open && (
-        <ul className="absolute end-0 z-50 mt-2 max-h-[70vh] w-44 overflow-y-auto rounded-lg border border-line bg-surface p-1.5 shadow-xl shadow-black/40">
+        <ul className="absolute end-0 z-50 mt-2 max-h-[70vh] w-44 overflow-y-auto rounded-xl border border-line bg-surface p-1.5 shadow-xl shadow-black/10">
           {SITE_LOCALES.map((candidate) => (
             <li key={candidate.lang}>
               <button
@@ -53,8 +54,8 @@ export function LanguageMenu({ locale, onChange }: Props) {
                   onChange(candidate.path);
                   setOpen(false);
                 }}
-                className={`block w-full rounded px-3 py-1.5 text-start text-sm transition-colors hover:bg-surface-2 ${
-                  candidate.path === locale.path ? 'text-accent' : 'text-muted hover:text-fg'
+                className={`block w-full rounded-lg px-3 py-1.5 text-start text-sm transition-colors hover:bg-surface-2 ${
+                  candidate.path === locale.path ? 'font-semibold text-accent' : 'text-muted hover:text-fg'
                 }`}
               >
                 {candidate.label}

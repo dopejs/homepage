@@ -9,6 +9,7 @@ export const es: UIStrings = {
   'nav.about': 'Acerca de',
   'nav.github': 'GitHub',
   'nav.skip': 'Ir al contenido',
+  'nav.theme': 'Tema',
   'nav.language': 'Idioma',
 
   'hero.eyebrow': 'código abierto · desarrollado a la vista de todos',

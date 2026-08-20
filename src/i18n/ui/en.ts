@@ -8,6 +8,7 @@ export const en = {
   'nav.about': 'About',
   'nav.github': 'GitHub',
   'nav.skip': 'Skip to content',
+  'nav.theme': 'Theme',
   'nav.language': 'Language',
 
   'hero.eyebrow': 'open source · built in the open',

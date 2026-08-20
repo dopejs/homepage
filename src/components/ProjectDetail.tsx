@@ -26,17 +26,17 @@ export function ProjectDetail({ locale, project, previous, next }: Props) {
         <span className="inline-block rtl:-scale-x-100">←</span> {locale.ui['project.back']}
       </a>
 
-      <header className="mt-6 border-b border-line/70 pb-10">
+      <header className="mt-6 border-b border-line pb-10">
         <div className="flex flex-wrap items-center gap-3">
           <ProjectLogo project={project} size={44} />
-          <h1 className="font-mono text-4xl font-semibold tracking-tight sm:text-5xl" dir="ltr">
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl" dir="ltr">
             {project.name}
           </h1>
           <span className={`rounded-full border px-2.5 py-0.5 font-mono text-xs ${statusTone[project.status]}`}>
             {locale.ui[statusKey(project.status)]}
           </span>
         </div>
-        <p className={`mt-5 max-w-3xl text-xl leading-snug text-fg/90 ${display}`}>{c.tagline}</p>
+        <p className={`mt-5 max-w-3xl text-xl leading-snug text-fg ${display}`}>{c.tagline}</p>
         <p className="mt-4 max-w-3xl leading-relaxed text-muted">{c.summary}</p>
 
         <div className="mt-7 flex flex-wrap items-center gap-3">
@@ -44,7 +44,7 @@ export function ProjectDetail({ locale, project, previous, next }: Props) {
             href={project.repo}
             rel="noopener noreferrer"
             target="_blank"
-            className={`rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-ink transition-opacity hover:opacity-90 ${display}`}
+            className={`rounded-lg bg-accent-solid px-5 py-2.5 text-sm font-semibold text-accent-on transition-opacity hover:opacity-90 ${display}`}
           >
             {locale.ui['projects.repo']} ↗
           </a>
@@ -53,7 +53,7 @@ export function ProjectDetail({ locale, project, previous, next }: Props) {
               href={project.homepage}
               rel="noopener noreferrer"
               target="_blank"
-              className={`rounded-lg border border-line px-5 py-2.5 text-sm text-fg transition-colors hover:border-accent/60 hover:text-accent ${display}`}
+              className={`rounded-xl border border-line bg-surface px-5 py-2.5 text-sm font-semibold transition-colors hover:border-line-strong ${display}`}
             >
               {locale.ui['projects.homepage']} ↗
             </a>
@@ -79,7 +79,7 @@ export function ProjectDetail({ locale, project, previous, next }: Props) {
             <ul className="mt-4 space-y-3">
               {c.highlights.map((item) => (
                 <li key={item.slice(0, 32)} className="flex gap-3 leading-relaxed text-muted">
-                  <span className="mt-2 size-1.5 shrink-0 rounded-full bg-accent/70" aria-hidden="true" />
+                  <span className="mt-2 size-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -91,7 +91,7 @@ export function ProjectDetail({ locale, project, previous, next }: Props) {
               <h2 className={`text-xl font-semibold tracking-tight ${display}`}>{locale.ui['project.getStarted']}</h2>
               {c.requirements !== undefined && (
                 <p className="mt-4 leading-relaxed text-muted">
-                  <span className="text-fg/80">{locale.ui['project.requirements']}: </span>
+                  <span className="text-fg">{locale.ui['project.requirements']}: </span>
                   {c.requirements}
                 </p>
               )}
@@ -107,22 +107,22 @@ export function ProjectDetail({ locale, project, previous, next }: Props) {
         </div>
 
         <aside className="lg:sticky lg:top-24 lg:self-start">
-          <div className="rounded-xl border border-line bg-surface/60 p-6">
+          <div className="rounded-2xl border border-line bg-surface p-6">
             <h2 className="mono-label">{locale.ui['project.facts']}</h2>
             <dl className="mt-4 space-y-4 text-sm">
               <div>
                 <dt className="text-muted">{locale.ui['project.facts.status']}</dt>
-                <dd className="mt-1 text-fg/90">{locale.ui[statusKey(project.status)]}</dd>
+                <dd className="mt-1 text-fg">{locale.ui[statusKey(project.status)]}</dd>
               </div>
               <div>
                 <dt className="text-muted">{locale.ui['project.facts.languages']}</dt>
-                <dd className="mt-1 font-mono text-fg/90" dir="ltr">
+                <dd className="mt-1 font-mono text-fg" dir="ltr">
                   {project.languages.join(' · ')}
                 </dd>
               </div>
               <div>
                 <dt className="text-muted">{locale.ui['project.facts.license']}</dt>
-                <dd className="mt-1 font-mono text-fg/90">{project.license ?? locale.ui['project.facts.noLicense']}</dd>
+                <dd className="mt-1 font-mono text-fg">{project.license ?? locale.ui['project.facts.noLicense']}</dd>
                 {c.licenseNote !== undefined && (
                   <dd className="mt-1 text-xs leading-relaxed text-muted">{c.licenseNote}</dd>
                 )}
@@ -160,20 +160,20 @@ export function ProjectDetail({ locale, project, previous, next }: Props) {
         </aside>
       </div>
 
-      <nav className="mt-16 grid gap-4 border-t border-line/70 pt-8 sm:grid-cols-2" aria-label={locale.ui['projects.title']}>
-        <a href={`/projects/${previous.slug}/`} className="rounded-xl border border-line p-5 transition-colors hover:border-accent/40">
+      <nav className="mt-16 grid gap-4 border-t border-line pt-8 sm:grid-cols-2" aria-label={locale.ui['projects.title']}>
+        <a href={`/projects/${previous.slug}/`} className="rounded-2xl border border-line bg-surface p-5 transition-colors hover:border-line-strong">
           <span className="mono-label">
             <span className="inline-block rtl:-scale-x-100">←</span> {locale.ui['project.prev']}
           </span>
-          <span className="mt-2 block font-mono text-lg" dir="ltr">
+          <span className="mt-2 block text-lg font-semibold" dir="ltr">
             {previous.name}
           </span>
         </a>
-        <a href={`/projects/${next.slug}/`} className="rounded-xl border border-line p-5 transition-colors hover:border-accent/40 sm:text-end">
+        <a href={`/projects/${next.slug}/`} className="rounded-2xl border border-line bg-surface p-5 transition-colors hover:border-line-strong sm:text-end">
           <span className="mono-label">
             {locale.ui['project.next']} <span className="inline-block rtl:-scale-x-100">→</span>
           </span>
-          <span className="mt-2 block font-mono text-lg" dir="ltr">
+          <span className="mt-2 block text-lg font-semibold" dir="ltr">
             {next.name}
           </span>
         </a>

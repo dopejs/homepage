@@ -1,3 +1,5 @@
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
+
 import { CommandBlock } from './CommandBlock';
 import { ProjectLogo } from './ProjectLogo';
 import { copy } from '../data/copy';
@@ -21,14 +23,14 @@ export function ProjectCard({ locale, project, index }: Props) {
   return (
     <article
       id={project.slug}
-      className="group relative scroll-mt-24 rounded-xl border border-line bg-surface/60 p-6 transition-colors hover:border-accent/30 hover:bg-surface-2/60 sm:p-8"
+      className="group relative scroll-mt-24 rounded-2xl border border-line bg-surface p-6 transition-colors hover:border-line-strong sm:p-8"
     >
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-        <span className="font-mono text-xs text-muted/70" dir="ltr">
+        <span className="font-mono text-xs font-semibold text-accent" dir="ltr">
           {String(index + 1).padStart(2, '0')}
         </span>
         <ProjectLogo project={project} size={30} />
-        <h3 className="font-mono text-xl font-semibold tracking-tight">
+        <h3 className="text-xl font-bold tracking-tight">
           {/* Stretched link: the whole card is the target, inner links stay clickable via z-10. */}
           <a href={href} className="after:absolute after:inset-0 hover:text-accent">
             {project.name}
@@ -39,24 +41,24 @@ export function ProjectCard({ locale, project, index }: Props) {
         </span>
       </div>
 
-      <p className="mt-4 text-lg text-fg/90">{c.tagline}</p>
-      <p className="mt-3 max-w-3xl leading-relaxed text-muted">{c.summary}</p>
+      <p className="mt-4 text-lg font-medium">{c.tagline}</p>
+      <p className="mt-2 max-w-3xl leading-relaxed text-muted">{c.summary}</p>
 
       {primaryCommand !== undefined && (
         <div className="relative z-10 mt-5">
-          <CommandBlock locale={locale} command={primaryCommand.command} />
+          <CommandBlock locale={locale} command={primaryCommand.command} file={`${project.slug}.sh`} />
         </div>
       )}
 
       <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
         <div className="flex flex-wrap gap-2">
           {project.languages.map((language) => (
-            <span key={language} className="rounded border border-line px-2 py-0.5 font-mono text-[11px] text-muted">
+            <span key={language} className="rounded-md border border-line px-2 py-0.5 font-mono text-[11px] text-muted">
               {language}
             </span>
           ))}
           {project.license !== null && (
-            <span className="rounded border border-line px-2 py-0.5 font-mono text-[11px] text-muted">
+            <span className="rounded-md border border-line px-2 py-0.5 font-mono text-[11px] text-muted">
               {project.license}
             </span>
           )}
@@ -64,15 +66,28 @@ export function ProjectCard({ locale, project, index }: Props) {
 
         <div className="relative z-10 ms-auto flex flex-wrap items-center gap-x-4 gap-y-2">
           {project.homepage !== undefined && (
-            <a href={project.homepage} rel="noopener noreferrer" target="_blank" className="text-muted transition-colors hover:text-accent">
-              {locale.ui['projects.homepage']} ↗
+            <a
+              href={project.homepage}
+              rel="noopener noreferrer"
+              target="_blank"
+              className="inline-flex items-center gap-1 text-muted transition-colors hover:text-fg"
+            >
+              {locale.ui['projects.homepage']}
+              <ArrowUpRight size={14} />
             </a>
           )}
-          <a href={project.repo} rel="noopener noreferrer" target="_blank" className="text-muted transition-colors hover:text-accent">
-            {locale.ui['projects.repo']} ↗
+          <a
+            href={project.repo}
+            rel="noopener noreferrer"
+            target="_blank"
+            className="inline-flex items-center gap-1 text-muted transition-colors hover:text-fg"
+          >
+            {locale.ui['projects.repo']}
+            <ArrowUpRight size={14} />
           </a>
-          <a href={href} className="text-accent hover:underline">
-            {locale.ui['projects.details']} <span className="inline-block rtl:-scale-x-100">→</span>
+          <a href={href} className="inline-flex items-center gap-1 font-semibold text-accent hover:underline">
+            {locale.ui['projects.details']}
+            <ArrowRight size={14} className="rtl:-scale-x-100" />
           </a>
         </div>
       </div>

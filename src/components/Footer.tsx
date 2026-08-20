@@ -3,7 +3,7 @@ import type { SiteLocale } from '../locales';
 
 export function Footer({ locale }: { readonly locale: SiteLocale }) {
   return (
-    <footer className="mt-24 border-t border-line/70 py-10">
+    <footer className="mt-24 border-t border-line py-10">
       <div className="wrap flex flex-col gap-4 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
         <p className="font-mono">© 2026 {locale.ui['footer.rights']}</p>
         <div className="flex flex-col gap-1 sm:items-end">
@@ -16,7 +16,7 @@ export function Footer({ locale }: { readonly locale: SiteLocale }) {
               github.com/dopejs
             </a>
           </p>
-          <p className="text-xs text-muted/70">{locale.ui['footer.translations']}</p>
+          <p className="text-xs text-faint">{locale.ui['footer.translations']}</p>
         </div>
       </div>
     </footer>

@@ -9,6 +9,7 @@ export const ar: UIStrings = {
   'nav.about': 'حول',
   'nav.github': 'GitHub',
   'nav.skip': 'تخطَّ إلى المحتوى',
+  'nav.theme': 'المظهر',
   'nav.language': 'اللغة',
 
   'hero.eyebrow': 'مفتوح المصدر · يُطوَّر علنًا',
