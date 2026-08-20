@@ -20,8 +20,6 @@ export const en = {
   'hero.count': 'projects',
 
   'projects.title': 'Projects',
-  'projects.lead':
-    'These repositories are at honestly different stages of maturity. Status labels below are not marketing — they say what you can actually rely on today. Licensing differs too; each project page states its own.',
   'projects.repo': 'Repository',
   'projects.homepage': 'Homepage',
   'projects.install': 'Install',

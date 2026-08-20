@@ -21,8 +21,6 @@ export const fr: UIStrings = {
   'hero.count': 'projets',
 
   'projects.title': 'Projets',
-  'projects.lead':
-    'Ces dépôts sont à des stades de maturité honnêtement différents. Les étiquettes de statut ne sont pas du marketing : elles disent ce sur quoi vous pouvez réellement compter aujourd’hui. Les licences diffèrent aussi ; chaque page de projet indique la sienne.',
   'projects.repo': 'Dépôt',
   'projects.homepage': 'Site web',
   'projects.install': 'Installer',

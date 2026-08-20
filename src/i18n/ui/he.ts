@@ -21,8 +21,6 @@ export const he: UIStrings = {
   'hero.count': 'פרויקטים',
 
   'projects.title': 'פרויקטים',
-  'projects.lead':
-    'המאגרים האלה נמצאים בשלבי בשלות שונים באמת. תוויות הסטטוס אינן שיווק — הן אומרות על מה אפשר לסמוך היום. גם הרישוי שונה בין הפרויקטים, וכל עמוד פרויקט מציין את שלו.',
   'projects.repo': 'מאגר',
   'projects.homepage': 'אתר',
   'projects.install': 'התקנה',

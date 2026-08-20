@@ -52,7 +52,6 @@ export function Home({ locale }: { readonly locale: SiteLocale }) {
       <section id="projects" className="wrap scroll-mt-20 pb-4">
         <div className="border-t border-line pt-12">
           <h2 className={`text-2xl font-bold tracking-tight sm:text-3xl ${display}`}>{locale.ui['projects.title']}</h2>
-          <p className="mt-3 max-w-2xl leading-relaxed text-muted">{locale.ui['projects.lead']}</p>
         </div>
 
         {/* One bordered container with internal dividers, as on the other

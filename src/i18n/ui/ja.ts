@@ -21,8 +21,6 @@ export const ja: UIStrings = {
   'hero.count': '個のプロジェクト',
 
   'projects.title': 'プロジェクト',
-  'projects.lead':
-    'これらのリポジトリは、成熟度が実際にそれぞれ異なります。以下のステータスは宣伝文句ではなく、今日どこまで頼れるかを示すものです。ライセンスも統一されておらず、各プロジェクトページに明記しています。',
   'projects.repo': 'リポジトリ',
   'projects.homepage': '公式サイト',
   'projects.install': 'インストール',

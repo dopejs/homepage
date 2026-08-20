@@ -21,8 +21,6 @@ export const es: UIStrings = {
   'hero.count': 'proyectos',
 
   'projects.title': 'Proyectos',
-  'projects.lead':
-    'Estos repositorios están en grados de madurez honestamente distintos. Las etiquetas de estado no son marketing: indican en qué puedes confiar hoy. La licencia también varía; cada página de proyecto indica la suya.',
   'projects.repo': 'Repositorio',
   'projects.homepage': 'Sitio web',
   'projects.install': 'Instalar',

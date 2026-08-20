@@ -21,8 +21,6 @@ export const ko: UIStrings = {
   'hero.count': '개 프로젝트',
 
   'projects.title': '프로젝트',
-  'projects.lead':
-    '이 저장소들은 성숙도가 실제로 서로 다릅니다. 아래 상태 라벨은 마케팅 문구가 아니라 오늘 무엇을 믿고 쓸 수 있는지를 나타냅니다. 라이선스도 제각각이며 각 프로젝트 페이지에 명시되어 있습니다.',
   'projects.repo': '저장소',
   'projects.homepage': '웹사이트',
   'projects.install': '설치',
